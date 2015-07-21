@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"> 
+    
+
+         <div class="login_dropdown" id="dlg_login">           
+
+            <div class="panel">
+            
+              <p>#{msg['spConectar']}:</p>
+<!--               <h:form> -->
+              <a href="#" class="facebook">
+                 <i class="fa fa-facebook"></i>
+              </a>
+
+              <a href="#" class="twitter">
+              <i class="fa fa-twitter"></i>
+              </a>
+
+              <a href="#" class="googlee">
+              <i class="fa fa-google-plus"></i>
+              </a>
+<!--               </h:form> -->
+           </div>
+
+             <h:form class="contact-form-r">
+              <p:messages  closable="true" autoUpdate="true" id="mensajes"></p:messages> 
+<!--                  <p:messages  closable="true" autoUpdate="true" id="messages"></p:messages> -->
+<!--               <p:growl id="growl" sticky="true" showDetail="true" life="3000" /> -->
+              <label class="email wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+               <p:inputText  name="#{msg['msnEmail']}"  feedback="true" placeholder="#{msg['msnEmail']}:" required="true" value="#{loginView.usuarioVo.vUsuario}" requiredMessage="#{msg['msnRequiere']} #{msg['msnEmail']}" />
+             </label>
+             <label class="seguridad wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+               <p:password name="#{msg['msnPass']}" feedback="true" placeholder="#{msg['msnPass']}:" required="true" value="#{loginView.usuarioVo.vContrasena}" requiredMessage="#{msg['msnRequiere']} #{msg['msnPass']}"/>
+             </label>
+             <p></p>
+             <div class="form_control">
+<!--              <p:commandButton value="#{msg['btnIngreso']}" update="growl" actionListener="#{loginView.login}" oncomplete="handleLoginRequest(xhr, status, args)" > 
+            <f:ajax execute="@form" /> 
+
+          </p:commandButton> -->
+           <p:commandButton value="#{msg['btnIngreso']}"  action="#{loginView.login()}"  >
+<!--              <f:ajax execute="@form" /> -->
+<!--                   <f:ajax execute="@this"/> -->
+           </p:commandButton>
+             
+             <div class="space"></div>   
+             <div class="space"></div>             
+              <a class="h7" title="#{msg['spOlvidarContra']}" href="/recuperar" >#{msg['spOlvidarContra']}</a> 
+			    
+			  </div>
+             </h:form>
+             
+			
+				<p>#{msg['spNoTienesCuenta']}
+					  <a title="#{msg['btnRegistrase']}" href="/registro" class="h7">
+						<h:outputLabel value="#{msg['btnRegistrase']}"></h:outputLabel></a>
+				</p>
+				 
+			</div>
+			
+
+	   <div id="dlg_register" class="login_dropdown">
+			<p>Crear cuenta:</p>
+             
+             <h:form class="contact-form-r">
+             <p:messages  closable="true" autoUpdate="true"></p:messages> 
+              <label class="name wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+               <p:inputText  name="name"  feedback="true" placeholder="Nombres Completos:" required="true" value="#{usuarioView.usuarioVo.persona.vNombres}" requiredMessage="Se requiere Nombres completos"/>
+             </label>
+              <label class="email wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+               <p:inputText  name="email"  feedback="true" placeholder="Email:" required="true" value="#{usuarioView.usuarioVo.persona.vEmail}"/>
+             </label>
+             <label class="phone wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+               <p:inputText  name="phone" feedback="true" placeholder="Telefono:" required="true" value="#{usuarioView.usuarioVo.persona.vTelefono}" />
+             </label>
+             <label class="seguridad wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+               <p:password name="seguridad" feedback="true" placeholder="Contraseña:" required="true" value="#{usuarioView.usuarioVo.vContrasena}"/>
+             </label> 
+             <div class="space"></div>   
+             <div class="space"></div>   
+             <div class="space"></div>   
+             <div class="space"></div>               
+              <label data-wow-duration="1s" data-wow-delay="0.1s">
+				<input type="checkbox"  checked="checked" value="1" id="chkTerms" name="terminos" /> He leído y estoy de acuerdo con los 
+				<a class="h7" title="Términos y Condiciones" target="_blank" href="/interes/terminos-y-condiciones">Términos y Condiciones</a>
+			                 
+              </label>
+          
+             <div class="space"></div>   
+             <div class="space"></div>   
+             <div class="space"></div>   
+             <div class="space"></div>   
+<!--              <p:button value="Registrarse" actionListener="#{usuarioView.buttonRegistrar}" ></p:button> -->
+                <p:commandButton value="#{msg['btnRegistro']}" actionListener="#{usuarioView.buttonRegistrar}">
+             <f:ajax execute="@form" />
+
+           </p:commandButton>
+             
+			 
+             </h:form>
+                </div>
+</html>

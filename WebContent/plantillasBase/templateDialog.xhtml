@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+<f:view contentType="text/html" locale="#{localizacionView.locale}">
+     <f:metadata>
+        <f:viewParam name="parametro" value="#{themeView.parametro}"/>
+    </f:metadata>
+<h:head>
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/theme-delta.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/styleDialog.css" />
+  <script src="#{request.contextPath}/media/js/funcion.js"></script>
+  <title><ui:insert name="title"></ui:insert> </title>
+</h:head>
+  <ui:insert name="body"/>
+
+</f:view>
+ </html>

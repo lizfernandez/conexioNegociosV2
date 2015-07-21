@@ -1,0 +1,132 @@
+@import "animate.css";
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(//fonts.googleapis.com/css?family=Tenor+Sans);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:600);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:800);
+/*========================================================
+                    Main layout styles
+=========================================================*/
+.active{
+color: #fff;
+background:#5A5A5A;
+box-shadow: 0 0 4px  #BF0F00;  
+}
+.hidden{
+	display: none;
+}
+.login_dropdown {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #4c4c4c;
+    display: none;
+    padding: 1em;
+    position: absolute;
+    right: 0;
+    width: 312px;
+    z-index: 100;
+    border-radius: 5px;
+    margin-top: 42px;
+    color: #4c4c4c;
+}
+
+#header #stuck_container.isStuck .login_dropdown{
+	
+	display: none!important;
+}
+.panel {
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.facebook i {
+    background: #3b5998;
+    color: #fff;
+    display: inline-block;
+    font-size: 24px;
+    height: 20px;
+    line-height: 24px;
+    padding: 10px;
+    width: 20px;
+}
+.twitter i {
+    background: #3498db;
+   color: #fff;
+     display: inline-block;
+    font-size: 24px;
+    height: 20px;
+    line-height: 24px;
+    padding: 10px;
+    width: 20px; 
+}
+.googlee i {
+    background: #F25757;
+    display: inline-block;
+    font-size: 24px;
+    height: 20px;
+    line-height: 24px;
+    padding: 10px;
+    width: 20px;
+    color: #fff;
+}
+#dlg_register, #dlg_login, #dlg_menuVertical, #dlg_menuVerticalSeg{
+	display: none;
+}
+.space{
+	margin-bottom: 10px;
+}
+.color2{
+	background-color:  #202020 ;
+}
+.edit{
+    background: #fff none repeat scroll 0 0;
+    border-radius: 0px 6px 6px 6px;
+    float: right;
+    font-size: 20px;   
+    padding: 1px;
+    position: absolute;
+    top: 0;  
+    z-index: 100;
+    display: block;
+    border: none;
+}
+.dialogEdtiForm{
+	display: none;
+}
+.btnFoto{
+    background: #f6f6f6 none repeat scroll 0 0 !important;
+    border-radius: 7px !important;   
+    font-size: 25px !important;  
+    padding: 15px !important;    
+    top: 0 !important; 
+    border: 1px solid #ccc !important;
+    box-shadow:0 1px 0 #ccc inset, 0 1px 2px rgba(0, 0, 0, 0.2)  !important;
+ 
+}
+button.btnFoto.ui-state-hover:hover, button.btnFoto.ui-state-hover::after{
+    background: #fff none repeat scroll 0 0 !important;    
+    border: 1px solid #0099ff !important;
+    box-shadow:0 1px 0 #0099ff inset, 0 1px 2px rgba(0, 0, 0, 0.2)  !important;
+    
+}
+button.btnFoto.ui-button:focus, button.btnFoto.ui-state-focus::after{
+    background: #fff none repeat scroll 0 0 !important;    
+    border: 1px solid #0099ff !important;
+    box-shadow:0 1px 0 #0099ff inset, 0 1px 2px rgba(0, 0, 0, 0.2)  !important;
+    
+}
+button.btnFoto.ui-button .ui-button-text{
+	font-size: 14px !important;
+   /*font-family: "Open Sans",sans-serif !important;*/
+    font-weight: normal !important;
+    color: #444444 !important;
+    text-shadow: none !important;
+    
+}
+button.btnFoto.ui-button .ui-icon-plusthick{
+	
+	
+}

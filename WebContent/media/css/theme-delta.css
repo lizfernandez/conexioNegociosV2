@@ -1,0 +1,77 @@
+@CHARSET "ISO-8859-1";
+
+.ui-widget-content{ /* se usa para mostrar las promociones**/
+	border:0px !important;
+	/*background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #d5d5d5;
+    color: #222222;*/
+}
+.ui-widget-content-panel{ 
+  /* se usa para mostrar las promociones**/
+	background: #ffffff none repeat scroll 0 0 !important;
+    border: 1px solid #d5d5d5 !important;
+    color: #222222 !important;
+     
+}
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield
+{/* se usa para el select del idioma**/
+    font-size: 12px !important;
+   /* height: 20px !important;
+    width: 67px !important;
+	*/
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-table td{
+    border: 0.5px solid #d5d5d5 !important;
+    padding: 4px 10px !important;
+    border-width: 0.5px !important;
+    font-size: 12px !important;
+}
+.ui-datascroller .ui-datascroller-content{
+	padding: 0px !important;
+}
+
+.ui-buttones{
+	background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top , #0077FB 25%, #0050a8 100%) repeat scroll 0 0 !important;
+    border: 1px solid #0064d1 !important;
+    box-shadow: -3 !important;
+    color: #fff !important;
+    transition: none 0s ease 0s  !important;
+    padding: 2px 3px 2px 3px !important;
+}
+.ui-buttones:hover {
+    background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top , #279cff 0%, #058dff 100%) repeat scroll 0 0 !important;
+    border: 1px solid #0c6aa6 !important;
+    box-shadow: 0 1px 0 #58b3ff inset, 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+.ui-buttones span{
+	font-size: 13px !important;
+    font-family: "Open Sans",sans-serif !important;
+    font-weight: normal !important;
+}
+.ui-dialog .ui-dialog-titlebar-close{
+	background: url(../images/close.png) no-repeat !important;
+	
+	 
+}
+.ui-dialog .ui-dialog-titlebar{
+	border-bottom: 1px solid #ccc !important;
+	padding: 0 !important;
+
+	
+}
+.ui-paginator .ui-paginator-next .ui-icon, .ui-paginator .ui-paginator-prev .ui-icon, .ui-paginator .ui-paginator-first .ui-icon, .ui-paginator .ui-paginator-last .ui-icon{
+	height: 20px !important;
+}
+.ui-paginator .ui-paginator-page, .ui-paginator .ui-paginator-pages, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-last, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-prev, .ui-paginator .ui-paginator-current{
+	padding: 0px 6px !important;
+}
+.ui-datagrid-column .ui-panel{
+	border: 1px solid #ccc !important;
+	borde-radius:5px !important;
+}
+.panelGrid td {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+  

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html" locale="#{localizacionView.locale}">
+    <f:metadata>
+<!--         <f:viewParam name="mode" value="#{themeView.mode}"/> -->
+    </f:metadata>
+    <h:head>
+        <title>#{msg['spTituloRecorte']}</title>   
+             
+    </h:head>
+    <h:body>
+    <!-- script>
+   $(document).ready(function () { 	  	  
+		 $('.ui-colorpicker button').find('.ui-button-text.ui-c span').text("").css("width", "120").css("height", "28");
+		 
+	  	
+   });
+  
+ </script-->
+    
+       
+        <h:form id="formRecorte" >
+     
+          <p:messages  closable="true" autoUpdate="true" id="messages"></p:messages>
+                  
+				  <table style="width: 100%">	
+				
+				  <tr>
+				       <td>
+					        <h:outputText value="#{msg['spFoto']}:" />
+					  </td>
+					  <td>  <h:inputHidden value="#{themeView.mode}" id="mode" ></h:inputHidden>
+<!-- 					    <p:colorPicker value="#{themeView.seccionPlantillaVo.vColorFondo}"  id="colorFondo"/> -->
+					        <p:imageCropper value="#{themeView.croppedImage}" image="#{pageContext.request.contextPath}/#{loginView.nombreDirectorio}/media/images/#{themeView.nuevaImagen}"  
+					        initialCoords="0,0,200,125" 
+	                        maxSize="#{themeView.tipoSeccion.vDimensionFoto}" 
+	                        minSize="320,95" id="imgCropper"/>
+	                       
+	                  </td>
+				  </tr>
+				  
+				     
+				<tr>
+				   <td colspan="2">
+	                  <p:separator></p:separator>
+	                  <div class="space"></div>
+	                 
+	                  <p:commandButton value="#{msg['btnGuardar']}" actionListener="#{themeView.iduTheme()}" icon="ui-icon-scissors" styleClass="ui-buttones" oncomplete="parent.refreshSectionsLogo();PF('dialogLogoRecorte').hide();" />
+			          <p:commandButton value="#{msg['btnLimpiar']}" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" styleClass="ui-buttones" />
+			          <p:commandButton value="#{msg['btnCancelar']}" icon="ui-icon-closethick"  styleClass="ui-buttones" update=":formloadLogo" onclick="PF('dialogLogoRecorte').hide()" />
+		           </td>
+	             </tr>
+	             </table>
+    </h:form>
+    </h:body>
+</f:view>
+</html>

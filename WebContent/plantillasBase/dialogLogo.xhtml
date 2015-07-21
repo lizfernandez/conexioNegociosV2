@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    template="templateDialog.xhtml">
+  <f:metadata>
+<!--         <f:viewParam name="mode" value="#{themeView.mode}"/> -->
+    </f:metadata>     
+ <ui:define name="title"> #{msg['spTituloLogo']}  </ui:define>      
+
+
+<ui:define name="body">
+ <h:body>
+    
+     <p:dialog  id="dialogLogoRecorte" widgetVar="dialogLogoRecorte"  modal="true" closable="true" resizable="true" header="#{msg['spTituloRecorte']}" width="80%" height="50%">
+                 <ui:include src="/plantillasBase/dialogRecorteImagen.xhtml" ></ui:include>
+     </p:dialog> 
+       <h:form enctype="multipart/form-data" id="formloadLogo" >
+        <script>
+         $(document).ready(function () { 	  	  
+				 $('.ui-fileupload.ui-widget div:first span:first').addClass("ui-buttones");
+				 $( "#formloadLogo button").hide();
+				 $( "#formloadLogo button").clone().appendTo( ".ui-fileupload-buttonbar.ui-widget-header.ui-corner-top" );
+				 $('.ui-fileupload.ui-widget div:first button').show()
+				 
+                });  
+        </script>
+            <p:fileUpload  fileUploadListener="#{themeView.fileUploadListener}" mode="advanced" 
+                      value="#{themeView.file}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="100000"  
+                     update=":formRecorte:imgCropper :formRecorte:mode"  label="#{msg['btnSubirFoto']}"  auto="true" oncomplete="PF('dialogLogoRecorte').show()">
+  			  </p:fileUpload>
+  			<p:commandButton value="#{msg['btnTomarFoto']}"  styleClass="ui-buttones hidden"  icon="ui-icon-image" > 	 </p:commandButton>
+	        	       
+        </h:form>
+      
+         <h:form id="formDialogLogo" >
+          
+<!--          #{sessionScope['listaSeccionPlantilla']} -->
+            <p:remoteCommand name="refreshSections" update="dataGridLogo"    actionListener="#{themeView.listaLogos()}" />
+<!-- <p:poll interval="1" listener="#{themeView.listaLogos()}"   update="dataGridLogo" widgetVar="poll" autoStart="false" stop="true"/> -->
+			<p:dataGrid var="logo" value="#{themeView.listaSeccionPlantilla}" columns="2" 
+				layout="grid" rows="6" paginator="true" id="dataGridLogo"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,18" >
+
+<!-- 				<f:facet name="header">  #{msg['spGaleriaLogo']}    </f:facet> -->
+
+<!-- 				<p:panel header="#{logo.vNombre}" style="text-align:center;"> -->
+					<h:panelGrid columns="1" style="width:100%" styleClass="panelGrid" >
+						<p:graphicImage width="100%" value="../#{loginView.nombreDirectorio}/media/images/#{logo.vFoto}"/>
+
+						
+
+<!-- 						<p:commandLink update=":form:carDetail" -->
+<!-- 							oncomplete="PF('carDialog').show()" title="View Detail"> -->
+<!-- 							<h:outputText styleClass="ui-icon ui-icon-search" -->
+<!-- 								style="margin:0 auto;" /> -->
+<!-- 							<f:setPropertyActionListener value="#{logo}" -->
+<!-- 								target="#{dataGridView.selectedCar}" /> -->
+<!-- 						</p:commandLink> -->
+					</h:panelGrid>
+<!-- 				</p:panel> -->
+
+			</p:dataGrid>
+		</h:form>
+       
+    </h:body>
+    
+</ui:define>
+</ui:composition>
