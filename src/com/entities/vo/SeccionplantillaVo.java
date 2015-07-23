@@ -79,6 +79,7 @@ public class SeccionplantillaVo implements Serializable {
 		this.vPaginaDestino = seccionPlantilla.getvPaginaDestino();
 		this.vTipoAnimacion = seccionPlantilla.getvTipoAnimacion();
 		this.vTitulo = seccionPlantilla.getvTitulo();
+		
 	}
 
 

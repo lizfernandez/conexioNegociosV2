@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
+import javax.persistence.EntityTransaction;
 import javax.servlet.http.HttpSession;
 
 import com.dao.GenericaDao;
@@ -16,6 +17,7 @@ import com.entitie.Usuario;
 
 import com.entities.vo.UsuarioVo;
 
+import com.util.Constantes;
 import com.util.FaceContext;
 import com.util.Fechas;
 import com.util.Util;
@@ -45,5 +47,35 @@ public class UsuarioService  implements Serializable{
         return listVo;
     }
   
+    public boolean iduUsuario(UsuarioVo vo, String mode){
+	EntityTransaction transaccion;
+	boolean resultado= false;
+		
+		try {
+			transaccion = genericaDao.entityTransaction();
+			transaccion.begin();
+			if(mode.equals("I")){
+				/** se crea un nuevo usuario **/
+				Usuario usuario= new Usuario(vo);
+				usuario.setvUsuario(vo.getPersona().getvEmail());				
+				usuario.setdFechaInserta(Fechas.getDate());
+				usuario.setcEstadoCodigo(Constantes.estadoActivo);
+			
+				//usuario.setPerfil(genericaDao.findEndidad(Perfil.class, 1));
+				genericaDao.persistEndidad(usuario);	
+			}
+			
+		resultado=	genericaDao.commitEndidad(transaccion);
+			
+			
+		  
+		    
+			} catch (Exception e) {
+			   e.printStackTrace();
+			   genericaDao.limpiarInstancia();
+			}
+		return resultado;
+    	
+    }
   
 }

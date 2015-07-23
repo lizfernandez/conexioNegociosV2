@@ -46,7 +46,9 @@ public class Empresa implements Serializable {
 	private String vNombreDirectorio;
 
 	private String vUbigeo;
-
+	
+	private String vFoto;
+	private String vDescripcion;
 	public Empresa() {
 	}
     public Empresa(EmpresaVo empresa) {
@@ -62,6 +64,8 @@ public class Empresa implements Serializable {
 		this.vRuc = empresa.getvRuc();
 		this.vNombreDirectorio = empresa.getvNombreDirectorio();
 		this.vUbigeo = empresa.getvUbigeo();
+		this.vFoto=empresa.getvFoto();
+		this.vDescripcion=empresa.getvDescripcion();
 	}
 
 	/**
@@ -232,6 +236,30 @@ public class Empresa implements Serializable {
 	 */
 	public void setvUbigeo(String vUbigeo) {
 		this.vUbigeo = vUbigeo;
+	}
+	/**
+	 * @return the vFoto
+	 */
+	public String getvFoto() {
+		return vFoto;
+	}
+	/**
+	 * @param vFoto the vFoto to set
+	 */
+	public void setvFoto(String vFoto) {
+		this.vFoto = vFoto;
+	}
+	/**
+	 * @return the vDescripcion
+	 */
+	public String getvDescripcion() {
+		return vDescripcion;
+	}
+	/**
+	 * @param vDescripcion the vDescripcion to set
+	 */
+	public void setvDescripcion(String vDescripcion) {
+		this.vDescripcion = vDescripcion;
 	}
 
 	

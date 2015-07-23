@@ -74,4 +74,31 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-  
+.ui-autocomplete-multiple{
+	margin-top: 8px !important;
+}
+.ui-autocomplete-multiple-container{
+	width: 353px !important;
+}
+.ui-autocomplete-input-token input{
+	width: 214px !important;
+	float: right;
+}
+.ui-helper-reset{
+	font-size: 11px !important;
+	color:#848484 !important;
+}
+.ui-autocomplete-table tr{
+	border-bottom: 1px solid #dedede !important;
+}
+.ui-autocomplete-table td{
+	background: #fff !important;
+	border: none !important;
+	color: #444444 !important;
+	padding:  4px 0px 4px 4px !important
+}
+.ui-autocomplete-panel{
+	left: 555.867px !important;
+    top: 36px !important;
+    width: 355.217px !important;
+}

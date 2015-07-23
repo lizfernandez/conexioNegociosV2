@@ -1,10 +1,12 @@
 $(document).ready(function(){
-	$('.edit span').hide('fast');
+	
 	$("#ingreso").click(function() {
 		 
 		  var stylo=$("#dlg_login").css("display");
 		    if(stylo=="none"){
 		    	 $("#dlg_login ").show();
+		    	 $("#ingreso").addClass("activeBlanco activeGrisOscuro");
+		    	 $("#registro").removeClass("activeBlanco activeGrisOscuro");
 		    	 $("#dlg_register").hide();
 		    }
 		    else{
@@ -23,7 +25,9 @@ $(document).ready(function(){
 						modal : true,
 						autoOpen : false
 					});*/
-		    	 	
+		    	
+		    	 $("#registro").addClass("activeBlanco activeGrisOscuro");
+		    	 $("#ingreso").removeClass("activeBlanco activeGrisOscuro");
 		    	 $("#dlg_register").show();
 		    	 $("#dlg_login").hide();
 		    	/* $("#dlg").show();*/

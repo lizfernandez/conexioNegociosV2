@@ -58,12 +58,12 @@ public class FaceContext {
         return usuario;
     }
  
-    public static String getUserId() {
+    public static int getUserId() {
         HttpSession session = getSession();
         if (session != null)
-            return (String) session.getAttribute("iUsuarioId");
+            return Integer.parseInt(session.getAttribute("iUsuarioId").toString());
         else
-            return null;
+            return (Integer) null;
     }
     public static String getUrlDirectorioExterno(String nombreDirectorio) throws IOException{
 		  

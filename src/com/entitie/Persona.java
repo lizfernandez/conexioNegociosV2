@@ -19,7 +19,7 @@ public class Persona implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String iPersonaId;
+	private int iPersonaId;
 
 	private String cEstadoCodigo;
 
@@ -74,14 +74,14 @@ public class Persona implements Serializable {
 	/**
 	 * @return the iPersonaId
 	 */
-	public String getiPersonaId() {
+	public int getiPersonaId() {
 		return iPersonaId;
 	}
 
 	/**
 	 * @param iPersonaId the iPersonaId to set
 	 */
-	public void setiPersonaId(String iPersonaId) {
+	public void setiPersonaId(int iPersonaId) {
 		this.iPersonaId = iPersonaId;
 	}
 

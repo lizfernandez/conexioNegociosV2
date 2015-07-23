@@ -23,7 +23,7 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String iUsuarioId;
+	private int iUsuarioId;
 
 	private String cEstadoCodigo;
 
@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="iPerfilId")	
 	private Perfil perfil;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	@JoinColumn(name="iPersonaId")
 	private Persona persona;
 
@@ -71,14 +71,14 @@ public class Usuario implements Serializable {
 	/**
 	 * @return the iUsuarioId
 	 */
-	public String getiUsuarioId() {
+	public int getiUsuarioId() {
 		return iUsuarioId;
 	}
 
 	/**
 	 * @param iUsuarioId the iUsuarioId to set
 	 */
-	public void setiUsuarioId(String iUsuarioId) {
+	public void setiUsuarioId(int iUsuarioId) {
 		this.iUsuarioId = iUsuarioId;
 	}
 

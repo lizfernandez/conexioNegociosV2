@@ -6,14 +6,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
+
 
 
 import com.entities.vo.PromocioneVo;
 import com.service.PromocioneService;
 
 @ManagedBean(name="promocioneView")
-@ViewScoped
+@SessionScoped
 public class PromocioneView implements Serializable {
 	     
 	 /**

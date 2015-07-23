@@ -9,7 +9,7 @@ import com.entitie.Persona;
 public class PersonaVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String iPersonaId;
+	private int iPersonaId;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;
 	private Date dFechaInserta;
@@ -50,14 +50,14 @@ public class PersonaVo implements Serializable {
 	/**
 	 * @return the iPersonaId
 	 */
-	public String getiPersonaId() {
+	public int getiPersonaId() {
 		return iPersonaId;
 	}
 
 	/**
 	 * @param iPersonaId the iPersonaId to set
 	 */
-	public void setiPersonaId(String iPersonaId) {
+	public void setiPersonaId(int iPersonaId) {
 		this.iPersonaId = iPersonaId;
 	}
 

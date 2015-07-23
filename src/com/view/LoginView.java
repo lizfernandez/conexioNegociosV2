@@ -41,6 +41,8 @@ public class LoginView implements Serializable {
 	    @ManagedProperty("#{usuarioService}")
 		private UsuarioService service;
 	    
+	    boolean resultado = false;
+	    
 	    @PostConstruct	    
 	    public void init() {	    
 	        setNombreDirectorio("conexioNegocios");
@@ -48,29 +50,25 @@ public class LoginView implements Serializable {
 	    public String  login() throws IOException {
 	    	String url=null;
 	    	try {		
-	    	RequestContext context = RequestContext.getCurrentInstance();
+	    	
 	    	List<UsuarioVo>  UsuarioBean=service.login(usuarioVo.getvUsuario(), usuarioVo.getvContrasena());   	
 	    	
-	    	boolean loggedIn = false;
+	    	
 	    	if(UsuarioBean!=null && UsuarioBean.size()>0 )
 	        {
 	    		HttpSession session = FaceContext.getSession();
 	            session.setAttribute("Usuario", UsuarioBean.get(0));
 	            session.setAttribute("iUsuarioId", UsuarioBean.get(0).getiUsuarioId());
-	            loggedIn = true;
+	            resultado = true;
 	    	
 	            if(UsuarioBean.get(0).getEmpresa().size()>0){
 	            	/**asignamos el directorio de su empresa**/	            	
 	            	setNombreDirectorio(UsuarioBean.get(0).getEmpresa().get(0).getvNombreDirectorio());
-	            	//String contextPath = (FaceContext.getRequest()).getContextPath();
-                 //  (FaceContext.getResponse()).sendRedirect(contextPath + "/plantillas/"+getNombreDirectorio()+"/index.xhtml?faces-redirect=true");
-                   url="/"+getNombreDirectorio()+"/index.xhtml?faces-redirect=true";
+	                url="/"+getNombreDirectorio()+"/index.xhtml?faces-redirect=true";
                    return url;
 	            }
 	            else{
 	            	    setNombreDirectorio("conexioNegocios");	            	
-	                //    String contextPath = (FaceContext.getRequest()).getContextPath();
-	                //   (FaceContext.getResponse()).sendRedirect(contextPath + "/suscriptores/index.xhtml?faces-redirect=true");
 	                    url="/suscriptores/index.xhtml?faces-redirect=true";
 	                   return url;
 	            }
@@ -79,7 +77,7 @@ public class LoginView implements Serializable {
 	        {
 	        	FaceContext.addMessageError("mensajes","Login Error: Credenciales incorrectas");
 	            setNombreDirectorio("conexioNegocios");
-	            loggedIn = false;
+	            resultado = false;
 	            
 	        }
 	    	//context.addCallbackParam("loggedIn", loggedIn);

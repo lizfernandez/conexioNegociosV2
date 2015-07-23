@@ -18,6 +18,7 @@ import com.entitie.Promocione;
 import com.entitie.Seccionplantilla;
 import com.entitie.Tiposeccion;
 import com.entitie.Usuario;
+import com.entities.vo.EmpresaVo;
 import com.entities.vo.PromocioneVo;
 import com.entities.vo.SeccionplantillaVo;
 import com.entities.vo.TiposeccionVo;
@@ -99,7 +100,7 @@ public class ThemeService  implements Serializable{
 				 }
 				
 				obj.setdFechaInserta(Fechas.getDate());	
-				obj.setiUsuarioInserta(Integer.parseInt(FaceContext.getUserId()));
+				obj.setiUsuarioInserta(FaceContext.getUserId());
 				genericaDao.persistEndidad(obj);			
 				resultado = genericaDao.commitEndidad(transaction);	
 			}
@@ -111,5 +112,17 @@ public class ThemeService  implements Serializable{
 			transaction = null;
 		}
     }
-  
+  public List<EmpresaVo> listaEmpresa(){
+	  List<EmpresaVo> listVo = new ArrayList<EmpresaVo>();	
+      List<Empresa>  list = genericaDao.listaEntidadGenerica(Empresa.class);
+      
+      for(Empresa bean:list) {        	
+      	EmpresaVo vo= new EmpresaVo(bean);           
+          listVo.add(vo);
+          
+      }
+       
+      return listVo;
+	  
+  }
 }

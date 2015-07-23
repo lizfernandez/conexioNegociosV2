@@ -1,24 +1,18 @@
 package com.view;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-
 import javax.faces.event.ActionEvent;
-
-import javax.persistence.EntityTransaction;
-
-import com.dao.GenericaDao;
-
-import com.entitie.Usuario;
-
 import com.entities.vo.UsuarioVo;
-
-import com.util.Constantes;
+import com.service.EmailService;
+import com.service.UsuarioService;
 import com.util.FaceContext;
-import com.util.Fechas;
+
 
 @ManagedBean(name="usuarioView")
 @ViewScoped
@@ -28,33 +22,34 @@ public class UsuarioView implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
     private UsuarioVo usuarioVo = new UsuarioVo();
+    private String mode;
+    boolean resultado = false; 
     
-	GenericaDao genericaDao= new GenericaDao();
+    @ManagedProperty("#{usuarioService}")
+	private UsuarioService service;
+    
+    @ManagedProperty("#{emailService}")
+   	private EmailService emailService;
 	
-	public void buttonRegistrar(ActionEvent actionEvent){
-		EntityTransaction transaccion;
+	public void iduUsuario() throws UnsupportedEncodingException{	
 		
-		try {
-			transaccion = genericaDao.entityTransaction();
-			transaccion.begin();
-			/** se crea un nuevo usuario **/
-			Usuario usuario= new Usuario(usuarioVo); 
-			usuario.setdFechaInserta(Fechas.getDate());
-			usuario.setcEstadoCodigo(Constantes.estadoActivo);
-			//usuario.setPerfil(genericaDao.findEndidad(Perfil.class, 1));
-			genericaDao.persistEndidad(usuario);
-			genericaDao.commitEndidad(transaccion);
+		resultado= service.iduUsuario(usuarioVo, mode);
+		if(resultado==true){
+			FaceContext.addMessageInfo("messages",FaceContext.getMessageResource("msnExito", "", "literales"));
+			emailService.sendEmail(usuarioVo.getPersona().getvEmail(), "Prubea");
+		}
+		else{
+			FaceContext.addMessageError("messages",FaceContext.getMessageResource("msnError", "", "literales"));
 			
-			
-		    FaceContext.addMessageInfo("mensajes","Usuario Correcto");
-		    
-			} catch (Exception e) {
-			   e.printStackTrace();
-			   genericaDao.limpiarInstancia();
-			}
+          }
+		
 	    }
 
-
+   public String codigoSeguridad(){
+	   String url=null;
+	   url="/suscriptores/index.xhtml?faces-redirect=true";
+	   return url;
+   }
 
 	/**
 	 * @return the usuarioVo
@@ -69,6 +64,56 @@ public class UsuarioView implements Serializable {
 	 */
 	public void setUsuarioVo(UsuarioVo usuarioVo) {
 		this.usuarioVo = usuarioVo;
+	}
+
+
+
+	/**
+	 * @return the service
+	 */
+	public UsuarioService getService() {
+		return service;
+	}
+
+
+
+	/**
+	 * @param service the service to set
+	 */
+	public void setService(UsuarioService service) {
+		this.service = service;
+	}
+
+
+
+	/**
+	 * @return the mode
+	 */
+	public String getMode() {
+		return mode;
+	}
+
+
+
+	/**
+	 * @param mode the mode to set
+	 */
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	/**
+	 * @return the emailService
+	 */
+	public EmailService getEmailService() {
+		return emailService;
+	}
+
+	/**
+	 * @param emailService the emailService to set
+	 */
+	public void setEmailService(EmailService emailService) {
+		this.emailService = emailService;
 	}
 
 

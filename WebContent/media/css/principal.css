@@ -22,7 +22,7 @@ box-shadow: 0 0 4px  #BF0F00;
     display: none;
     padding: 1em;
     position: absolute;
-    right: 0;
+    right: 33px;
     width: 312px;
     z-index: 100;
     border-radius: 5px;
@@ -90,7 +90,7 @@ box-shadow: 0 0 4px  #BF0F00;
     position: absolute;
     top: 0;  
     z-index: 100;
-    display: block;
+    display: none;
     border: none;
 }
 .dialogEdtiForm{

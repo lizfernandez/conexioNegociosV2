@@ -48,6 +48,7 @@
   <script src="#{request.contextPath}/conexioNegocios/media/js/jquery.mobile.customized.min.js"></script>
   <script src="#{request.contextPath}/conexioNegocios/media/js/wow/wow.js"></script>
   <script type="text/javascript">
+  
     $(document).ready(function () {
       if ($('html').hasClass('desktop')) {
         new WOW().init();
@@ -75,21 +76,20 @@
     });
       </script> 
       <c:if test="#{sessionScope['Usuario']!=null}">
-      
-    
-      
-   <script type="text/javascript">
+      <script type="text/javascript">
    $(document).ready(function () { 
 	   var newHtml='';
-	   
-		 //  newHtml+='<div class="edit"><i class="fa fa-pencil-square-o"></i></div>';
-		  /* newHtml+='<h:commandLink actionListener="#{dialogView.showRatingDialog}" ></h:commandLink>';*/
-	  // $('.editConexion').prepend(newHtml);
-		   var newHtml='';
-		   newHtml+='<i class="fa fa-pencil-square-o"></i>';		  
+		  
+	   newHtml+='<i class="fa fa-pencil-square-o"></i>';
 		 $('.edit').prepend(newHtml);
+		
 	  	
-   });
+  });
+   var explode = function(){
+	   $('.edit span').hide('fast');
+	   $('.edit').show('fast');
+	 };
+	 setTimeout(explode, 2000);
   
  </script>
 
@@ -145,7 +145,7 @@
                   <h:form id="formLogoEdit">                  
                     <p:commandButton styleClass="edit"  id="Logo"                
                     onstart=" PF('statusDialog').show()"
-                        oncomplete="PF('statusDialog').hide(); PF('statusDialogLogo').show();">                      
+                        oncomplete="PF('statusDialog').hide(); PF('statusDialogLogo').show();" >                      
                     </p:commandButton>
                     <p:remoteCommand name="refreshSectionsLogo"  actionListener="#{themeView.listaThemeActivo()}" update=":formLogoShow" onstart="PF('statusDialogLogo').hide();" />
                   </h:form>  

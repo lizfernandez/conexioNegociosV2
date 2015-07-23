@@ -28,8 +28,6 @@
 
              <h:form class="contact-form-r">
               <p:messages  closable="true" autoUpdate="true" id="mensajes"></p:messages> 
-<!--                  <p:messages  closable="true" autoUpdate="true" id="messages"></p:messages> -->
-<!--               <p:growl id="growl" sticky="true" showDetail="true" life="3000" /> -->
               <label class="email wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                <p:inputText  name="#{msg['msnEmail']}"  feedback="true" placeholder="#{msg['msnEmail']}:" required="true" value="#{loginView.usuarioVo.vUsuario}" requiredMessage="#{msg['msnRequiere']} #{msg['msnEmail']}" />
              </label>
@@ -38,13 +36,8 @@
              </label>
              <p></p>
              <div class="form_control">
-<!--              <p:commandButton value="#{msg['btnIngreso']}" update="growl" actionListener="#{loginView.login}" oncomplete="handleLoginRequest(xhr, status, args)" > 
-            <f:ajax execute="@form" /> 
-
-          </p:commandButton> -->
-           <p:commandButton value="#{msg['btnIngreso']}"  action="#{loginView.login()}"  >
-<!--              <f:ajax execute="@form" /> -->
-<!--                   <f:ajax execute="@this"/> -->
+           <p:commandButton value="#{msg['btnIngreso']}"  action="#{loginView.login()}" styleClass="ui-buttones" >
+           
            </p:commandButton>
              
              <div class="space"></div>   
@@ -52,8 +45,7 @@
               <a class="h7" title="#{msg['spOlvidarContra']}" href="/recuperar" >#{msg['spOlvidarContra']}</a> 
 			    
 			  </div>
-             </h:form>
-             
+             </h:form>            
 			
 				<p>#{msg['spNoTienesCuenta']}
 					  <a title="#{msg['btnRegistrase']}" href="/registro" class="h7">
@@ -64,38 +56,41 @@
 			
 
 	   <div id="dlg_register" class="login_dropdown">
-			<p>Crear cuenta:</p>
+			<p>#{msg['spCrearCuenta']}:</p>
              
-             <h:form class="contact-form-r">
+          <h:form class="contact-form-r">
+          
              <p:messages  closable="true" autoUpdate="true"></p:messages> 
               <label class="name wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:inputText  name="name"  feedback="true" placeholder="Nombres Completos:" required="true" value="#{usuarioView.usuarioVo.persona.vNombres}" requiredMessage="Se requiere Nombres completos"/>
+               <p:inputText  name="#{msg['msnNombresCompletos']}"  feedback="true" placeholder="#{msg['msnNombresCompletos']}:" required="true" value="#{usuarioView.usuarioVo.persona.vNombres}" requiredMessage="#{msg['msnRequiere']} #{msg['msnNombresCompletos']}"/>
              </label>
               <label class="email wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:inputText  name="email"  feedback="true" placeholder="Email:" required="true" value="#{usuarioView.usuarioVo.persona.vEmail}"/>
+               <p:inputText  name="#{msg['msnEmail']}"  feedback="true" placeholder="#{msg['msnEmail']}:" required="true" value="#{usuarioView.usuarioVo.persona.vEmail}" requiredMessage="#{msg['msnRequiere']} #{msg['msnEmail']}" />
              </label>
              <label class="phone wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:inputText  name="phone" feedback="true" placeholder="Telefono:" required="true" value="#{usuarioView.usuarioVo.persona.vTelefono}" />
+               <p:inputText  name="#{msg['msnTelefono']}" feedback="true" placeholder="#{msg['msnTelefono']}:" required="true" value="#{usuarioView.usuarioVo.persona.vTelefono}" requiredMessage="#{msg['msnRequiere']} #{msg['msnTelefono']}" />
              </label>
              <label class="seguridad wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:password name="seguridad" feedback="true" placeholder="Contraseña:" required="true" value="#{usuarioView.usuarioVo.vContrasena}"/>
+               <p:password name="#{msg['msnPass']}" feedback="true" placeholder="#{msg['msnPass']}:" required="true" value="#{usuarioView.usuarioVo.vContrasena}" requiredMessage="#{msg['msnRequiere']} #{msg['msnPass']}"/>
              </label> 
              <div class="space"></div>   
              <div class="space"></div>   
              <div class="space"></div>   
              <div class="space"></div>               
               <label data-wow-duration="1s" data-wow-delay="0.1s">
-				<input type="checkbox"  checked="checked" value="1" id="chkTerms" name="terminos" /> He leído y estoy de acuerdo con los 
-				<a class="h7" title="Términos y Condiciones" target="_blank" href="/interes/terminos-y-condiciones">Términos y Condiciones</a>
+				<input type="checkbox"  checked="checked" value="1" id="chkTerms" name="terminos" /> #{msg['spAcuerdo']}
+				
+				<a class="h7" title="#{msg['spTerminosyCondiciones']}" target="_blank" href="/interes/terminos-y-condiciones">#{msg['spTerminosyCondiciones']}</a>
 			                 
               </label>
           
              <div class="space"></div>   
              <div class="space"></div>   
              <div class="space"></div>   
-             <div class="space"></div>   
-<!--              <p:button value="Registrarse" actionListener="#{usuarioView.buttonRegistrar}" ></p:button> -->
-                <p:commandButton value="#{msg['btnRegistro']}" actionListener="#{usuarioView.buttonRegistrar}">
+             <div class="space"></div>                
+            
+           <p:commandButton value="#{msg['btnRegistro']}" action="#{usuarioView.iduUsuario}" styleClass="ui-buttones">
+             <f:setPropertyActionListener target="#{usuarioView.mode}" value="I" />
              <f:ajax execute="@form" />
 
            </p:commandButton>

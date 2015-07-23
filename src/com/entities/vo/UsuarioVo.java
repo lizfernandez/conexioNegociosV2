@@ -12,7 +12,7 @@ import com.entitie.Usuario;
 
 public class UsuarioVo implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String iUsuarioId;
+	private int iUsuarioId;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;
 	private Date dFechaInserta;	
@@ -54,14 +54,14 @@ public class UsuarioVo implements Serializable{
 	/**
 	 * @return the iUsuarioId
 	 */
-	public String getiUsuarioId() {
+	public int getiUsuarioId() {
 		return iUsuarioId;
 	}
 
 	/**
 	 * @param iUsuarioId the iUsuarioId to set
 	 */
-	public void setiUsuarioId(String iUsuarioId) {
+	public void setiUsuarioId(int iUsuarioId) {
 		this.iUsuarioId = iUsuarioId;
 	}
 
