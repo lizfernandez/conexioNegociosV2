@@ -12,6 +12,7 @@ import com.entities.vo.UsuarioVo;
 import com.service.EmailService;
 import com.service.UsuarioService;
 import com.util.FaceContext;
+import com.util.Util;
 
 
 @ManagedBean(name="usuarioView")
@@ -31,12 +32,17 @@ public class UsuarioView implements Serializable {
     @ManagedProperty("#{emailService}")
    	private EmailService emailService;
 	
-	public void iduUsuario() throws UnsupportedEncodingException{	
+	public void iduUsuario() throws Exception{
 		
+		usuarioVo.setvIdentificador(Util.cadenaAlfanumAleatoria(6));
 		resultado= service.iduUsuario(usuarioVo, mode);
 		if(resultado==true){
 			FaceContext.addMessageInfo("messages",FaceContext.getMessageResource("msnExito", "", "literales"));
-			emailService.sendEmail(usuarioVo.getPersona().getvEmail(), "Prubea");
+			String emailContent="Esto es una prueba de envio de <b>email en html</b>";			
+		//	emailService.sendEmail(usuarioVo.getPersona().getvEmail(),emailContent);			
+			/*List<String> adjuntos = new ArrayList<String>();
+	        adjuntos.add("c:/pruebas.txt");*/
+			emailService.enviarMailHtml("seguridad@conexionegocios.com", usuarioVo.getPersona().getvEmail(), "Codigo de Seguridad", emailContent, null);
 		}
 		else{
 			FaceContext.addMessageError("messages",FaceContext.getMessageResource("msnError", "", "literales"));
