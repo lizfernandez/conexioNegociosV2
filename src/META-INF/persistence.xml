@@ -34,8 +34,7 @@
 		<class>com.entitie.Ubigeo</class>
 		<class>com.entitie.Usuario</class>
 		<class>com.entitie.Visitascliente</class>
-		<class>com.entitie.Menuplantilla</class>
-		<class>com.entitie.Menu</class>
+		<class>com.entitie.Menuplantilla</class>		
 		<class>com.entitie.Menuaccion</class>
 		<class>com.entitie.Menuopcione</class>
 		<class>com.entitie.Menutitulo</class>

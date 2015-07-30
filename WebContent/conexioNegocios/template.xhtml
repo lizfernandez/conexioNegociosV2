@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    template="../plantillasBase/template.xhtml">
+<ui:define name="head">
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/#{loginView.nombreDirectorio}/images/favicon.ico" />
+    </f:facet>
+
+  <title><ui:insert name="title">ConexioNegocios</ui:insert> </title>
+    
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/grid.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/contact-form.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/camera.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/owl.carousel.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/touchTouch.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/style.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/theme-delta.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/menuConexion.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/principal.css" />
+ 
+  <script src="#{request.contextPath}/media/js/jquery.js"></script>
+<!--   <h:outputScript value="#{request.contextPath}/media/js/jquery.js" library="primefaces" /> -->
+<!--   <script src="#{request.contextPath}/media/js/jquery-1.10.2.js"></script> -->
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+  <script src="#{request.contextPath}/conexioNegocios/media/js/jquery-migrate-1.2.1.js"></script> 
+  <script src="#{request.contextPath}/conexioNegocios/media/js/camera.js"></script>
+  <script src="#{request.contextPath}/conexioNegocios/media/js/owl.carousel.js"></script>
+<!--   <script src="#{request.contextPath}/conexioNegocios/media/js/TMForm.js"></script> -->
+
+  <script src="#{request.contextPath}/conexioNegocios/media/js/touchTouch.jquery.js"></script>
+  <script src="#{request.contextPath}/conexioNegocios/media/js/jquery.equalheights.js"></script>
+  <script src="#{request.contextPath}/media/js/funcion.js"></script>
+  <script src="#{request.contextPath}/media/js/menuConexion.js"></script>
+ 
+<!--   [if (gt IE 9)|!(IE)]> -->
+  <script src="#{request.contextPath}/conexioNegocios/media/js/jquery.mobile.customized.min.js"></script>
+  <script src="#{request.contextPath}/conexioNegocios/media/js/wow/wow.js"></script>
+  <script type="text/javascript">
+  
+    $(document).ready(function () {
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+        
+      }
+    });
+ 
+    $(document).ready(function () {
+      $('#camera_wrap').camera({
+        loader: true,
+        pagination: true,
+        minHeight: '',
+        thumbnails: false,
+        height: '45.9375%',
+        caption: false,
+        navigation: false,
+        fx: 'blindCurtainSliceBottom',
+        onLoaded: function () {
+          $('.slider-wrapper')[0].style.height = 'auto';
+        }
+      });
+       $('.gallery1 a.big-image').touchTouch();
+      
+    
+    });
+      </script> 
+      <c:if test="#{sessionScope['Usuario']!=null}">
+      <script type="text/javascript">
+   $(document).ready(function () { 
+	   var newHtml='';
+		  
+	   newHtml+='<i class="fa fa-pencil-square-o"></i>';
+		 $('.edit').prepend(newHtml);
+		
+	  	
+  });
+   var explode = function(){
+	   $('.edit span').hide('fast');
+	   $('.edit').show('fast');
+	 };
+	 setTimeout(explode, 2000);
+  
+ </script>
+
+    </c:if> 
+</h:head>
+</ui:define>
+
+
+</ui:composition>

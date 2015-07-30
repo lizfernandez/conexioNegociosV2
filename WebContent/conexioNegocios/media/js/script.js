@@ -10,7 +10,7 @@ function include(url){
 
 /* DEVICE.JS
 ========================================================*/
-include('media/js/device.min.js');
+include('/conexioNegocios/conexioNegocios/media/js/device.min.js');
 
 /* Stick up menu
 ========================================================*/

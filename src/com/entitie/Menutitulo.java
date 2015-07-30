@@ -25,7 +25,7 @@ public class Menutitulo implements Serializable {
 
 	private String estadoCodigo;
 
-	private int iMenuId;
+	
 
 	private String vCodigo;
 
@@ -66,13 +66,7 @@ public class Menutitulo implements Serializable {
 		this.estadoCodigo = estadoCodigo;
 	}
 
-	public int getIMenuId() {
-		return this.iMenuId;
-	}
-
-	public void setIMenuId(int iMenuId) {
-		this.iMenuId = iMenuId;
-	}
+	
 
 	public String getVCodigo() {
 		return this.vCodigo;
