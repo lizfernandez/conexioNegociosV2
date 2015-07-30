@@ -34,54 +34,90 @@ public class Menutitulo implements Serializable {
 	public Menutitulo() {
 	}
 
-	public int getIMenuTituloId() {
-		return this.iMenuTituloId;
+	/**
+	 * @return the iMenuTituloId
+	 */
+	public int getiMenuTituloId() {
+		return iMenuTituloId;
 	}
 
-	public void setIMenuTituloId(int iMenuTituloId) {
+	/**
+	 * @param iMenuTituloId the iMenuTituloId to set
+	 */
+	public void setiMenuTituloId(int iMenuTituloId) {
 		this.iMenuTituloId = iMenuTituloId;
 	}
 
-	public Date getDFechaActualiza() {
-		return this.dFechaActualiza;
+	/**
+	 * @return the dFechaActualiza
+	 */
+	public Date getdFechaActualiza() {
+		return dFechaActualiza;
 	}
 
-	public void setDFechaActualiza(Date dFechaActualiza) {
+	/**
+	 * @param dFechaActualiza the dFechaActualiza to set
+	 */
+	public void setdFechaActualiza(Date dFechaActualiza) {
 		this.dFechaActualiza = dFechaActualiza;
 	}
 
-	public Date getDFechaInserta() {
-		return this.dFechaInserta;
+	/**
+	 * @return the dFechaInserta
+	 */
+	public Date getdFechaInserta() {
+		return dFechaInserta;
 	}
 
-	public void setDFechaInserta(Date dFechaInserta) {
+	/**
+	 * @param dFechaInserta the dFechaInserta to set
+	 */
+	public void setdFechaInserta(Date dFechaInserta) {
 		this.dFechaInserta = dFechaInserta;
 	}
 
+	/**
+	 * @return the estadoCodigo
+	 */
 	public String getEstadoCodigo() {
-		return this.estadoCodigo;
+		return estadoCodigo;
 	}
 
+	/**
+	 * @param estadoCodigo the estadoCodigo to set
+	 */
 	public void setEstadoCodigo(String estadoCodigo) {
 		this.estadoCodigo = estadoCodigo;
 	}
 
-	
-
-	public String getVCodigo() {
-		return this.vCodigo;
+	/**
+	 * @return the vCodigo
+	 */
+	public String getvCodigo() {
+		return vCodigo;
 	}
 
-	public void setVCodigo(String vCodigo) {
+	/**
+	 * @param vCodigo the vCodigo to set
+	 */
+	public void setvCodigo(String vCodigo) {
 		this.vCodigo = vCodigo;
 	}
 
-	public String getVMenuTitulo() {
-		return this.vMenuTitulo;
+	/**
+	 * @return the vMenuTitulo
+	 */
+	public String getvMenuTitulo() {
+		return vMenuTitulo;
 	}
 
-	public void setVMenuTitulo(String vMenuTitulo) {
+	/**
+	 * @param vMenuTitulo the vMenuTitulo to set
+	 */
+	public void setvMenuTitulo(String vMenuTitulo) {
 		this.vMenuTitulo = vMenuTitulo;
 	}
+
+	
 
 }

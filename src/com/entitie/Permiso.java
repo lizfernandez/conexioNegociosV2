@@ -2,6 +2,9 @@ package com.entitie;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.entities.vo.PermisoVo;
+
 import java.util.Date;
 import java.math.BigInteger;
 
@@ -26,90 +29,167 @@ public class Permiso implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dFechaInserta;
-
-	private BigInteger iPerfilId;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iPerfilId")
+	private Perfil perfil ;
 
 	private BigInteger iUsuarioActualiza;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iUsuarioId")
+	private Usuario usuario;
 
-	private BigInteger iUsuarioId;
-
-	private BigInteger iUsuarioInserta;
+	private int iUsuarioInserta;
 
 	private String vCodigoPermiso;
 
 	public Permiso() {
 	}
 
-	public String getIPermisoId() {
-		return this.iPermisoId;
+	
+	public Permiso(PermisoVo permiso) {
+		
+		this.iPermisoId = permiso.getiPermisoId();
+		this.cEstadoCodigo =permiso.getcEstadoCodigo();
+		this.dFechaActualiza = permiso.getdFechaActualiza();
+		this.dFechaInserta = permiso.getdFechaInserta();
+		this.perfil = permiso.getPerfil()!=null? new Perfil(permiso.getPerfil()):null;
+		this.iUsuarioActualiza = permiso.getiUsuarioActualiza();
+		this.usuario = permiso.getUsuario()!=null? new Usuario(permiso.getUsuario()):null;
+		this.iUsuarioInserta = permiso.getiUsuarioInserta();
+		this.vCodigoPermiso = permiso.getvCodigoPermiso();
 	}
 
-	public void setIPermisoId(String iPermisoId) {
+
+	/**
+	 * @return the iPermisoId
+	 */
+	public String getiPermisoId() {
+		return iPermisoId;
+	}
+
+	/**
+	 * @param iPermisoId the iPermisoId to set
+	 */
+	public void setiPermisoId(String iPermisoId) {
 		this.iPermisoId = iPermisoId;
 	}
 
-	public String getCEstadoCodigo() {
-		return this.cEstadoCodigo;
+	/**
+	 * @return the cEstadoCodigo
+	 */
+	public String getcEstadoCodigo() {
+		return cEstadoCodigo;
 	}
 
-	public void setCEstadoCodigo(String cEstadoCodigo) {
+	/**
+	 * @param cEstadoCodigo the cEstadoCodigo to set
+	 */
+	public void setcEstadoCodigo(String cEstadoCodigo) {
 		this.cEstadoCodigo = cEstadoCodigo;
 	}
 
-	public Date getDFechaActualiza() {
-		return this.dFechaActualiza;
+	/**
+	 * @return the dFechaActualiza
+	 */
+	public Date getdFechaActualiza() {
+		return dFechaActualiza;
 	}
 
-	public void setDFechaActualiza(Date dFechaActualiza) {
+	/**
+	 * @param dFechaActualiza the dFechaActualiza to set
+	 */
+	public void setdFechaActualiza(Date dFechaActualiza) {
 		this.dFechaActualiza = dFechaActualiza;
 	}
 
-	public Date getDFechaInserta() {
-		return this.dFechaInserta;
+	/**
+	 * @return the dFechaInserta
+	 */
+	public Date getdFechaInserta() {
+		return dFechaInserta;
 	}
 
-	public void setDFechaInserta(Date dFechaInserta) {
+	/**
+	 * @param dFechaInserta the dFechaInserta to set
+	 */
+	public void setdFechaInserta(Date dFechaInserta) {
 		this.dFechaInserta = dFechaInserta;
 	}
 
-	public BigInteger getIPerfilId() {
-		return this.iPerfilId;
+	
+	/**
+	 * @return the iUsuarioActualiza
+	 */
+	public BigInteger getiUsuarioActualiza() {
+		return iUsuarioActualiza;
 	}
 
-	public void setIPerfilId(BigInteger iPerfilId) {
-		this.iPerfilId = iPerfilId;
-	}
-
-	public BigInteger getIUsuarioActualiza() {
-		return this.iUsuarioActualiza;
-	}
-
-	public void setIUsuarioActualiza(BigInteger iUsuarioActualiza) {
+	/**
+	 * @param iUsuarioActualiza the iUsuarioActualiza to set
+	 */
+	public void setiUsuarioActualiza(BigInteger iUsuarioActualiza) {
 		this.iUsuarioActualiza = iUsuarioActualiza;
 	}
 
-	public BigInteger getIUsuarioId() {
-		return this.iUsuarioId;
+
+	/**
+	 * @return the perfil
+	 */
+	public Perfil getPerfil() {
+		return perfil;
 	}
 
-	public void setIUsuarioId(BigInteger iUsuarioId) {
-		this.iUsuarioId = iUsuarioId;
+	/**
+	 * @param perfil the perfil to set
+	 */
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
-	public BigInteger getIUsuarioInserta() {
-		return this.iUsuarioInserta;
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIUsuarioInserta(BigInteger iUsuarioInserta) {
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	/**
+	 * @return the iUsuarioInserta
+	 */
+	public int getiUsuarioInserta() {
+		return iUsuarioInserta;
+	}
+
+	/**
+	 * @param iUsuarioInserta the iUsuarioInserta to set
+	 */
+	public void setiUsuarioInserta(int iUsuarioInserta) {
 		this.iUsuarioInserta = iUsuarioInserta;
 	}
 
-	public String getVCodigoPermiso() {
-		return this.vCodigoPermiso;
+	/**
+	 * @return the vCodigoPermiso
+	 */
+	public String getvCodigoPermiso() {
+		return vCodigoPermiso;
 	}
 
-	public void setVCodigoPermiso(String vCodigoPermiso) {
+	/**
+	 * @param vCodigoPermiso the vCodigoPermiso to set
+	 */
+	public void setvCodigoPermiso(String vCodigoPermiso) {
 		this.vCodigoPermiso = vCodigoPermiso;
 	}
+
+	
 
 }

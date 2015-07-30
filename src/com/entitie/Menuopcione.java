@@ -35,60 +35,104 @@ public class Menuopcione implements Serializable {
 	public Menuopcione() {
 	}
 
-	public int getIMenuOpcionesId() {
-		return this.iMenuOpcionesId;
+	/**
+	 * @return the iMenuOpcionesId
+	 */
+	public int getiMenuOpcionesId() {
+		return iMenuOpcionesId;
 	}
 
-	public void setIMenuOpcionesId(int iMenuOpcionesId) {
+	/**
+	 * @param iMenuOpcionesId the iMenuOpcionesId to set
+	 */
+	public void setiMenuOpcionesId(int iMenuOpcionesId) {
 		this.iMenuOpcionesId = iMenuOpcionesId;
 	}
 
-	public Date getDFechaActualiza() {
-		return this.dFechaActualiza;
+	/**
+	 * @return the dFechaActualiza
+	 */
+	public Date getdFechaActualiza() {
+		return dFechaActualiza;
 	}
 
-	public void setDFechaActualiza(Date dFechaActualiza) {
+	/**
+	 * @param dFechaActualiza the dFechaActualiza to set
+	 */
+	public void setdFechaActualiza(Date dFechaActualiza) {
 		this.dFechaActualiza = dFechaActualiza;
 	}
 
-	public Date getDFechaInserta() {
-		return this.dFechaInserta;
+	/**
+	 * @return the dFechaInserta
+	 */
+	public Date getdFechaInserta() {
+		return dFechaInserta;
 	}
 
-	public void setDFechaInserta(Date dFechaInserta) {
+	/**
+	 * @param dFechaInserta the dFechaInserta to set
+	 */
+	public void setdFechaInserta(Date dFechaInserta) {
 		this.dFechaInserta = dFechaInserta;
 	}
 
+	/**
+	 * @return the estadoCodigo
+	 */
 	public String getEstadoCodigo() {
-		return this.estadoCodigo;
+		return estadoCodigo;
 	}
 
+	/**
+	 * @param estadoCodigo the estadoCodigo to set
+	 */
 	public void setEstadoCodigo(String estadoCodigo) {
 		this.estadoCodigo = estadoCodigo;
 	}
 
-	public int getIMenuTituloId() {
-		return this.iMenuTituloId;
+	/**
+	 * @return the iMenuTituloId
+	 */
+	public int getiMenuTituloId() {
+		return iMenuTituloId;
 	}
 
-	public void setIMenuTituloId(int iMenuTituloId) {
+	/**
+	 * @param iMenuTituloId the iMenuTituloId to set
+	 */
+	public void setiMenuTituloId(int iMenuTituloId) {
 		this.iMenuTituloId = iMenuTituloId;
 	}
 
-	public String getVCodigo() {
-		return this.vCodigo;
+	/**
+	 * @return the vCodigo
+	 */
+	public String getvCodigo() {
+		return vCodigo;
 	}
 
-	public void setVCodigo(String vCodigo) {
+	/**
+	 * @param vCodigo the vCodigo to set
+	 */
+	public void setvCodigo(String vCodigo) {
 		this.vCodigo = vCodigo;
 	}
 
-	public String getVOpciones() {
-		return this.vOpciones;
+	/**
+	 * @return the vOpciones
+	 */
+	public String getvOpciones() {
+		return vOpciones;
 	}
 
-	public void setVOpciones(String vOpciones) {
+	/**
+	 * @param vOpciones the vOpciones to set
+	 */
+	public void setvOpciones(String vOpciones) {
 		this.vOpciones = vOpciones;
 	}
+
+	
 
 }
