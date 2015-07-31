@@ -1,8 +1,13 @@
 package com.entities.vo;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.entitie.Empresa;
+import com.entitie.Menuopcione;
+import com.entitie.Menutitulo;
 
 
 /**
@@ -23,9 +28,29 @@ public class MenutituloVo implements Serializable {
 	private String vCodigo;
 
 	private String vMenuTitulo;
+	
+	private List<MenuopcioneVo> menuOpciones;
 
 	public MenutituloVo() {
 	}
+    public MenutituloVo(Menutitulo menuTitulo) {
+		
+		this.iMenuTituloId = menuTitulo.getiMenuTituloId();
+		this.dFechaActualiza = menuTitulo.getdFechaActualiza();
+		this.dFechaInserta = menuTitulo.getdFechaInserta();
+		this.estadoCodigo = menuTitulo.getEstadoCodigo();
+		this.vCodigo = menuTitulo.getvCodigo();
+		this.vMenuTitulo = menuTitulo.getvMenuTitulo();
+		
+		if(menuOpciones!=null){
+			this.menuOpciones = new ArrayList<MenuopcioneVo>();
+			 for(Menuopcione vo:menuTitulo.getMenuOpciones()){				
+					MenuopcioneVo e= new MenuopcioneVo(vo);
+					this.menuOpciones.add(e);
+				}
+		}
+	}
+
 
 	/**
 	 * @return the iMenuTituloId
@@ -109,6 +134,18 @@ public class MenutituloVo implements Serializable {
 	 */
 	public void setvMenuTitulo(String vMenuTitulo) {
 		this.vMenuTitulo = vMenuTitulo;
+	}
+	/**
+	 * @return the menuOpciones
+	 */
+	public List<MenuopcioneVo> getMenuOpciones() {
+		return menuOpciones;
+	}
+	/**
+	 * @param menuOpciones the menuOpciones to set
+	 */
+	public void setMenuOpciones(List<MenuopcioneVo> menuOpciones) {
+		this.menuOpciones = menuOpciones;
 	}
 
 	

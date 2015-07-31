@@ -30,6 +30,7 @@ public class PermisoVo implements Serializable {
 	private int iUsuarioInserta;
 
 	private String vCodigoPermiso;
+	private String vDescripcion;
 
 	public PermisoVo() {
 	}
@@ -45,6 +46,7 @@ public class PermisoVo implements Serializable {
 		this.usuario = permiso.getUsuario()!=null? new UsuarioVo(permiso.getUsuario()):null;
 		this.iUsuarioInserta = permiso.getiUsuarioInserta();
 		this.vCodigoPermiso = permiso.getvCodigoPermiso();
+		this.vDescripcion=permiso.getvDescripcion();
 	}
 	/**
 	 * @return the iPermisoId
@@ -173,6 +175,20 @@ public class PermisoVo implements Serializable {
 	 */
 	public void setvCodigoPermiso(String vCodigoPermiso) {
 		this.vCodigoPermiso = vCodigoPermiso;
+	}
+
+	/**
+	 * @return the vDescripcion
+	 */
+	public String getvDescripcion() {
+		return vDescripcion;
+	}
+
+	/**
+	 * @param vDescripcion the vDescripcion to set
+	 */
+	public void setvDescripcion(String vDescripcion) {
+		this.vDescripcion = vDescripcion;
 	}
 
 	

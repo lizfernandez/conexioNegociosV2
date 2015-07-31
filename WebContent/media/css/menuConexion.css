@@ -166,3 +166,18 @@ background-color: #222;
 	background: #0099ff !important;
 	width: 122px !important;
 }
+#menuUsuario ul{
+	color: #444444;
+}
+#menuUsuario ul li{
+	margin-left: 17px;
+	height: 18px;
+	font-size: 11px;
+	color:#6a6a6b;}
+#menuUsuario ul div{
+	font-size: 11px;
+    height: 18px;}
+#menuUsuario ul hr{    
+    background: #fff !important;
+    border: 1px solid #efefef !important;
+    color: #ccc !important;}

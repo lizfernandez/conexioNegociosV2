@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import java.util.Date;
 
+import com.entitie.Menuopcione;
+import com.entitie.Menutitulo;
+
 
 /**
  * The persistent class for the menuopciones database table.
@@ -18,13 +21,23 @@ public class MenuopcioneVo implements Serializable {
 	private Date dFechaInserta;
 	private String estadoCodigo;
 
-	private int iMenuTituloId;
+	private MenutituloVo  menuTitulo;
 
 	private String vCodigo;
 
 	private String vOpciones;
 
 	public MenuopcioneVo() {
+	}
+	public MenuopcioneVo(Menuopcione menuopcione) {
+		
+		this.iMenuOpcionesId = menuopcione.getiMenuOpcionesId();
+		this.dFechaActualiza = menuopcione.getdFechaActualiza();
+		this.dFechaInserta = menuopcione.getdFechaInserta();
+		this.estadoCodigo = menuopcione.getEstadoCodigo();
+		this.menuTitulo = menuopcione.getMenuTitulo()!=null? new MenutituloVo(menuopcione.getMenuTitulo()):null;
+		this.vCodigo = menuopcione.getvCodigo();
+		this.vOpciones =menuopcione.getvOpciones();
 	}
 
 	/**
@@ -83,18 +96,20 @@ public class MenuopcioneVo implements Serializable {
 		this.estadoCodigo = estadoCodigo;
 	}
 
+	
+
 	/**
-	 * @return the iMenuTituloId
+	 * @return the menuTitulo
 	 */
-	public int getiMenuTituloId() {
-		return iMenuTituloId;
+	public MenutituloVo getMenuTitulo() {
+		return menuTitulo;
 	}
 
 	/**
-	 * @param iMenuTituloId the iMenuTituloId to set
+	 * @param menuTitulo the menuTitulo to set
 	 */
-	public void setiMenuTituloId(int iMenuTituloId) {
-		this.iMenuTituloId = iMenuTituloId;
+	public void setMenuTitulo(MenutituloVo menuTitulo) {
+		this.menuTitulo = menuTitulo;
 	}
 
 	/**

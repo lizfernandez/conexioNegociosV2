@@ -2,6 +2,9 @@ package com.entitie;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.entities.vo.MenuopcioneVo;
+
 import java.util.Date;
 
 
@@ -25,8 +28,10 @@ public class Menuopcione implements Serializable {
 	private Date dFechaInserta;
 
 	private String estadoCodigo;
-
-	private int iMenuTituloId;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iMenuTituloId")
+	private Menutitulo menuTitulo;
 
 	private String vCodigo;
 
@@ -34,6 +39,19 @@ public class Menuopcione implements Serializable {
 
 	public Menuopcione() {
 	}
+
+	
+	public Menuopcione(MenuopcioneVo menuopcione) {
+	
+		this.iMenuOpcionesId = menuopcione.getiMenuOpcionesId();
+		this.dFechaActualiza = menuopcione.getdFechaActualiza();
+		this.dFechaInserta = menuopcione.getdFechaInserta();
+		this.estadoCodigo = menuopcione.getEstadoCodigo();
+		this.menuTitulo = menuopcione.getMenuTitulo()!=null? new Menutitulo(menuopcione.getMenuTitulo()):null;
+		this.vCodigo = menuopcione.getvCodigo();
+		this.vOpciones =menuopcione.getvOpciones();
+	}
+
 
 	/**
 	 * @return the iMenuOpcionesId
@@ -91,18 +109,19 @@ public class Menuopcione implements Serializable {
 		this.estadoCodigo = estadoCodigo;
 	}
 
+	
 	/**
-	 * @return the iMenuTituloId
+	 * @return the menuTitulo
 	 */
-	public int getiMenuTituloId() {
-		return iMenuTituloId;
+	public Menutitulo getMenuTitulo() {
+		return menuTitulo;
 	}
 
 	/**
-	 * @param iMenuTituloId the iMenuTituloId to set
+	 * @param menuTitulo the menuTitulo to set
 	 */
-	public void setiMenuTituloId(int iMenuTituloId) {
-		this.iMenuTituloId = iMenuTituloId;
+	public void setMenuTitulo(Menutitulo menuTitulo) {
+		this.menuTitulo = menuTitulo;
 	}
 
 	/**
@@ -133,6 +152,6 @@ public class Menuopcione implements Serializable {
 		this.vOpciones = vOpciones;
 	}
 
-	
+
 
 }

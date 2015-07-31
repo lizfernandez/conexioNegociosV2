@@ -311,7 +311,7 @@ h1 a img {
   }
 }
 .color1{
-	color: #0099FF;
+	color: #0099FF !important;
 }
 .color2{
 	color: white;

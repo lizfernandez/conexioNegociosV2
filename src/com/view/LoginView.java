@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 import com.dao.UsuarioDao;
 import com.entitie.Usuario;
+import com.entities.vo.PermisoVo;
 import com.entities.vo.UsuarioVo;
 import com.service.UsuarioService;
 import com.util.FaceContext;
@@ -38,6 +39,7 @@ public class LoginView implements Serializable {
 	    private UsuarioVo usuarioVo= new UsuarioVo();
 	    private String nombreDirectorio;
 	    
+	    
 	    @ManagedProperty("#{usuarioService}")
 		private UsuarioService service;
 	    
@@ -51,14 +53,18 @@ public class LoginView implements Serializable {
 	    	String url=null;
 	    	try {		
 	    	
-	    	List<UsuarioVo>  UsuarioBean=service.login(usuarioVo.getvUsuario(), usuarioVo.getvContrasena());   	
-	    	
+	    	List<UsuarioVo>  UsuarioBean=service.login(usuarioVo.getvUsuario(), usuarioVo.getvContrasena());
 	    	
 	    	if(UsuarioBean!=null && UsuarioBean.size()>0 )
 	        {
 	    		HttpSession session = FaceContext.getSession();
 	            session.setAttribute("Usuario", UsuarioBean.get(0));
 	            session.setAttribute("iUsuarioId", UsuarioBean.get(0).getiUsuarioId());
+	            
+	            /**obtenermos los permisos del listado del menu**/
+	            session.setAttribute("MisPermisos",service.usuarioPermisos());
+	           // session.setAttribute("Menu",service.listaMenu());
+	           
 	            resultado = true;
 	    	
 	            if(UsuarioBean.get(0).getEmpresa().size()>0){
@@ -151,7 +157,7 @@ public class LoginView implements Serializable {
 		public void setService(UsuarioService service) {
 			this.service = service;
 		}
-
+		
 
 		
 

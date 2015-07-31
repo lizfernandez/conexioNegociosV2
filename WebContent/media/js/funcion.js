@@ -63,11 +63,13 @@ $(document).ready(function(){
 		  var stylo=$("#dlg_menuVertical").css("display");
 		  if(stylo=="none"){
 			     $("#bars").addClass("activeBlanco");
+			     $("#bars").addClass("color1");
 		    	 $("#dlg_menuVertical").show();
 		    	 $("#dlg_menuVerticalSeg").hide();
 		    }
 		    else{
 		    	 $("#bars").removeClass("activeBlanco");
+		    	 $("#bars").removeClass("color1");
 		    	 $("#dlg_menuVertical").hide();
 		    }
 	});

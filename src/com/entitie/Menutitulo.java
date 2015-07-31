@@ -2,7 +2,14 @@ package com.entitie;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.entities.vo.EmpresaVo;
+import com.entities.vo.MenuopcioneVo;
+import com.entities.vo.MenutituloVo;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -25,14 +32,29 @@ public class Menutitulo implements Serializable {
 
 	private String estadoCodigo;
 
-	
-
 	private String vCodigo;
 
 	private String vMenuTitulo;
+	
+	@OneToMany(mappedBy="menuTitulo")
+	private List<Menuopcione> menuOpciones;
 
 	public Menutitulo() {
 	}
+
+	
+	public Menutitulo(MenutituloVo menuTitulo) {
+		
+		this.iMenuTituloId = menuTitulo.getiMenuTituloId();
+		this.dFechaActualiza = menuTitulo.getdFechaActualiza();
+		this.dFechaInserta = menuTitulo.getdFechaInserta();
+		this.estadoCodigo = menuTitulo.getEstadoCodigo();
+		this.vCodigo = menuTitulo.getvCodigo();
+		this.vMenuTitulo = menuTitulo.getvMenuTitulo();
+		
+		 
+	}
+
 
 	/**
 	 * @return the iMenuTituloId
@@ -116,6 +138,22 @@ public class Menutitulo implements Serializable {
 	 */
 	public void setvMenuTitulo(String vMenuTitulo) {
 		this.vMenuTitulo = vMenuTitulo;
+	}
+
+
+	/**
+	 * @return the menuOpciones
+	 */
+	public List<Menuopcione> getMenuOpciones() {
+		return menuOpciones;
+	}
+
+
+	/**
+	 * @param menuOpciones the menuOpciones to set
+	 */
+	public void setMenuOpciones(List<Menuopcione> menuOpciones) {
+		this.menuOpciones = menuOpciones;
 	}
 
 	

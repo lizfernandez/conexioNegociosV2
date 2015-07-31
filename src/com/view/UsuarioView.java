@@ -26,7 +26,7 @@ public class UsuarioView implements Serializable {
 	private static final long serialVersionUID = 1L;
     private UsuarioVo usuarioVo = new UsuarioVo();
     private String mode;
-    private List<PermisoVo> permisos;
+   
     boolean resultado = false; 
     
     @ManagedProperty("#{usuarioService}")
@@ -54,9 +54,7 @@ public class UsuarioView implements Serializable {
 		
 	    }
 
-    public void usuarioPermisos(){
-    	permisos = service.usuarioPermisos();
-    }
+   
 
 	/**
 	 * @return the usuarioVo
@@ -121,20 +119,6 @@ public class UsuarioView implements Serializable {
 	 */
 	public void setEmailService(EmailService emailService) {
 		this.emailService = emailService;
-	}
-
-	/**
-	 * @return the permisos
-	 */
-	public List<PermisoVo> getPermisos() {
-		return permisos;
-	}
-
-	/**
-	 * @param permisos the permisos to set
-	 */
-	public void setPermisos(List<PermisoVo> permisos) {
-		this.permisos = permisos;
 	}
 
 

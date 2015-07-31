@@ -29,6 +29,21 @@ box-shadow: 0 0 4px  #BF0F00;
     margin-top: 42px;
     color: #4c4c4c;
 }
+.menuVertical_dropdown {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #b5b5b5;
+   
+    color: #4c4c4c;
+    display: none;
+    margin-top: 44px;
+    padding: 1em;
+    position: absolute;
+    right: 88px;
+    width: 146px;
+}
+strong {
+    font-weight:600; /*bold;*/
+}
 
 #header #stuck_container.isStuck .login_dropdown{
 	
