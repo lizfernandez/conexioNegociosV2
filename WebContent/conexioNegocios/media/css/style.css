@@ -11,7 +11,7 @@
 body {
   font: 400 14px/24px "Open Sans", sans-serif;
   color: #5C5C5C;
-  background: #444444;
+ /* background: #444444;*/
 }
 a {
   text-decoration: none;

@@ -8,23 +8,10 @@
 <c:set var="misPermisos" value="#{sessionScope['MisPermisos']}" scope="session"/>
 
     
-       <div class="login_dropdown" id="dlg_menuVerticalSeg">          
-
-            
-				 
-		</div>
-			
-
-	   <div id="dlg_menuVertical" class="menuVertical_dropdown">
-			   
-        <div id ="menuUsuario">
-		      <ul>
+       <div id="dlg_menuSeguridad" class="menuVertical_dropdown">     
+         <ul>
 			  <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 			     
-                  <c:if test="#{item.vCodigoPermiso==100}">  
-                  <div>                  			       
-			        <strong>#{item.vDescripcion}</strong> 
-			      </div>			     
-                 </c:if>
+                 
 		                 <c:if test="#{item.vCodigoPermiso==110}"> 
 		                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
 				            <span class="gestion">#{item.vDescripcion}</span></a>
@@ -45,8 +32,21 @@
 				            <span class="gestion">#{item.vDescripcion}</span></a>
 				        </li>
 				        </c:if>
+				   </c:forEach>
+	     </ul>
+            
+				 
+	  </div>
+			
+
+	   <div id="dlg_menuVertical" class="menuVertical_dropdown">
+			   
+        <div id ="menuUsuario">
+		      <ul>
+			  <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 			     
+                 
 		         <c:if test="#{item.vCodigoPermiso==200}">
-		         <hr></hr> 
+		         
                   <div>                  			       
 			         <strong>#{item.vDescripcion}</strong> 
 			      </div>

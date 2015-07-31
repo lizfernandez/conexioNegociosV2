@@ -62,15 +62,34 @@ $(document).ready(function(){
 	$("#bars").click(function() {
 		  var stylo=$("#dlg_menuVertical").css("display");
 		  if(stylo=="none"){
+			     $(".menuVertical").removeClass("activeBlanco color1");		    	 
 			     $("#bars").addClass("activeBlanco");
 			     $("#bars").addClass("color1");
+			     $(".menuVertical_dropdown").hide();
 		    	 $("#dlg_menuVertical").show();
-		    	 $("#dlg_menuVerticalSeg").hide();
+		    	 
+		    	 
 		    }
 		    else{
-		    	 $("#bars").removeClass("activeBlanco");
-		    	 $("#bars").removeClass("color1");
-		    	 $("#dlg_menuVertical").hide();
+		    	 $(".menuVertical").removeClass("activeBlanco");
+		    	 $(".menuVertical").removeClass("color1");
+		    	 $(".menuVertical_dropdown").hide();
+		    }
+	});
+	
+	$("#lock").click(function() {
+		  var stylo=$("#dlg_menuSeguridad").css("display");
+		  if(stylo=="none"){
+			     $(".menuVertical").removeClass("activeBlanco color1");		    	 
+			     $("#lock").addClass("activeBlanco");
+			     $("#lock").addClass("color1");			     
+			     $(".menuVertical_dropdown").hide();
+		    	 $("#dlg_menuSeguridad").css("right","139px").show();
+		    	
+		    }
+		    else{
+		    	 $(".menuVertical").removeClass("activeBlanco color1");		    	 
+		    	 $(".menuVertical_dropdown").hide();
 		    }
 	});
 	

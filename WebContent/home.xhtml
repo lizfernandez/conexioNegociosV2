@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    template="plantillasBase/templateBaseCn.xhtml"> 
+<ui:define name="body">
+<h:body> 
+   <header id="header">
+      <c:if test="#{sessionScope['Usuario']!=null}">
+         <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include>
+      </c:if>
+   </header> 
+</h:body>
+ </ui:define>
+</ui:composition>
+   

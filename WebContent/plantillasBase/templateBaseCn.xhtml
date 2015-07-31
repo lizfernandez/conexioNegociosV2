@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    template="template.xhtml">
+<ui:define name="head">
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/#{loginView.nombreDirectorio}/images/favicon.ico" />
+    </f:facet>
+
+  <title><ui:insert name="title">ConexioNegocios</ui:insert> </title>
+    
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/grid.css" />
+
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/touchTouch.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/#{loginView.nombreDirectorio}/media/css/style.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/theme-delta.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/menuConexion.css" />
+  <link rel="stylesheet" href="#{request.contextPath}/media/css/principal.css" />
+ 
+  <script src="#{request.contextPath}/media/js/jquery.js"></script>
+  <script src="#{request.contextPath}/media/js/funcion.js"></script>
+  <script src="#{request.contextPath}/media/js/menuConexion.js"></script>
+ 
+
+</h:head>
+</ui:define>
+
+
+</ui:composition>
