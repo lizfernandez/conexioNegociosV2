@@ -14,6 +14,29 @@
          <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include>
       </c:if>
    </header> 
+   
+<!--========================================================
+                          CONTENT
+=========================================================-->
+<c:if test="#{sessionScope['Usuario']!=null}">
+<section id="content">
+  <div class="wrapper1">
+    <div class="container">
+      <div class="row">
+        <div class="grid_12">
+          <div class="box1">
+            <div class="row">            
+             aqui va todo
+             
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</c:if>
 </h:body>
  </ui:define>
 </ui:composition>

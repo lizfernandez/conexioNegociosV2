@@ -70,7 +70,8 @@ public class LoginView implements Serializable {
 	            if(UsuarioBean.get(0).getEmpresa().size()>0){
 	            	/**asignamos el directorio de su empresa**/	            	
 	            	setNombreDirectorio(UsuarioBean.get(0).getEmpresa().get(0).getvNombreDirectorio());
-	                url="/"+getNombreDirectorio()+"/index.xhtml?faces-redirect=true";
+	                //url="/"+getNombreDirectorio()+"/index.xhtml?faces-redirect=true";
+	            	url="/home.xhtml?faces-redirect=true";
                    return url;
 	            }
 	            else{
