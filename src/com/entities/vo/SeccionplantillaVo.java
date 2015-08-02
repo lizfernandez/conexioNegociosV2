@@ -1,13 +1,9 @@
 package com.entities.vo;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.Date;
 
 import com.entitie.Seccionplantilla;
-import com.entitie.Tiposeccion;
-
-import java.util.Date;
-import java.math.BigInteger;
 
 
 /**

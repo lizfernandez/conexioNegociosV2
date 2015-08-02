@@ -1,16 +1,23 @@
 package com.entitie;
 
 import java.io.Serializable;
-import javax.persistence.*;
-
-
-import com.entities.vo.PerfilVo;
-import com.entities.vo.PersonaVo;
-import com.entities.vo.UsuarioVo;
-
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
-import java.math.BigInteger;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.entities.vo.UsuarioVo;
 
 
 /**

@@ -1,11 +1,9 @@
 package com.entities.vo;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 import com.entitie.Menuopcione;
-import com.entitie.Menutitulo;
 
 
 /**

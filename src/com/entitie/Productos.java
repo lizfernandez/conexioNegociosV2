@@ -1,12 +1,17 @@
 package com.entitie;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
 
-public class Productos {
-	private static final long serialVersionUID = 1L;
+public class Productos implements Serializable  {
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String iProductoId;
 	private boolean cEstadoCodigo;
 	private String cProductoCodigo;

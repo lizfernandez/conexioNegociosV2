@@ -9,10 +9,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
-import com.entitie.Pais;
 import com.entities.vo.EmpresaVo;
-import com.entities.vo.PaisVo;
-import com.service.LocalizacionService;
 import com.service.ThemeService;
 
 

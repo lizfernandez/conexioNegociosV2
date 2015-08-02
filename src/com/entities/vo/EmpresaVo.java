@@ -1,12 +1,10 @@
 package com.entities.vo;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.math.BigInteger;
+import java.util.Date;
 
 import com.entitie.Empresa;
-
-import java.util.Date;
-import java.math.BigInteger;
 
 
 /**

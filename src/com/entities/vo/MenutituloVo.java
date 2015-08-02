@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.entitie.Empresa;
 import com.entitie.Menuopcione;
 import com.entitie.Menutitulo;
 

@@ -1,12 +1,10 @@
 package com.service;
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-
 import javax.persistence.EntityTransaction;
 import javax.servlet.http.HttpSession;
 
@@ -18,11 +16,9 @@ import com.entitie.Usuario;
 import com.entities.vo.MenutituloVo;
 import com.entities.vo.PermisoVo;
 import com.entities.vo.UsuarioVo;
-
 import com.util.Constantes;
 import com.util.FaceContext;
 import com.util.Fechas;
-import com.util.Util;
 
  
 @ManagedBean(name = "usuarioService")

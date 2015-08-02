@@ -4,15 +4,13 @@ package com.view;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpSession;
-import org.primefaces.context.RequestContext;
-import com.dao.UsuarioDao;
-import com.entitie.Usuario;
-import com.entities.vo.PermisoVo;
+
 import com.entities.vo.UsuarioVo;
 import com.service.UsuarioService;
 import com.util.FaceContext;

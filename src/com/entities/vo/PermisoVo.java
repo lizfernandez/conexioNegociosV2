@@ -1,14 +1,10 @@
 package com.entities.vo;
 
 import java.io.Serializable;
-import javax.persistence.*;
-
-import com.entitie.Perfil;
-import com.entitie.Permiso;
-import com.entitie.Usuario;
-
-import java.util.Date;
 import java.math.BigInteger;
+import java.util.Date;
+
+import com.entitie.Permiso;
 
 
 /**

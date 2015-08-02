@@ -1,10 +1,8 @@
 package com.service;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
+
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityTransaction;
@@ -13,19 +11,15 @@ import javax.servlet.http.HttpSession;
 import com.dao.GenericaDao;
 import com.entitie.Empresa;
 import com.entitie.Plantilla;
-import com.entitie.Productos;
-import com.entitie.Promocione;
 import com.entitie.Seccionplantilla;
 import com.entitie.Tiposeccion;
 import com.entitie.Usuario;
 import com.entities.vo.EmpresaVo;
-import com.entities.vo.PromocioneVo;
 import com.entities.vo.SeccionplantillaVo;
 import com.entities.vo.TiposeccionVo;
 import com.util.Constantes;
 import com.util.FaceContext;
 import com.util.Fechas;
-import com.util.Util;
 
  
 @ManagedBean(name = "themeService")
@@ -77,7 +71,6 @@ public class ThemeService  implements Serializable{
      
     public void iduTheme(SeccionplantillaVo vo,TiposeccionVo tipoSeccion,List<SeccionplantillaVo> seccionActivo,  String mode){
     	EntityTransaction transaction = null;
-    	boolean resultado = false;
     	try {
     		
     		transaction = genericaDao.entityTransaction();
@@ -101,8 +94,7 @@ public class ThemeService  implements Serializable{
 				
 				obj.setdFechaInserta(Fechas.getDate());	
 				obj.setiUsuarioInserta(FaceContext.getUserId());
-				genericaDao.persistEndidad(obj);			
-				resultado = genericaDao.commitEndidad(transaction);	
+				genericaDao.persistEndidad(obj);	
 			}
 			
 		} catch (Exception e) {

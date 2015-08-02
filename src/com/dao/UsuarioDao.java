@@ -1,6 +1,5 @@
 package com.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -8,13 +7,18 @@ import javax.persistence.Query;
 import org.eclipse.persistence.config.HintValues;
 import org.eclipse.persistence.config.QueryHints;
 
-
 import com.entitie.Usuario;
 import com.interfaces.dao.IUsuarioDao;
 import com.util.Constantes;
 
 public class UsuarioDao extends GenericaDao implements IUsuarioDao {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+
 	@Override
 	public List<Usuario> listaUsuario(int pagInicio, int pagFin, Usuario usuario) {
 		Query q ;

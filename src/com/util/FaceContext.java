@@ -1,13 +1,10 @@
 package com.util;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javax.faces.application.Application;
@@ -22,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.UploadedFile;
 
-import com.entitie.Usuario;
 import com.entities.vo.UsuarioVo;
 
 public class FaceContext {

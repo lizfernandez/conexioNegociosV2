@@ -1,15 +1,11 @@
 package com.view;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
 
-import com.entities.vo.PermisoVo;
 import com.entities.vo.UsuarioVo;
 import com.service.EmailService;
 import com.service.UsuarioService;

@@ -2,7 +2,6 @@ package com.service;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -14,7 +13,6 @@ import javax.faces.bean.ManagedBean;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.Part;
 import javax.mail.Session;
 import javax.mail.Transport;

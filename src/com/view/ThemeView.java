@@ -2,9 +2,7 @@ package com.view;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,14 +13,13 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.mobile.component.field.Field;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.UploadedFile;
+
 import com.entities.vo.SeccionplantillaVo;
 import com.entities.vo.TiposeccionVo;
 import com.service.ThemeService;
 import com.util.FaceContext;
-import com.util.Fechas;
 
 @ManagedBean(name="themeView")
 @ViewScoped
