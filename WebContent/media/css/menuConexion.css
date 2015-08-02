@@ -166,19 +166,45 @@ background-color: #222;
 	background: #0099ff !important;
 	width: 122px !important;
 }
-#menuUsuario ul{
+.login_dropdown {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #4c4c4c;
+    display: none;
+    padding: 1em;
+    position: absolute;
+    right: 33px;
+    width: 312px;
+    z-index: 100;
+    border-radius: 5px;
+    margin-top: 42px;
+    color: #4c4c4c;
+}
+.menuVertical_dropdown {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #b5b5b5;
+    color: #4c4c4c;
+    display: none;
+    padding: 1em;
+    position: absolute;  
+    width: 146px;
+}
+.menuVertical_dropdown ul{
 	color: #444444;
 }
-#menuUsuario ul li{
-	margin-left: 17px;
+.menuVertical_dropdown ul li a{
+	margin-left: 6px;
 	height: 18px;
 	font-size: 11px;
-	color:#6a6a6b;
+	color:#6a6a6b !important;
+	padding: 0 !important;
 	}
-#menuUsuario ul div{
+.menuVertical_dropdown ul li {
+	float:none !important;
+	}
+.menuVertical_dropdown ul div{
 	font-size: 11px;
     height: 18px;}
-#menuUsuario ul hr{    
+.menuVertical_dropdown ul hr{    
     background: #fff !important;
     border: 1px solid #efefef !important;
     color: #ccc !important;}

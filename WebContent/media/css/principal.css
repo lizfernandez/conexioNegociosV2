@@ -16,31 +16,7 @@ box-shadow: 0 0 4px  #BF0F00;
 .hidden{
 	display: none;
 }
-.login_dropdown {
-    background: #fff none repeat scroll 0 0;
-    border: 1px solid #4c4c4c;
-    display: none;
-    padding: 1em;
-    position: absolute;
-    right: 33px;
-    width: 312px;
-    z-index: 100;
-    border-radius: 5px;
-    margin-top: 42px;
-    color: #4c4c4c;
-}
-.menuVertical_dropdown {
-    background: #fff none repeat scroll 0 0;
-    border: 1px solid #b5b5b5;
-   
-    color: #4c4c4c;
-    display: none;
-    margin-top: 44px;
-    padding: 1em;
-    position: absolute;
-    right: 88px;
-    width: 146px;
-}
+
 strong {
     font-weight:600; /*bold;*/
 }

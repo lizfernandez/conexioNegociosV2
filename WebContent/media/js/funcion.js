@@ -84,7 +84,8 @@ $(document).ready(function(){
 			     $("#lock").addClass("activeBlanco");
 			     $("#lock").addClass("color1");			     
 			     $(".menuVertical_dropdown").hide();
-		    	 $("#dlg_menuSeguridad").css("right","139px").show();
+			     $("#dlg_menuSeguridad").show();
+		    	 //$("#dlg_menuSeguridad").css("right","139px").show();
 		    	
 		    }
 		    else{
