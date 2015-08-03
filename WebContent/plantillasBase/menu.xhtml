@@ -11,24 +11,24 @@
         <div class="grid_11">
           <div class="wrapper color2">
           <ul id="main_nav"> 
-          <li>
-                <h:form >
-                     <p:selectOneMenu  value="#{localizacionView.pais}" onchange="submit()"   valueChangeListener="#{localizacionView.localeChanged}" height="58"  panelStyle="width:150px" panelStyleClass="ui-widget-content-panel"
-                        var="s" converter="localizacionConverter" >
+<!--           <li> -->
+<!--                 <h:form > -->
+<!--                      <p:selectOneMenu  value="#{localizacionView.pais}" onchange="submit()"   valueChangeListener="#{localizacionView.localeChanged}" height="58"  panelStyle="width:150px" panelStyleClass="ui-widget-content-panel" -->
+<!--                         var="s" converter="localizacionConverter" > -->
 			             
-			            <f:selectItems value="#{localizacionView.listaPais}"  
-                        var="pais" itemLabel="#{pais.vNombre}" itemValue="#{pais}" />
+<!-- 			            <f:selectItems value="#{localizacionView.listaPais}"   -->
+<!--                         var="pais" itemLabel="#{pais.vNombre}" itemValue="#{pais}" /> -->
                          
 			         			        
-			            <p:column>  #{s.vNombre} </p:column> 
-			            <p:column><p:graphicImage value="media/images/#{s.vImagen}.jpg"  /></p:column> 
-<!-- 			            <f:ajax execute="@form" /> -->
-<!-- 			             <p:ajax event="valueChange" immediate="true" process="@this"/> -->
-<!-- 			             <p:ajax update="nextElementID" listener="#{removeAgent.valueChange}" oncomplete="submit()" /> -->
-			        </p:selectOneMenu>			  
-                 </h:form>
-           </li> 
-           <li><p:graphicImage value="media/images/#{localizacionView.vImagen}.jpg" />  </li> 
+<!-- 			            <p:column>  #{s.vNombre} </p:column>  -->
+<!-- 			            <p:column><p:graphicImage value="media/images/#{s.vImagen}.jpg"  /></p:column>  -->
+<!-- <!-- 			            <f:ajax execute="@form" /> --> -->
+<!-- <!-- 			             <p:ajax event="valueChange" immediate="true" process="@this"/> --> -->
+<!-- <!-- 			             <p:ajax update="nextElementID" listener="#{removeAgent.valueChange}" oncomplete="submit()" /> --> -->
+<!-- 			        </p:selectOneMenu>			   -->
+<!--                  </h:form> -->
+<!--            </li>  -->
+<!--            <li><p:graphicImage value="media/images/#{localizacionView.vImagen}.jpg" />  </li>  -->
                         
             <li><a href="#" id="ingreso"><h:outputLabel value="#{msg['btnIngreso']}"></h:outputLabel></a></li>
             <li><a href="#" style="border-left:1px solid " id="registro"><h:outputLabel value="#{msg['btnRegistro']}"></h:outputLabel></a> </li> 
