@@ -6,7 +6,9 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:pm="http://primefaces.org/mobile"
     xmlns:c="http://java.sun.com/jsp/jstl/core"
-    template="plantillasBase/templateBaseCn.xhtml"> 
+        template="conexioNegocios/template.xhtml"> 
+    
+<!--     template="plantillasBase/templateBaseCn.xhtml"> -->
 <ui:define name="body">
 <h:body> 
    <header id="header">
@@ -20,22 +22,70 @@
 =========================================================-->
 <c:if test="#{sessionScope['Usuario']!=null}">
 <section id="content">
-  <div class="wrapper1">
-    <div class="container">
-      <div class="row">
-        <div class="grid_12">
-          <div class="box1">
-            <div class="row">            
-             aqui va todo
-             
-             
+  <div class="wrapper4 wrapper4__inset1">
+    <div class="container grid_13">
+            <div class="row_1">            
+		       <h:form> 
+				  <p:dataScroller value="#{promocioneView.promociones}" var="pro" chunkSize="6">				    
+			           <f:facet name="loader">
+			            <p:commandButton type="button" value="ver 30 ofertas más" icon="ui-icon-circle-triangle-s" styleClass="ui-buttones"/>
+			           </f:facet>
+				        
+				          <div class="grid_4_1">
+				          <div class="box7 maxheight wow #{pro.evento} animated" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: #{pro.evento}; height: 399px;"><div class="box_inner">
+				           <div class="box7_descripcion">¡Todo lo que puedas comer! Almuerzo Buffet en La Dama Juana</div>
+				           <div class="box7_price"></div>
+				           <div class="box7_simbolo">S/.</div>
+					       <div class="box7_valor">#{pro.fPrecio} </div>	           
+				            <img src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/405998.jpg" alt=""/>
+				               <div class="box7_pre_fond ">
+				               <div class="box7_pre">
+				               Precio Regular
+					                <br/>
+					                  S/.120
+				                </div>
+				                <div class="spa"></div>
+					           <div class="box7_pre">Descuento
+					                <br/>
+					                  50%
+					           </div>
+					            <div class="box7_pre"><a href="#" class="btn-more">COMPRA YA!!</a></div>
+					            </div>
+					           <div class="box7_log_emp"><img src="media/images/logo.png" alt=""/></div>
+					           <div class="box7_emp">
+						           <h3>
+					                  <a href="#">Damas y Punto</a>
+					              </h3>
+					              <h7>
+					                  Zapatos carteras
+					              </h7>
+					              <div class="box7_venc">
+						          <i class="fa fa-clock-o"></i>03d 12h 50m 45s 
+				                  </div>
+				               </div>
+				               
+				               <div class="box7_cont">
+						          <div class="box7_cont_vi"><i class="fa fa-check"></i> 1000 Vistos   </div>
+						          <div class="box7_cont_vi" style="border-top: 1px solid #202020;"><i class="fa fa-gift"></i>200 Compras   </div>
+				               </div>
+				            
+				            
+				           </div>
+				          </div>
+				        </div>
+				    </p:dataScroller>
+				   </h:form><!-- Promociones -->
+			      
             </div>
+           
           </div>
+          <ui:include src="/plantillasBase/contentLeft.xhtml"></ui:include>
         </div>
-      </div>
-    </div>
-  </div>
+     
+   
 </section>
+
+
 </c:if>
 </h:body>
  </ui:define>

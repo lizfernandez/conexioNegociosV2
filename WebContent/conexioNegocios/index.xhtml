@@ -8,6 +8,34 @@
     xmlns:c="http://java.sun.com/jsp/jstl/core"
     template="template.xhtml">
 <ui:define name="body">
+<script type="text/javascript">
+  
+    $(document).ready(function () {
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+        
+      }
+    });
+ 
+    $(document).ready(function () {
+      $('#camera_wrap').camera({
+        loader: true,
+        pagination: true,
+        minHeight: '',
+        thumbnails: false,
+        height: '45.9375%',
+        caption: false,
+        navigation: false,
+        fx: 'blindCurtainSliceBottom',
+        onLoaded: function () {
+          $('.slider-wrapper')[0].style.height = 'auto';
+        }
+      });
+       $('.gallery1 a.big-image').touchTouch();
+      
+    
+    });
+      </script> 
 <h:body>
          
 <!--========================================================

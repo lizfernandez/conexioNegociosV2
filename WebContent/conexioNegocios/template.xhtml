@@ -47,34 +47,7 @@
 <!--   [if (gt IE 9)|!(IE)]> -->
   <script src="#{request.contextPath}/conexioNegocios/media/js/jquery.mobile.customized.min.js"></script>
   <script src="#{request.contextPath}/conexioNegocios/media/js/wow/wow.js"></script>
-  <script type="text/javascript">
   
-    $(document).ready(function () {
-      if ($('html').hasClass('desktop')) {
-        new WOW().init();
-        
-      }
-    });
- 
-    $(document).ready(function () {
-      $('#camera_wrap').camera({
-        loader: true,
-        pagination: true,
-        minHeight: '',
-        thumbnails: false,
-        height: '45.9375%',
-        caption: false,
-        navigation: false,
-        fx: 'blindCurtainSliceBottom',
-        onLoaded: function () {
-          $('.slider-wrapper')[0].style.height = 'auto';
-        }
-      });
-       $('.gallery1 a.big-image').touchTouch();
-      
-    
-    });
-      </script> 
       <c:if test="#{sessionScope['Usuario']!=null}">
       <script type="text/javascript">
    $(document).ready(function () { 

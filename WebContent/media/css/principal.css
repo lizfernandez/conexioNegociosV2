@@ -121,3 +121,16 @@ button.btnFoto.ui-button .ui-icon-plusthick{
 	
 	
 }
+#content-left{
+	background: #fdfdfd  none repeat scroll 0 0;
+  /*  border: 1px solid #ccc;*/
+    float: right;
+    height: 800px;
+    left: 0;
+    position: fixed;
+    top: 44px;
+    width: 200px;
+    z-index: 23;
+    }
+	
+}
