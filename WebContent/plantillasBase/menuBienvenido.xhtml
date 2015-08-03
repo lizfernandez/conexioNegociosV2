@@ -78,32 +78,32 @@
             <li>
                <span class="menuVertical fa_lock" id="lock"><i class="fa fa-lock"></i></span>
                 <div id="dlg_menuSeguridad" class="menuVertical_dropdown">     
-	                <div id ="menuUsuario">
-	                   <ul>
-				          <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 	
+<!-- 	                <div id ="menuUsuario"> -->
+
+                  <div id="menuUsuario">
+	                <ul class="tree">                   
+		               		                      
+				           <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 	
 			                 <c:if test="#{item.vCodigoPermiso==110}"> 
-			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">
-					            <span class="gestion">#{item.vDescripcion}</span></a>
+			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa"> #{item.vDescripcion}</a>
 					        </li>
 					        </c:if>
 					         <c:if test="#{item.vCodigoPermiso==120}"> 
-			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">
-					            <span class="gestion">#{item.vDescripcion}</span></a>
+			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">#{item.vDescripcion}</a>
 					        </li>
 					        </c:if>
 					         <c:if test="#{item.vCodigoPermiso==130}"> 
-			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">
-					            <span class="gestion">#{item.vDescripcion}</span></a>
+			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">#{item.vDescripcion}</a>
 					        </li>
 					        </c:if>
 					        <c:if test="#{item.vCodigoPermiso==140}"> 
-			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">
-					            <span class="gestion">#{item.vDescripcion}</span></a>
+			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">#{item.vDescripcion}</a>
 					        </li>
 					        </c:if>
 					   </c:forEach>
-		              </ul>
-		           </div>
+		              
+		            </ul>
+		         </div>
 	          </div>
             </li><!-- menu Seguridad -->
             <li>
@@ -112,7 +112,7 @@
 			     <div id="dlg_menuVertical" class="menuVertical_dropdown">						   
 			        <div id ="menuUsuario">
 					      <ul>
-						  <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 			     
+						  <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 		     
 			                 
 					         <c:if test="#{item.vCodigoPermiso==200}">
 					         
@@ -122,12 +122,12 @@
 					        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==210}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							            #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==220}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							           #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>
 							<c:if test="#{item.vCodigoPermiso==300}"> 
@@ -138,12 +138,12 @@
 					        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==310}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							           #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==320}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							            #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>
 							<c:if test="#{item.vCodigoPermiso==400}"> 
@@ -154,7 +154,7 @@
 					        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==410}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							           #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>
 							<c:if test="#{item.vCodigoPermiso==500}"> 
@@ -165,7 +165,7 @@
 					        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==510}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							           #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>  
 							<c:if test="#{item.vCodigoPermiso==600}"> 
@@ -176,33 +176,33 @@
 					        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==610}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							           #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==620}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							            #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>  
 						   <c:if test="#{item.vCodigoPermiso==700}"> 
 						   <p:separator></p:separator>
-			                  <div>                  			       
+			                  <div class="color1">                  			       
 						         <strong>#{item.vDescripcion}</strong> 
 						      </div>
 					        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==710}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							            #{item.vDescripcion}</a>
 							        </li>
 							        </c:if> 
 							        <c:if test="#{item.vCodigoPermiso==720}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							           #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==730}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							            #{item.vDescripcion}</a>
 							        </li>
 							        </c:if> 
 							        
@@ -216,7 +216,7 @@
 					        </c:if>
 							        <c:if test="#{item.vCodigoPermiso==810}"> 
 					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
-							            <span class="gestion">#{item.vDescripcion}</span></a>
+							            #{item.vDescripcion}</a>
 							        </li>
 							        </c:if>   
 			              </c:forEach>

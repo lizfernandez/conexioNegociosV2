@@ -200,14 +200,22 @@ background-color: #222;
 	color: #444444;
 }
 .menuVertical_dropdown ul li a{
-	margin-left: 6px;
-	height: 18px;
-	font-size: 11px;
-	color:#6a6a6b !important;
-	padding: 0 !important;
+	color: #6a6a6b !important;
+    font-size: 11px;
+    height: 23px;
+    margin-left: 14px;
+    padding: 0 !important;
 	}
 .menuVertical_dropdown ul li {
 	float:none !important;
+	}
+.menuVertical_dropdown ul li:HOVER {
+	 color: #fff !important; 	
+	background:#5A5A5A !important;
+	}
+.menuVertical_dropdown ul li a:HOVER {
+	 color: #fff !important; 	
+	background:#5A5A5A !important;
 	}
 .menuVertical_dropdown ul div{
 	font-size: 11px;
