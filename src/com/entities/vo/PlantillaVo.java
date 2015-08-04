@@ -23,6 +23,7 @@ public class PlantillaVo implements Serializable {
 	private BigInteger iUsuarioActualizaId;
 	private BigInteger iUsuarioInsertaId;
 	private String vNombrePlantilla;
+	private String vFoto;
 
 	public PlantillaVo() {
 	}
@@ -37,7 +38,9 @@ public class PlantillaVo implements Serializable {
 		this.iUsuarioActualizaId = plantilla.getiUsuarioActualizaId();
 		this.iUsuarioInsertaId = plantilla.getiUsuarioInsertaId();
 		this.vNombrePlantilla = plantilla.getvNombrePlantilla();
+		this.vFoto= plantilla.getvFoto();
 		this.categoria = plantilla.getCategoria()!=null? new CategoriaVo(plantilla.getCategoria()): null;
+		
 	}
 
 	/**
@@ -164,6 +167,20 @@ public class PlantillaVo implements Serializable {
 	 */
 	public void setCategoria(CategoriaVo categoria) {
 		this.categoria = categoria;
+	}
+
+	/**
+	 * @return the vFoto
+	 */
+	public String getvFoto() {
+		return vFoto;
+	}
+
+	/**
+	 * @param vFoto the vFoto to set
+	 */
+	public void setvFoto(String vFoto) {
+		this.vFoto = vFoto;
 	}
 
 	
