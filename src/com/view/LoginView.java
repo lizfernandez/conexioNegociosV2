@@ -95,7 +95,8 @@ public class LoginView implements Serializable {
 	    public String logout() {
 	        HttpSession session = FaceContext.getSession();
 	        session.invalidate();
-	        return "login";
+	        String url="/index.xhtml?faces-redirect=true";
+            return url;
 	    }
 	   /* public void buttonTwitter(ActionEvent actionEvent) throws IOException, LimitExceededException {
 	       

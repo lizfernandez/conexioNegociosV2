@@ -82,7 +82,7 @@
 
                   <div id="menuUsuario">
 	                <ul class="tree">                   
-		               		                      
+		              <h:form>                      
 				           <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 	
 			                 <c:if test="#{item.vCodigoPermiso==110}"> 
 			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa"> #{item.vDescripcion}</a>
@@ -97,11 +97,14 @@
 					        </li>
 					        </c:if>
 					        <c:if test="#{item.vCodigoPermiso==140}"> 
-			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">#{item.vDescripcion}</a>
+			                 <li>
+				                <p:commandLink id="nonAjax" actionListener="#{loginView.logout()}" ajax="false">
+	                                      <h:outputText value="#{item.vDescripcion}" />
+	                            </p:commandLink>     
 					        </li>
 					        </c:if>
 					   </c:forEach>
-		              
+		              </h:form>
 		            </ul>
 		         </div>
 	          </div>
