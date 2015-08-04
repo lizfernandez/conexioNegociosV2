@@ -15,6 +15,7 @@ import com.entitie.Plantilla;
 public class PlantillaVo implements Serializable {
 	private static final long serialVersionUID = 1L;
     private String iPlantillaId;
+    private CategoriaVo categoria;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;
 	private Date dFechaInserta;
@@ -36,6 +37,7 @@ public class PlantillaVo implements Serializable {
 		this.iUsuarioActualizaId = plantilla.getiUsuarioActualizaId();
 		this.iUsuarioInsertaId = plantilla.getiUsuarioInsertaId();
 		this.vNombrePlantilla = plantilla.getvNombrePlantilla();
+		this.categoria = plantilla.getCategoria()!=null? new CategoriaVo(plantilla.getCategoria()): null;
 	}
 
 	/**
@@ -148,6 +150,20 @@ public class PlantillaVo implements Serializable {
 	 */
 	public void setvNombrePlantilla(String vNombrePlantilla) {
 		this.vNombrePlantilla = vNombrePlantilla;
+	}
+
+	/**
+	 * @return the categoria
+	 */
+	public CategoriaVo getCategoria() {
+		return categoria;
+	}
+
+	/**
+	 * @param categoria the categoria to set
+	 */
+	public void setCategoria(CategoriaVo categoria) {
+		this.categoria = categoria;
 	}
 
 	

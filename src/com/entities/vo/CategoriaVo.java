@@ -1,45 +1,34 @@
-package com.entitie;
+package com.entities.vo;
 
 import java.io.Serializable;
-import javax.persistence.*;
-
-import com.entities.vo.CategoriaVo;
-
-import java.util.Date;
 import java.math.BigInteger;
+import java.util.Date;
+
+import com.entitie.Categoria;
 
 
 /**
  * The persistent class for the categoria database table.
  * 
  */
-@Entity
-public class Categoria implements Serializable {
+
+public class CategoriaVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String iCategoriaId;
-
 	private String cEstadoCodigo;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dFechaActualiza;
-
-	@Temporal(TemporalType.TIMESTAMP)
+	private Date dFechaActualiza;	
 	private Date dFechaInserta;
-
 	private BigInteger iUsuarioActualiza;	
-
 	private BigInteger iUsuarioInserta;
 
 	private String vNombre;
 
-	public Categoria() {
+	public CategoriaVo() {
 	}
 
 	
-	public Categoria(CategoriaVo categoria) {
+	public CategoriaVo(Categoria categoria) {
 		
 		this.iCategoriaId = categoria.getiCategoriaId();
 		this.cEstadoCodigo = categoria.getcEstadoCodigo();

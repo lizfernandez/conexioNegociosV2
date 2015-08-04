@@ -3,6 +3,7 @@ package com.entitie;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.entities.vo.CategoriaVo;
 import com.entities.vo.PlantillaVo;
 
 import java.util.Date;
@@ -21,6 +22,10 @@ public class Plantilla implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String iPlantillaId;
 
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iCategoriaId")
+	private Categoria categoria;
+	
 	private String cEstadoCodigo;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -49,6 +54,8 @@ public class Plantilla implements Serializable {
 		this.iUsuarioActualizaId = plantilla.getiUsuarioActualizaId();
 		this.iUsuarioInsertaId = plantilla.getiUsuarioInsertaId();
 		this.vNombrePlantilla = plantilla.getvNombrePlantilla();
+		this.categoria = plantilla.getCategoria()!=null? new Categoria(plantilla.getCategoria()): null;
+
 	}
 	/**
 	 * @return the iPlantillaId
@@ -160,6 +167,18 @@ public class Plantilla implements Serializable {
 	 */
 	public void setvNombrePlantilla(String vNombrePlantilla) {
 		this.vNombrePlantilla = vNombrePlantilla;
+	}
+	/**
+	 * @return the categoria
+	 */
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	/**
+	 * @param categoria the categoria to set
+	 */
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	
