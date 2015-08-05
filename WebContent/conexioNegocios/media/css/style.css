@@ -615,7 +615,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#046fe0', end
     left: 25px;
     position: absolute;
     top: 12px;
-    width: 21%;
+    width: 100%;
   }
     #toTop{
      right: 0px;

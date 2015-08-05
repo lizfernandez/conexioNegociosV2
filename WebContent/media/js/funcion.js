@@ -97,21 +97,31 @@ $(document).ready(function(){
 	});
 	$("#barsLeft").click(function() {
 		var stylo=$("#content-left").css("display");
+		 var windowWidth = $(window).width();
+		
 	    if(stylo=="none"){
 	        $("#content-left").show('300');
-	        $(".grid_13").css("width","97%");
-	        $(".row_1").css("margin-left","237px");
+	        $(".grid_13").css("width","100%");
+	        $(".row_1").css("margin-left","221px");
+	        if(windowWidth <=450){
+	        	
+	        	 $(".row_1").css("margin-left","0px");
+	        }
+	       
 	      
 			
 	    }
 	    else{
 	        $("#content-left").hide('300');
-	        $(".grid_13").css("width","99%");
+	        $(".grid_13").css("width","100%");
 	        $(".row_1").css("margin-left","0px");
 	        
 	    }
 	});
-	
+	$(window).resize(function() {
+		 var windowWidth = $(window).width();
+	//	 alert(windowWidth);
+		 });
 	/*$( ".editConexion" )
 	  .mouseenter(function() {
 		  var id = this.id;

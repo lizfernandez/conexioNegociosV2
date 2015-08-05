@@ -260,13 +260,41 @@ table {
 .container:after {
   clear: both;
 }
-@media (min-width: 980px) and (max-width: 1199px) {
+@media (min-width: 1200px) and (max-width: 1300px) {
+	.row_1 {
+    margin-left: 220px;
+   }
+   
+   #main_nav_left a{
+   margin-left: 24px;
+   }
+   
+   .ui-autocomplete-multiple-container{
+       width:311px !important;
+    }
+}
+@media (min-width: 1000px) and (max-width: 1200px) {
+	#main_nav{
+	margin-right: 45px;
+	}
+	#main_nav_left a{
+   margin-left: 24px;
+   }
+   .ui-autocomplete-multiple-container{
+	width: 311px !important;
+  }
+	
+}
+@media (min-width: 980px) and (max-width: 1119px) {
 	 #navigation {  
     display: none !important;;   
   }
   .row {
     margin-left: -20px;
   }
+  .row_1 {
+    margin-left: 228px;
+   }
   .row:before,
   .row:after {
     display: table;
@@ -283,6 +311,9 @@ table {
   }
   .container {
     width: 940px;
+  }
+  .grid_13{
+      width: 1200px;
   }
   .grid_12 {
     width: 940px;
@@ -394,7 +425,28 @@ table {
   .box7 h3{
   font-size: 18px !important;
   }
-  .socios{margin-top:-97px !important;}
+  .socios{margin-top:-97px !important;
+  }
+  .row .main_nav_left{
+  margin-left: -148px;
+  }
+  
+   #main_nav{
+	  margin-right: -23px;
+	}
+	#main_nav_left a{
+       margin-left: -57px;
+   }
+   .ui-autocomplete-multiple-container{
+	   width: 232px !important;
+    }
+  .ui-autocomplete-input-token input{
+	   width: 175px !important;
+	   margin-left:9px !important;
+  }
+  .grid_13{
+  width: 1000px;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
@@ -540,6 +592,32 @@ table {
   .post4 .info, .post4 a {
   font-size: 11px !important;
   }
+  #main_nav{
+	  margin-right: -53px;
+	}
+	#main_nav_left a{
+       margin-left: -85px;
+   }
+   .ui-autocomplete-multiple-container{
+	   width: 232px !important;
+    }
+  .ui-autocomplete-input-token input{
+	   width: 175px !important;
+	   margin-left:9px !important;
+  }
+  .grid_13{
+      width: 1000px;
+  }
+  .row_1{
+     margin-left: 240px;
+  }
+  #header span.menuVertical{
+      width:39px !important;
+   }
+   .fa_bars i{
+    font-size: 20px !important; 
+    padding: 11px 8px !important;
+   }
 }
 /*
 .select-menu {
@@ -590,6 +668,45 @@ table {
   .box7_cont{
    margin-top:-99px !important;
   }
+     #main_nav{
+	  margin-right: -111px;
+	}
+	#main_nav_left a{
+     font-size: 10px;
+    margin-left: -135px;
+    margin-right: -67px
+   }
+   #topnav.nav #main_nav li a{
+   font-size: 11px;
+   }
+   .ui-autocomplete-multiple-container{
+	   width: 146px !important;
+    }
+  .ui-autocomplete-input-token input{
+	   font-size: 11px;
+    margin-left: 9px !important;
+    width: 105px !important;
+  }
+  .grid_13{
+      width: 1000px;
+  }
+  .row_1{
+     margin-left: 240px;
+  }
+  #header span.menuVertical{
+      width:33px !important;
+   }
+   .fa_bars i{
+    font-size: 18px !important; 
+    padding: 11px 8px !important;
+   }
+   #header span.trigger{
+   width: 24px !important;
+   }
+   .icon-arrow-small-up i{
+   font-size: 15px !important;
+    padding: 11px 7px !important ;
+   }
 }
 @media (max-width: 479px) {
   body {
@@ -652,4 +769,65 @@ table {
   .box7 h7{
   font-size: 11px !important;
   }
+    #main_nav{
+	  margin-right: -42px;
+      margin-top: -48px;
+	}
+	#main_nav_left a{
+     font-size: 8px;
+    margin-left: -22px;
+    margin-right: -67px
+   }
+   #topnav.nav #main_nav_left img{
+   margin-right: -1px;
+    margin-top: -6px;
+    width: 42% !important;
+    margin-left: -17px;
+    }
+    #miniLogo{
+    display: none;
+    }
+    #content-left{
+    display: none;}
+   #topnav.nav #main_nav li a{
+   font-size: 11px;
+   }
+   .ui-autocomplete-multiple-container{
+	   width: 150px !important;
+	  
+    }
+    .ui-autocomplete-multiple{
+     margin-top: -1px !important;
+     margin-left: 20px;
+    }
+  .ui-autocomplete-input-token input{
+	   font-size: 11px;
+    margin-left: 9px !important;
+    width: 120px !important;
+  }
+  .grid_13{
+      width: 335px;
+  }
+  .row_1{
+     margin-left: 0px;
+  }
+  #header span.menuVertical{
+      width:33px !important;
+   }
+   .fa_bars i{
+    font-size: 18px !important; 
+    padding: 11px 8px !important;
+   }
+   #header span.trigger{
+   width: 24px !important;
+   }
+   .icon-arrow-small-up i{
+   font-size: 15px !important;
+    padding: 11px 7px !important ;
+   }
+   #nombreUsuario{
+   display: none;}
+   .menuVertical_dropdown{
+   right: -9%;
+   }
 }

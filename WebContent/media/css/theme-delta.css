@@ -75,13 +75,13 @@
     border-radius: 4px;
 }
 .ui-autocomplete-multiple{
-	margin-top: 8px !important;
+	margin-top: 8px;
 }
 .ui-autocomplete-multiple-container{
-	width: 353px !important;
+	width: 353px;
 }
 .ui-autocomplete-input-token input{
-	width: 214px !important;
+	width: 214px;
 	float: right;
 }
 .ui-helper-reset{

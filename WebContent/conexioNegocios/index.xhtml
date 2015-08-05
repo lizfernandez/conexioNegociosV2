@@ -49,6 +49,7 @@
     </c:if>
     <c:if test="#{sessionScope['Usuario']!=null}">
       <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include>  
+      <span class="trigger icon-arrow-small-up" id="trigger"> <i class="fa fa-chevron-up"></i></span> 
        <!-- Dialog de editar-->  
 	 
 	  <p:dialog widgetVar="statusDialog"  modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
