@@ -9,11 +9,15 @@
     padding: 11px 15px;
     
 }
-.fa_bars_left i{
-	font-size: 21px;    
-    margin-left: -45px;
-    margin-right: 14px;
-    margin-top: -9px;
+.fa_bars_left{
+	background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(4, 111, 224, 1) 0%, rgba(4, 111, 224, 1) 1%, rgba(2, 71, 145, 1) 100%) repeat scroll 0 0;
+    color: #fff;
+    font-size: 21px;   
+    top: 44px;
+    padding: 7px 11px 2px 15px;
+    position: fixed;
+    width: 23px;
+    z-index: 99;
 }
 .fa_lock i {
     font-size: 21px;
@@ -148,8 +152,18 @@ background-color: #222;
     padding: 10px 13px;
     text-decoration: none;
 }
+#topnav.nav #main_nav_left li a i{   
+    padding: 0;
+    color: #f1f1f1;
+    
+}
+#topnav.nav #main_nav_left li a i:hover{   
+     padding: 0;
+     color:#0099ff !important;
+    
+}
 #topnav.nav #main_nav_left li span:hover{
-     color:#0099ff;
+     color:#0099ff !important;
 }
 #topnav.nav .ui-selectonemenu{
 	margin-top: 5px;
@@ -248,8 +262,7 @@ background-color: #222;
     font-family: "Arial",sans-serif;
     font-size: 12px;
     line-height: 20px;
-    padding: 12px 20px 13px;
-    /*text-shadow: 1px 1px rgba(0, 0, 0, 0.3);*/
+    padding: 7px 19px 0;
     text-transform: uppercase;
 }
 #navigationVertical ul.tree > li:first-child > a {
@@ -260,11 +273,11 @@ background-color: #222;
 	border-radius: 0 0 6px 6px;
 }
 
-#navigationVertical ul.tree > li > a:hover {    
-	 /*background:#BF0F00 url(../images/expanded.gif) no-repeat scroll 93% 39%;	    */
+/*#navigationVertical ul.tree > li > a:hover {    
+	
 	  background: #5A5A5A;	
 	  
-}
+}*/
 #navigationVertical ul.tree  li  .up {    
 	 /*background:#BF0F00 url(../images/expanded.gif) no-repeat scroll 93% 39%;	    */
 	  background: url("../images/expanded.gif") no-repeat scroll rgba(0, 0, 0, 0);
@@ -328,7 +341,7 @@ box-shadow: 0 0 4px  #BF0F00;
    /* font-weight: bold;*/
     line-height: 2px;
     margin-bottom: 0;
-    padding: 18px 7px 13px 69px;
+   padding: 16px 7px 15px 69px;
     position: relative;
    /* text-shadow: 1px 1px #000000;*/
     text-transform: uppercase;

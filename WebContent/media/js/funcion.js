@@ -95,6 +95,22 @@ $(document).ready(function(){
 		    	 $(".menuVertical_dropdown").hide();
 		    }
 	});
+	$("#barsLeft").click(function() {
+		var stylo=$("#content-left").css("display");
+	    if(stylo=="none"){
+	        $("#content-left").show('300');
+	        $(".grid_13").css("width","97%");
+	        $(".row_1").css("margin-left","237px");
+	      
+			
+	    }
+	    else{
+	        $("#content-left").hide('300');
+	        $(".grid_13").css("width","99%");
+	        $(".row_1").css("margin-left","0px");
+	        
+	    }
+	});
 	
 	/*$( ".editConexion" )
 	  .mouseenter(function() {
