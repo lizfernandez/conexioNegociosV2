@@ -5,7 +5,7 @@
     xmlns:ui="http://java.sun.com/jsf/facelets" 
     xmlns:p="http://primefaces.org/ui"
     xmlns:c="http://java.sun.com/jsp/jstl/core">
-
+<c:set var="usuario" value="#{sessionScope['Usuario']}" scope="session"/>
 <div id="content-left"> 
      <div id="navigationVertical">
                 <h4>
@@ -25,6 +25,23 @@
                        <li id="">
                             <a   href=""><i class="fa fa-history"></i>Mi Historial</a>
                        </li>                       
+                      </ul> 
+                  </li>
+                   <li class="head1">
+                     <a>Paginas</a>
+                          <div class="up"></div> 
+                     <ul>
+                       <li id="">
+                            <a   href=""><i class="fa fa-plus-circle"></i>Crear Página</a>
+                       </li> 
+                      <c:forEach items="#{usuario.empresa}" var="item"  varStatus="empresas" >                      
+                        <li id="">
+                            <a   href="#{request.contextPath}/#{item.vNombreDirectorio}/index.xhtml"><img class="img" src="#{request.contextPath}/#{item.vNombreDirectorio}/media/images/#{item.vFoto}" width="46%" /> #{item.vRazonSocial}
+                            </a>
+                       </li>
+                      </c:forEach>
+                      
+                          
                       </ul> 
                   </li>
                   <li class="head1">

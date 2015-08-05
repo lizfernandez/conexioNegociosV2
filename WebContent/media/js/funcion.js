@@ -11,6 +11,7 @@ $(document).ready(function(){
 		    }
 		    else{
 		    	 $("#dlg_login").hide();
+		    	 $("#ingreso").removeClass("activeBlanco activeGrisOscuro");
 		    }
 	});
 	$("#registro").click(function() {
@@ -36,6 +37,7 @@ $(document).ready(function(){
 		    }
 		    else{
 		    	 $("#dlg_register").hide();
+		    	 $("#registro").removeClass("activeBlanco activeGrisOscuro");
 		    }
 	});
 	$("#trigger").click(function() {
