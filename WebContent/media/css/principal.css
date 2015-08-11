@@ -141,3 +141,37 @@ button.btnFoto.ui-button .ui-icon-plusthick{
 /* margin: 0 8px 0 0;*/
   background: #fff;
 }
+
+/*========================================================
+                    Pagina layout styles
+=========================================================*/
+.wrapper4_pag {
+  padding: 50px 0 80px;
+  overflow: hidden;
+}
+.row1_pag {
+  margin-left: 250px;
+}
+
+.row1_pag .menu {
+	width: auto;
+	background: #000;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.row1_pag .menu li {
+	display: inline-block; 
+}
+
+.row1_pag .menu li a {
+	padding: 10px 20px;
+	display: inline-block;
+	color: #fff; 
+}
+
+.row1_pag .menu li a:hover{
+	background: #ccc;
+	color: #000; 
+}
