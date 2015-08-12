@@ -15,9 +15,7 @@
         new WOW().init();
         
       }
-    });
- 
-    $(document).ready(function () {
+      
       $('#camera_wrap').camera({
         loader: true,
         pagination: true,
@@ -31,8 +29,9 @@
           $('.slider-wrapper')[0].style.height = 'auto';
         }
       });
-       $('.gallery1 a.big-image').touchTouch();
+      // $('.gallery1 a.big-image').touchTouch();
       
+       
     
     });
       </script> 
@@ -146,7 +145,7 @@
   
     <div id="camera_wrap">
     
-      <div data-src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/slider1.jpg">
+      <div data-src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/slider3.jpg">
         <div class="caption fadeIn">
           <h6 class="wow fadeInDown"  data-wow-duration="1s" data-wow-delay="0.1s">Welcome</h6>
           <br/>
@@ -160,7 +159,7 @@
 
         </div>
       </div>
-      <div data-src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/slider3.jpg">
+      <div data-src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/slider1.jpg">
         <div class="caption fadeIn">
 
         </div>
