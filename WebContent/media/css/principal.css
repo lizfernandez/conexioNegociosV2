@@ -9,9 +9,9 @@
                     Main layout styles
 =========================================================*/
 .active{
-color: #fff;
+color: #fff !important;
 background:#5A5A5A;
-box-shadow: 0 0 4px  #BF0F00;  
+box-shadow: 0 0 4px  #464646;  
 }
 .hidden{
 	display: none;
@@ -122,8 +122,7 @@ button.btnFoto.ui-button .ui-icon-plusthick{
 	
 }
 #content-left{
-	background: #fdfdfd  none repeat scroll 0 0;
-  /*  border: 1px solid #ccc;*/
+	background: #fdfdfd none repeat scroll 0 0;
     float: right;
     height: 800px;
     left: 0;
@@ -131,8 +130,20 @@ button.btnFoto.ui-button .ui-icon-plusthick{
     top: 44px;
     width: 233px;
     z-index: 23;
+    display: none;
     }
 	
+#content-left-opciones{
+	background: #363636;
+    float: right;
+    height: 800px;
+    left: 0;
+    position: fixed;
+    top: 44px;
+    width: 191px;
+    z-index: 23;
+    display: none;
+    margin-left: 44px;
 }
 .spa_1{
  float: left;

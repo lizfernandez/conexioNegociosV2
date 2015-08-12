@@ -23,7 +23,7 @@ public class PersonaVo implements Serializable {
     private String vTelefono;
 	private String vNombres;
 	private String vUbicacion;
-	
+	private String vFoto;
 
 	public PersonaVo() {
 	}
@@ -44,6 +44,7 @@ public class PersonaVo implements Serializable {
 		this.vEmail = persona.getvEmail();
 		this.vNombres = persona.getvNombres();
 		this.vUbicacion = persona.getvUbicacion();
+		this.vFoto = persona.getvFoto();
 	}
 
 
@@ -239,6 +240,22 @@ public class PersonaVo implements Serializable {
 	 */
 	public void setvTelefono(String vTelefono) {
 		this.vTelefono = vTelefono;
+	}
+
+
+	/**
+	 * @return the vFoto
+	 */
+	public String getvFoto() {
+		return vFoto;
+	}
+
+
+	/**
+	 * @param vFoto the vFoto to set
+	 */
+	public void setvFoto(String vFoto) {
+		this.vFoto = vFoto;
 	}
 
 	

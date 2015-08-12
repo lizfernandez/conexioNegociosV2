@@ -10,17 +10,32 @@
 	<i class="fa fa-bars"></i>
 </div>
 <div id="content-left"> 
-     <div id="navigationVertical">
-                <h4>
-	                
-	                <span>INICIO</span>
-                </h4>
+     <div id="navigationVertical">                
+<!-- 	          <ul>                    -->
+<!--                    <li class="head1">  -->
+<!--                      <h4>  -->
+<!-- 		               <a href="index.xhtml"> -->
+<!-- 			                <img src="/conexioNegocios/media/images/logo.png"></img> -->
+<!-- 			                <SPAN id="miniLogo">CONEXIO<span class="color1">NEGOCIOS</span></SPAN>                 -->
+<!-- 	                   </a> -->
+<!-- 	                 </h4>  -->
+<!--                    </li> -->
+<!--                  </ul> -->
+               
                 <ul class="tree">
                    
                    <li class="head1">                     
                      <ul>
-                       <li id="">
-                            <a   href=""> <i class="fa fa-user"></i>Mi Perfil</a>
+                       <li>
+                            <a  id="miPerfil">
+                             <c:if test="#{usuario.persona.vFoto==null}"> 
+			                     <i class="fa fa-user"></i>
+					        </c:if>
+					         <c:if test="#{usuario.persona.vFoto!=null}"> 
+			                     <img src="#{request.contextPath}/afiliados/images/#{usuario.persona.vFoto}" class="img" width="31px" height="24px"></img>
+					        </c:if>
+                           
+                            <h:outputLabel  value="#{usuario.persona.vNombres} "></h:outputLabel></a>
                        </li>
                        <li id="">
                             <a   href=""><i class="fa fa-users"></i>Mis Seguidores</a>
@@ -36,7 +51,7 @@
                        </li> 
                       <c:forEach items="#{usuario.empresa}" var="item"  varStatus="empresas" >                      
                         <li id="">
-                            <a   href="#{request.contextPath}/#{item.vNombreDirectorio}/index.xhtml"><img class="img" src="#{request.contextPath}/#{item.vNombreDirectorio}/media/images/#{item.vFoto}" width="46%" /> #{item.vRazonSocial}
+                            <a   href="#{request.contextPath}/#{item.vNombreDirectorio}/index.xhtml"><img class="img" width="65px" height="24px" src="#{request.contextPath}/#{item.vNombreDirectorio}/media/images/#{item.vFoto}"  /> #{item.vRazonSocial}
                             </a>
                        </li>
                       </c:forEach>
@@ -92,6 +107,126 @@
                   </ul>
        </div><!--END  MENU LEFT -->
 </div>
-
+<div id="content-left-opciones"> 
+	<div class="miPerfil menuVertical_dropdown" style="display:none"> 
+	   <ul class="tree">                   
+		              <h:form>                      
+				         <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 	
+			                 <c:if test="#{item.vCodigoPermiso==110}"> 
+			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa"> #{item.vDescripcion}</a>
+					        </li>
+					        </c:if>
+					         <c:if test="#{item.vCodigoPermiso==120}"> 
+			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">#{item.vDescripcion}</a>
+					        </li>
+					        </c:if>
+					         <c:if test="#{item.vCodigoPermiso==130}"> 
+			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa">#{item.vDescripcion}</a>
+					        </li>
+					        </c:if>
+					        <c:if test="#{item.vCodigoPermiso==140}"> 
+			                 <li>
+				                <p:commandLink id="nonAjax" actionListener="#{loginView.logout()}" ajax="false">
+	                                      <h:outputText value="#{item.vDescripcion}" />
+	                            </p:commandLink>     
+					        </li>
+					        </c:if>
+					             
+					         <c:if test="#{item.vCodigoPermiso==200}">
+					         <p:separator></p:separator>
+			                  <div>                  			       
+						         <strong>#{item.vDescripcion}</strong> 
+						      </div>
+					        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==210}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							            #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==220}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							           #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>
+						
+							<c:if test="#{item.vCodigoPermiso==400}"> 
+							<p:separator></p:separator>
+			                  <div>                  			       
+						         <strong>#{item.vDescripcion}</strong> 
+						      </div>
+					        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==410}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							           #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>
+							<c:if test="#{item.vCodigoPermiso==500}"> 
+							<p:separator></p:separator>
+			                  <div>                  			       
+						         <strong>#{item.vDescripcion}</strong> 
+						      </div>
+					        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==510}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							           #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>  
+							<c:if test="#{item.vCodigoPermiso==600}"> 
+							<p:separator></p:separator>
+			                  <div>                  			       
+						         <strong>#{item.vDescripcion}</strong> 
+						      </div>
+					        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==610}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							           #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==620}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							            #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>  
+						   <c:if test="#{item.vCodigoPermiso==700}"> 
+						   <p:separator></p:separator>
+			                  <div class="color1">                  			       
+						         <strong>#{item.vDescripcion}</strong> 
+						      </div>
+					        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==710}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							            #{item.vDescripcion}</a>
+							        </li>
+							        </c:if> 
+							        <c:if test="#{item.vCodigoPermiso==720}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							           #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==730}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							            #{item.vDescripcion}</a>
+							        </li>
+							        </c:if> 
+							        
+							
+							<c:if test="#{item.vCodigoPermiso==800}"> 
+							<p:separator></p:separator>
+			                  <div>                  			       
+						         <strong>#{item.vDescripcion}</strong> 
+						      </div>
+						      
+					        </c:if>
+							        <c:if test="#{item.vCodigoPermiso==810}"> 
+					                 <li id="empresas"><a href="empresaSucursal.do?metodo=listaEmpresa">
+							            #{item.vDescripcion}</a>
+							        </li>
+							        </c:if>   
+			              </c:forEach>
+			           </h:form>
+			       </ul>
+	</div>
+  
+</div>
 
 </html>

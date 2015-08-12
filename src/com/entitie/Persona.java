@@ -50,7 +50,8 @@ public class Persona implements Serializable {
 
 	private String vUbicacion;
 	
-
+    private String vFoto;
+    
 	public Persona() {
 	}
 	public Persona(PersonaVo persona) {
@@ -69,6 +70,7 @@ public class Persona implements Serializable {
 		this.vTelefono = persona.getvTelefono();
 		this.vNombres = persona.getvNombres();
 		this.vUbicacion = persona.getvUbicacion();
+		this.vFoto = persona.getvFoto();
 	}
 
 	/**
@@ -263,6 +265,18 @@ public class Persona implements Serializable {
 	 */
 	public void setvTelefono(String vTelefono) {
 		this.vTelefono = vTelefono;
+	}
+	/**
+	 * @return the vFoto
+	 */
+	public String getvFoto() {
+		return vFoto;
+	}
+	/**
+	 * @param vFoto the vFoto to set
+	 */
+	public void setvFoto(String vFoto) {
+		this.vFoto = vFoto;
 	}
 
 	

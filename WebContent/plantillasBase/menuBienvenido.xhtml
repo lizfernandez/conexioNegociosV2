@@ -19,7 +19,7 @@
          <ul id="main_nav_left" style="float: left;"> 
             <li>
             <a href="index.xhtml">
-                <img src="/conexioNegocios/media/images/logo.png" width="18%"></img>
+                <img src="/conexioNegocios/media/images/logo.png"  width="18%"></img>
                 <SPAN id="miniLogo">CONEXIO<span class="color1">NEGOCIOS</span></SPAN>
                 
               </a>
@@ -76,16 +76,18 @@
 <!--            <li><p:graphicImage value="media/images/#{localizacionView.vImagen}.jpg" />  </li>  -->
                         
             <li> 
-              <span id="nombreUsuario">           
+              <div id="nombreUsuario" style="margin-top:8px;">
+               <h:outputLabel  value=" #{msg['btnBienvenido']}:"></h:outputLabel>           
                <a href="#{request.contextPath}/afiliados/index.xhtml">
-                 <h:outputLabel  value=" #{msg['btnBienvenido']}: #{usuario.persona.vNombres} "></h:outputLabel>
+                 <h:outputLabel  value=" #{usuario.persona.vNombres}  #{usuario.persona.vApellidos}"></h:outputLabel>
               </a>
-              </span>
+              </div>
              </li>
             <li>
                <div> <span class="menuVertical fa_bars addCart" id="shop" > <i class="fa fa-shopping-cart"> </i></span></div>
 <!--                <div class="div">#{msg["spMi"]} #{msg["spCarrito"]} </div> -->
            </li>  <!-- Carrito de compras -->
+          
             <li>
                <span class="menuVertical fa_bars" id="lock"><i class="fa fa-lock"></i></span>
                 <div id="dlg_menuSeguridad" class="menuVertical_dropdown">     
