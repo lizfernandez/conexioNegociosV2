@@ -1,9 +1,19 @@
 package com.entitie;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
-import java.math.BigInteger;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.entities.vo.PlantillausuarioVo;
 
 
 /**
@@ -12,12 +22,13 @@ import java.math.BigInteger;
  */
 @Entity
 public class Plantillausuario implements Serializable {
-	private static final long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String iPlantillaUsuarioId;
-
+	private static final long serialVersionUID = 1L;
+	
 	private String cEstadoCodigo;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -25,100 +36,349 @@ public class Plantillausuario implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dFechaInserta;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iPlantillaId")
+	private Plantilla plantilla;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iEmpresaId")
+	private Empresa empresa;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iTipoSeccionId")	
+	private Tiposeccion tipoSeccion ;
 
-	private float fPrecio;
+	private int iUsuarioActualiza;
 
-	private BigInteger iPlantillaId;
+	private int iUsuarioInserta;
 
-	private BigInteger iUsuarioActualizaId;
+	private String vAlineado;
 
-	private BigInteger iUsuarioId;
+	private String vColorBorde;
 
-	private BigInteger iUsuarioInsertaId;
+	private String vColorCabeceraInf;
 
-	private String vNombrePlantilla;
+	private String vColorCabeceraSup;
+
+	private String vColorFondo;
+
+	private String vDescripcion;
+
+	private String vFoto;
+
+	private String vNombre;
+
+	private String vPaginaDestino;
+
+	private String vTipoAnimacion;
+
+	private String vTitulo;
 
 	public Plantillausuario() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public String getIPlantillaUsuarioId() {
-		return this.iPlantillaUsuarioId;
+	public Plantillausuario(PlantillausuarioVo seccionPlantilla) {
+		
+		this.iPlantillaUsuarioId = seccionPlantilla.getiPlantillaUsuarioId();
+		this.cEstadoCodigo = seccionPlantilla.getcEstadoCodigo();
+		this.dFechaActualiza = seccionPlantilla.getdFechaActualiza();
+		this.dFechaInserta = seccionPlantilla.getdFechaInserta();
+		this.plantilla = seccionPlantilla.getPlantilla()!=null? new Plantilla(seccionPlantilla.getPlantilla()):null;
+		this.empresa = seccionPlantilla.getEmpresa()!=null? new Empresa(seccionPlantilla.getEmpresa()):null;
+		this.tipoSeccion = seccionPlantilla.getTipoSeccion()!= null?   new Tiposeccion(seccionPlantilla.getTipoSeccion()) : null;		
+		this.iUsuarioActualiza = seccionPlantilla.getiUsuarioActualiza();
+		this.iUsuarioInserta = seccionPlantilla.getiUsuarioInserta();
+		this.vAlineado = seccionPlantilla.getvAlineado();
+		this.vColorBorde = seccionPlantilla.getvColorBorde();
+		this.vColorCabeceraInf = seccionPlantilla.getvColorCabeceraInf();
+		this.vColorCabeceraSup = seccionPlantilla.getvColorCabeceraSup();
+		this.vColorFondo = seccionPlantilla.getvColorFondo();
+		this.vDescripcion = seccionPlantilla.getvDescripcion();
+		this.vFoto = seccionPlantilla.getvFoto();
+		this.vNombre = seccionPlantilla.getvNombre();
+		this.vPaginaDestino = seccionPlantilla.getvPaginaDestino();
+		this.vTipoAnimacion = seccionPlantilla.getvTipoAnimacion();
+		this.vTitulo = seccionPlantilla.getvTitulo();
 	}
+	
 
-	public void setIPlantillaUsuarioId(String iPlantillaUsuarioId) {
+	/**
+	 * @return the iPlantillaUsuarioId
+	 */
+	public String getiPlantillaUsuarioId() {
+		return iPlantillaUsuarioId;
+	}
+	/**
+	 * @param iPlantillaUsuarioId the iPlantillaUsuarioId to set
+	 */
+	public void setiPlantillaUsuarioId(String iPlantillaUsuarioId) {
 		this.iPlantillaUsuarioId = iPlantillaUsuarioId;
 	}
-
-	public String getCEstadoCodigo() {
-		return this.cEstadoCodigo;
+	/**
+	 * @return the cEstadoCodigo
+	 */
+	public String getcEstadoCodigo() {
+		return cEstadoCodigo;
 	}
 
-	public void setCEstadoCodigo(String cEstadoCodigo) {
+	/**
+	 * @param cEstadoCodigo the cEstadoCodigo to set
+	 */
+	public void setcEstadoCodigo(String cEstadoCodigo) {
 		this.cEstadoCodigo = cEstadoCodigo;
 	}
 
-	public Date getDFechaActualiza() {
-		return this.dFechaActualiza;
+	/**
+	 * @return the dFechaActualiza
+	 */
+	public Date getdFechaActualiza() {
+		return dFechaActualiza;
 	}
 
-	public void setDFechaActualiza(Date dFechaActualiza) {
+	/**
+	 * @param dFechaActualiza the dFechaActualiza to set
+	 */
+	public void setdFechaActualiza(Date dFechaActualiza) {
 		this.dFechaActualiza = dFechaActualiza;
 	}
 
-	public Date getDFechaInserta() {
-		return this.dFechaInserta;
+	/**
+	 * @return the dFechaInserta
+	 */
+	public Date getdFechaInserta() {
+		return dFechaInserta;
 	}
 
-	public void setDFechaInserta(Date dFechaInserta) {
+	/**
+	 * @param dFechaInserta the dFechaInserta to set
+	 */
+	public void setdFechaInserta(Date dFechaInserta) {
 		this.dFechaInserta = dFechaInserta;
 	}
 
-	public float getFPrecio() {
-		return this.fPrecio;
+	
+	
+
+	/**
+	 * @return the empresa
+	 */
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	/**
+	 * @param empresa the empresa to set
+	 */
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	/**
+	 * @return the tipoSeccion
+	 */
+	public Tiposeccion getTipoSeccion() {
+		return tipoSeccion;
+	}
+	/**
+	 * @param tipoSeccion the tipoSeccion to set
+	 */
+	public void setTipoSeccion(Tiposeccion tipoSeccion) {
+		this.tipoSeccion = tipoSeccion;
+	}
+	/**
+	 * @return the iUsuarioActualiza
+	 */
+	public int getiUsuarioActualiza() {
+		return iUsuarioActualiza;
 	}
 
-	public void setFPrecio(float fPrecio) {
-		this.fPrecio = fPrecio;
+	/**
+	 * @param iUsuarioActualiza the iUsuarioActualiza to set
+	 */
+	public void setiUsuarioActualiza(int iUsuarioActualiza) {
+		this.iUsuarioActualiza = iUsuarioActualiza;
 	}
 
-	public BigInteger getIPlantillaId() {
-		return this.iPlantillaId;
+	/**
+	 * @return the iUsuarioInserta
+	 */
+	public int getiUsuarioInserta() {
+		return iUsuarioInserta;
 	}
 
-	public void setIPlantillaId(BigInteger iPlantillaId) {
-		this.iPlantillaId = iPlantillaId;
+	/**
+	 * @param iUsuarioInserta the iUsuarioInserta to set
+	 */
+	public void setiUsuarioInserta(int iUsuarioInserta) {
+		this.iUsuarioInserta = iUsuarioInserta;
 	}
 
-	public BigInteger getIUsuarioActualizaId() {
-		return this.iUsuarioActualizaId;
+	/**
+	 * @return the vAlineado
+	 */
+	public String getvAlineado() {
+		return vAlineado;
 	}
 
-	public void setIUsuarioActualizaId(BigInteger iUsuarioActualizaId) {
-		this.iUsuarioActualizaId = iUsuarioActualizaId;
+	/**
+	 * @param vAlineado the vAlineado to set
+	 */
+	public void setvAlineado(String vAlineado) {
+		this.vAlineado = vAlineado;
 	}
 
-	public BigInteger getIUsuarioId() {
-		return this.iUsuarioId;
+	/**
+	 * @return the vColorBorde
+	 */
+	public String getvColorBorde() {
+		return vColorBorde;
 	}
 
-	public void setIUsuarioId(BigInteger iUsuarioId) {
-		this.iUsuarioId = iUsuarioId;
+	/**
+	 * @param vColorBorde the vColorBorde to set
+	 */
+	public void setvColorBorde(String vColorBorde) {
+		this.vColorBorde = vColorBorde;
 	}
 
-	public BigInteger getIUsuarioInsertaId() {
-		return this.iUsuarioInsertaId;
+	/**
+	 * @return the vColorCabeceraInf
+	 */
+	public String getvColorCabeceraInf() {
+		return vColorCabeceraInf;
 	}
 
-	public void setIUsuarioInsertaId(BigInteger iUsuarioInsertaId) {
-		this.iUsuarioInsertaId = iUsuarioInsertaId;
+	/**
+	 * @param vColorCabeceraInf the vColorCabeceraInf to set
+	 */
+	public void setvColorCabeceraInf(String vColorCabeceraInf) {
+		this.vColorCabeceraInf = vColorCabeceraInf;
 	}
 
-	public String getVNombrePlantilla() {
-		return this.vNombrePlantilla;
+	/**
+	 * @return the vColorCabeceraSup
+	 */
+	public String getvColorCabeceraSup() {
+		return vColorCabeceraSup;
 	}
 
-	public void setVNombrePlantilla(String vNombrePlantilla) {
-		this.vNombrePlantilla = vNombrePlantilla;
+	/**
+	 * @param vColorCabeceraSup the vColorCabeceraSup to set
+	 */
+	public void setvColorCabeceraSup(String vColorCabeceraSup) {
+		this.vColorCabeceraSup = vColorCabeceraSup;
 	}
+
+	/**
+	 * @return the vColorFondo
+	 */
+	public String getvColorFondo() {
+		return vColorFondo;
+	}
+
+	/**
+	 * @param vColorFondo the vColorFondo to set
+	 */
+	public void setvColorFondo(String vColorFondo) {
+		this.vColorFondo = vColorFondo;
+	}
+
+	/**
+	 * @return the vDescripcion
+	 */
+	public String getvDescripcion() {
+		return vDescripcion;
+	}
+
+	/**
+	 * @param vDescripcion the vDescripcion to set
+	 */
+	public void setvDescripcion(String vDescripcion) {
+		this.vDescripcion = vDescripcion;
+	}
+
+	/**
+	 * @return the vFoto
+	 */
+	public String getvFoto() {
+		return vFoto;
+	}
+
+	/**
+	 * @param vFoto the vFoto to set
+	 */
+	public void setvFoto(String vFoto) {
+		this.vFoto = vFoto;
+	}
+
+	/**
+	 * @return the vNombre
+	 */
+	public String getvNombre() {
+		return vNombre;
+	}
+
+	/**
+	 * @param vNombre the vNombre to set
+	 */
+	public void setvNombre(String vNombre) {
+		this.vNombre = vNombre;
+	}
+
+	/**
+	 * @return the vPaginaDestino
+	 */
+	public String getvPaginaDestino() {
+		return vPaginaDestino;
+	}
+
+	/**
+	 * @param vPaginaDestino the vPaginaDestino to set
+	 */
+	public void setvPaginaDestino(String vPaginaDestino) {
+		this.vPaginaDestino = vPaginaDestino;
+	}
+
+	/**
+	 * @return the vTipoAnimacion
+	 */
+	public String getvTipoAnimacion() {
+		return vTipoAnimacion;
+	}
+
+	/**
+	 * @param vTipoAnimacion the vTipoAnimacion to set
+	 */
+	public void setvTipoAnimacion(String vTipoAnimacion) {
+		this.vTipoAnimacion = vTipoAnimacion;
+	}
+
+	/**
+	 * @return the vTitulo
+	 */
+	public String getvTitulo() {
+		return vTitulo;
+	}
+
+	/**
+	 * @param vTitulo the vTitulo to set
+	 */
+	public void setvTitulo(String vTitulo) {
+		this.vTitulo = vTitulo;
+	}
+	/**
+	 * @return the plantilla
+	 */
+	public Plantilla getPlantilla() {
+		return plantilla;
+	}
+	/**
+	 * @param plantilla the plantilla to set
+	 */
+	public void setPlantilla(Plantilla plantilla) {
+		this.plantilla = plantilla;
+	}
+
+	
+
 
 }

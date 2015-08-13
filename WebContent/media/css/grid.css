@@ -154,6 +154,18 @@ table {
 .row_1 {
   margin-left: 270px;
 }
+.box10{
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    width: 45%;
+    height: auto;
+    float: left;
+    margin-bottom: 1%;
+    border-radius: 7px;
+    padding: 1px;
+
+ }
+
 [class*="grid_"] {
   float: left;
   min-height: 1px;
@@ -571,6 +583,7 @@ table {
   .preffix_1 {
     margin-left: 84px;
   }
+
   .box7_pre_fond{  
 	  top: 175px !important;
 	  font: 500 11px/18px "Open Sans", sans-serif !important;

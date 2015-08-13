@@ -3,6 +3,7 @@ package com.view;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,14 +12,18 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.UploadedFile;
 
-import com.entities.vo.SeccionplantillaVo;
+import com.entities.vo.EmpresaVo;
+import com.entities.vo.PermisoVo;
+import com.entities.vo.PlantillausuarioVo;
 import com.entities.vo.TiposeccionVo;
 import com.service.ThemeService;
+import com.util.Constantes;
 import com.util.FaceContext;
 
 @ManagedBean(name="themeView")
@@ -31,10 +36,10 @@ public class ThemeView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@ManagedProperty("#{themeService}")
 	private ThemeService service;
-	private List<SeccionplantillaVo> listaSeccionPlantilla;
+	private List<PlantillausuarioVo> listaSeccionPlantilla = new ArrayList<PlantillausuarioVo>();
 	
-	private SeccionplantillaVo seccionPlantillaVo= new SeccionplantillaVo();
-	private List<SeccionplantillaVo> seccionPlantillaActivo;
+	private PlantillausuarioVo plantillausuarioVo= new PlantillausuarioVo();
+	private List<PlantillausuarioVo> plantillausuarioActivo;
 	private UploadedFile file;
 	private CroppedImage croppedImage;    
     private String nuevaCroppedImage;
@@ -43,23 +48,66 @@ public class ThemeView implements Serializable {
     private String mode;
     private TiposeccionVo tipoSeccion= new TiposeccionVo();
     private String nombreDirectorio;
-   
+    private String vPermisoTheme;
+    HttpSession session = FaceContext.getSession();
+    
 	@PostConstruct
     public void listaThemeActivo(){
 		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		nombreDirectorio = params.get("conexioNegocios");
+		nombreDirectorio = params.get("nombreDirectorio");
 		if(nombreDirectorio==null){
 			nombreDirectorio="conexioNegocios";
+			
 		}
-    	seccionPlantillaActivo = service.listaSeccionPlantillaActiva(nombreDirectorio);
+		
+		plantillausuarioActivo = service.listaSeccionPlantillaActiva(nombreDirectorio);
+	    ArrayList<PermisoVo> misPermisos=(ArrayList<PermisoVo>) session.getAttribute("MisPermisos");
+		if(misPermisos!=null){
+		    for(PermisoVo vo:misPermisos){
+				if(vo.getvDescripcion().equals(Constantes.permisoTheme)){
+					if(vo.getvCodigoPermiso().equals(plantillausuarioActivo.get(0).getEmpresa().getiEmpresaId())){
+						vPermisoTheme="SI";
+						break;
+					}
+					else{
+						vPermisoTheme="NO";
+					}
+				}
+			}
+		}
+		//session.setAttribute("", arg1);
+    }
+    public String index(){
+    	Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		nombreDirectorio = params.get("nombreDirectorio");
+		plantillausuarioActivo = service.listaSeccionPlantillaActiva(nombreDirectorio);
+		 
+		HttpSession session = FaceContext.getSession();
+	    EmpresaVo empresaVo= plantillausuarioActivo.get(0).getEmpresa();
+	    session.setAttribute("Empresa",empresaVo);
+    	String url="/"+nombreDirectorio+"/index.xhtml?faces-redirect=true";
+    	return url;
     }
 	public void listaLogos(){
 		/***
 		 * tipoSeccion: Logo, id=1;
 		 */
 		 listaSeccionPlantilla = service.listaSeccionPlantilla("1");
-		 for(SeccionplantillaVo vo:seccionPlantillaActivo){
+		 for(PlantillausuarioVo vo:listaSeccionPlantilla){
 			 if(vo.getTipoSeccion().getiTipoSeccionId()==1){
+				 tipoSeccion=vo.getTipoSeccion();
+			 }
+		 }
+		
+		
+	}
+	public void listaMenu(){
+		/***
+		 * tipoSeccion: Logo, id=1;
+		 */
+		 listaSeccionPlantilla = service.listaSeccionPlantilla("2");
+		 for(PlantillausuarioVo vo:plantillausuarioActivo){
+			 if(vo.getTipoSeccion().getiTipoSeccionId()==2){
 				 tipoSeccion=vo.getTipoSeccion();
 			 }
 		 }
@@ -103,13 +151,13 @@ public class ThemeView implements Serializable {
          
         
         try {
-        	seccionPlantillaVo.setvFoto(getRandomImageName()+"_logo.jpg");
+        	plantillausuarioVo.setvFoto(getRandomImageName()+"_logo.jpg");
         	
         	
-        	FaceContext.copyFile(null, croppedImage, FaceContext.getUrlDirectorioInterno(nombreDirectorio)+seccionPlantillaVo.getvFoto());
-        	FaceContext.copyFile(null, croppedImage, FaceContext.getUrlDirectorioExterno(nombreDirectorio)+seccionPlantillaVo.getvFoto());
+        	FaceContext.copyFile(null, croppedImage, FaceContext.getUrlDirectorioInterno(nombreDirectorio)+plantillausuarioVo.getvFoto());
+        	FaceContext.copyFile(null, croppedImage, FaceContext.getUrlDirectorioExterno(nombreDirectorio)+plantillausuarioVo.getvFoto());
             
-        	service.iduTheme(seccionPlantillaVo,tipoSeccion,seccionPlantillaActivo, mode);
+        	service.iduTheme(plantillausuarioVo,tipoSeccion,plantillausuarioActivo, mode);
         	File fileInterno = new File(FaceContext.getUrlDirectorioInterno(nombreDirectorio)+nuevaImagen);
         	File fileExterno = new File(FaceContext.getUrlDirectorioExterno(nombreDirectorio)+nuevaImagen);
         	fileInterno.delete();
@@ -139,7 +187,7 @@ public class ThemeView implements Serializable {
 	/**
 	 * @return the listaSeccionPlantilla
 	 */
-	public List<SeccionplantillaVo> getListaSeccionPlantilla() {
+	public List<PlantillausuarioVo> getListaSeccionPlantilla() {
 		/*System.out.println(" recarga "+listaSeccionPlantilla.size());
 	    HttpSession session = FaceContext.getSession();
 		listaSeccionPlantilla=(List<SeccionplantillaVo>) session.getAttribute("listaSeccionPlantilla");
@@ -151,20 +199,20 @@ public class ThemeView implements Serializable {
 	 * @param listaSeccionPlantilla the listaSeccionPlantilla to set
 	 */
 	public void setListaSeccionPlantilla(
-			List<SeccionplantillaVo> listaSeccionPlantilla) {
+			List<PlantillausuarioVo> listaSeccionPlantilla) {
 		this.listaSeccionPlantilla = listaSeccionPlantilla;
 	}
 	/**
 	 * @return the seccionPlantillaVo
 	 */
-	public SeccionplantillaVo getSeccionPlantillaVo() {
-		return seccionPlantillaVo;
+	public PlantillausuarioVo getSeccionPlantillaVo() {
+		return plantillausuarioVo;
 	}
 	/**
 	 * @param seccionPlantillaVo the seccionPlantillaVo to set
 	 */
-	public void setSeccionPlantillaVo(SeccionplantillaVo seccionPlantillaVo) {
-		this.seccionPlantillaVo = seccionPlantillaVo;
+	public void setSeccionPlantillaVo(PlantillausuarioVo seccionPlantillaVo) {
+		this.plantillausuarioVo = seccionPlantillaVo;
 	}
 	
 	public UploadedFile getFile() {
@@ -234,18 +282,18 @@ public class ThemeView implements Serializable {
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
+	
 	/**
-	 * @return the seccionPlantillaActivo
+	 * @return the plantillausuarioActivo
 	 */
-	public List<SeccionplantillaVo> getSeccionPlantillaActivo() {
-		return seccionPlantillaActivo;
+	public List<PlantillausuarioVo> getPlantillausuarioActivo() {
+		return plantillausuarioActivo;
 	}
 	/**
-	 * @param seccionPlantillaActivo the seccionPlantillaActivo to set
+	 * @param plantillausuarioActivo the plantillausuarioActivo to set
 	 */
-	public void setSeccionPlantillaActivo(
-			List<SeccionplantillaVo> seccionPlantillaActivo) {
-		this.seccionPlantillaActivo = seccionPlantillaActivo;
+	public void setPlantillausuarioActivo(List<PlantillausuarioVo> plantillausuarioActivo) {
+		this.plantillausuarioActivo = plantillausuarioActivo;
 	}
 	/**
 	 * @return the nombreDirectorio
@@ -270,6 +318,18 @@ public class ThemeView implements Serializable {
 	 */
 	public void setTipoSeccion(TiposeccionVo tipoSeccion) {
 		this.tipoSeccion = tipoSeccion;
+	}
+	/**
+	 * @return the vPermisoTheme
+	 */
+	public String getvPermisoTheme() {
+		return vPermisoTheme;
+	}
+	/**
+	 * @param vPermisoTheme the vPermisoTheme to set
+	 */
+	public void setvPermisoTheme(String vPermisoTheme) {
+		this.vPermisoTheme = vPermisoTheme;
 	}
 	
    

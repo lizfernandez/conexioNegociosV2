@@ -52,6 +52,7 @@ public class EmpresaVo implements Serializable {
 		this.vUbigeo = empresa.getvUbigeo();
 		this.vFoto=empresa.getvFoto();
 		this.vDescripcion=empresa.getvDescripcion();
+		
 	}
 
 	/**

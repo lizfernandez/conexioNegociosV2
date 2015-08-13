@@ -23,8 +23,12 @@ import com.entities.vo.UsuarioVo;
 
 public class FaceContext {
 	public static HttpSession getSession() {
-        return (HttpSession) FacesContext.getCurrentInstance()
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
                 .getExternalContext().getSession(false);
+		if(session==null)
+			 session = (HttpSession) FacesContext.getCurrentInstance()
+             .getExternalContext().getSession(true);
+        return session;
     }
  
     public static HttpServletRequest getRequest() {
@@ -48,8 +52,7 @@ public class FaceContext {
         FacesContext.getCurrentInstance().addMessage(idAtribute, message);
     }
     public static UsuarioVo getUsuario() {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-                .getExternalContext().getSession(false);
+        HttpSession session = getSession();
         UsuarioVo usuario=(UsuarioVo) session.getAttribute("Usuario");
         return usuario;
     }
@@ -60,6 +63,11 @@ public class FaceContext {
             return Integer.parseInt(session.getAttribute("iUsuarioId").toString());
         else
             return (Integer) null;
+    }
+    public static int getiEmpresaId() {
+        HttpSession session = getSession();
+        int empresa=(Integer) session.getAttribute("iEmpresaId");
+        return empresa;
     }
     public static String getUrlDirectorioExterno(String nombreDirectorio) throws IOException{
 		  

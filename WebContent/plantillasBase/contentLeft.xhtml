@@ -49,13 +49,24 @@
                        <li id="">                      
                             <a   href="#{request.contextPath}/pagina.xhtml"><i class="fa fa-plus-circle"></i>Crear Página</a>
                        </li> 
-                      <c:forEach items="#{usuario.empresa}" var="item"  varStatus="empresas" >                      
-                        <li id="">
-                            <a   href="#{request.contextPath}/#{item.vNombreDirectorio}/index.xhtml"><img class="img" width="65px" height="24px" src="#{request.contextPath}/#{item.vNombreDirectorio}/media/images/#{item.vFoto}"  /> #{item.vRazonSocial}
-                            </a>
-                       </li>
+                       <h:form>  
+                      <c:forEach items="#{usuario.empresa}" var="item"  varStatus="empresas" >
+                                         
+                        <li>
+                          <p:commandLink ajax="true" actionListener="{themeView.listaThemeActivo()}" oncomplete="redirect('#{request.contextPath}/#{item.vNombreDirectorio}/')">
+	                           <img class="img" width="65px" height="24px" src="#{request.contextPath}/#{item.vNombreDirectorio}/media/images/#{item.vFoto}"  /> #{item.vRazonSocial}
+	                           <f:param name="nombreDirectorio" value="#{item.vNombreDirectorio}" />
+	                        
+	                        
+	                        </p:commandLink>
+                        
+<!--                             <a   href="#{request.contextPath}/#{item.vNombreDirectorio}/"><img class="img" width="65px" height="24px" src="#{request.contextPath}/#{item.vNombreDirectorio}/media/images/#{item.vFoto}"  /> #{item.vRazonSocial} -->
+                            
+<!--                             </a> -->
+
+                         </li>
                       </c:forEach>
-                      
+                        </h:form>
                           
                       </ul> 
                   </li>
@@ -126,7 +137,7 @@
 					        </c:if>
 					        <c:if test="#{item.vCodigoPermiso==140}"> 
 			                 <li>
-				                <p:commandLink id="nonAjax" actionListener="#{loginView.logout()}" ajax="false">
+				                <p:commandLink id="logout" actionListener="#{loginView.logout()}" ajax="true" oncomplete="redirect('#{request.contextPath}/index.xhtml')">
 	                                      <h:outputText value="#{item.vDescripcion}" />
 	                            </p:commandLink>     
 					        </li>

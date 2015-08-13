@@ -7,6 +7,8 @@
     xmlns:pm="http://primefaces.org/mobile"
     xmlns:c="http://java.sun.com/jsp/jstl/core"
     template="template.xhtml">
+<c:set var="usuario" value="#{sessionScope['Usuario']}" scope="session"/>
+
 <ui:define name="body">
 <script type="text/javascript">
   
@@ -15,7 +17,8 @@
         new WOW().init();
         
       }
-      
+      var url= window.location.pathname;
+    
       $('#camera_wrap').camera({
         loader: true,
         pagination: true,
@@ -42,11 +45,17 @@
 =========================================================-->
 
 <header id="header">
-   
+<!--     <h:form id="formIndex">     -->
+<!--       <p:remoteCommand name="refreshSectionsInicio"  actionListener="#{themeView.listaThemeActivo()}" update=":formLogoShow"  /> -->
+<!--        <f:param name="nombreDirectorio" value="conexioNegocios" /> -->
+<!--    </h:form>   -->
+               
     <c:if test="#{sessionScope['Usuario']==null}">
       <ui:include src="/plantillasBase/menu.xhtml"></ui:include>  
     </c:if>
-    <c:if test="#{sessionScope['Usuario']!=null}">
+   
+    <c:if test="#{themeView.vPermisoTheme=='SI'}">
+  
       <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include> 
       <ui:include src="/plantillasBase/contentLeft.xhtml"></ui:include>  
       <span class="trigger icon-arrow-small-up" id="trigger"> <i class="fa fa-chevron-up"></i></span> 
@@ -55,19 +64,21 @@
 	  <p:dialog widgetVar="statusDialog"  modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
              <img src="#{request.contextPath}/media/images/loadingCN.gif" />
      </p:dialog>
-<!--     <h:form id="formDialogLogoIframe"> -->
-      <p:dialog id="statusDialogLogo" widgetVar="statusDialogLogo"  modal="true" closable="true" resizable="true" header="#{msg['spTituloLogo']}" width="600" height="500">
-<!--          <h:form > -->
 
-
-          <iframe src="#{request.contextPath}/plantillasBase/dialogLogo.xhtml?nuevaImagen=#{themeView.nuevaImagen}" width="100%" height="100%" 
-          id="iframeLogo" name="iframeLogo"></iframe> 
-<!--    </h:form> -->
-<!--              <ui:include src="/plantillasBase/dialogLogo.xhtml" ></ui:include> -->
+      <p:dialog id="statusDialogLogo" widgetVar="statusDialogLogo"  modal="true" closable="true" resizable="true" header="#{msg['spTituloLogo']}" width="44%" height="500" styleClass="dialog">
+          <iframe src="#{request.contextPath}/plantillasBase/dialogLogo.xhtml" 
+               width="100%" height="100%" id="iframeLogo" name="iframeLogo">
+          </iframe> 
      </p:dialog>
-<!--      </h:form> -->
-    </c:if>
      
+      <p:dialog id="statusDialogMenu" widgetVar="statusDialogMenu"  modal="true" closable="true" resizable="true" header="#{msg['spTituloMenu']}" width="44%" height="500" styleClass="dialog">
+          <iframe src="#{request.contextPath}/plantillasBase/dialogMenu.xhtml" 
+               width="100%" height="100%" id="iframeMenu" name="iframeMenu">
+          </iframe> 
+     </p:dialog>
+
+       </c:if>
+
 <!-- menu conexion -->  
  
    
@@ -80,7 +91,7 @@
         <div class="grid_12">
           <div class="wrapper">
             <h1 class="editConexion">
-               <c:if test="#{sessionScope['Usuario']!=null}">
+              <c:if test="#{themeView.vPermisoTheme=='SI'}">
                   <h:form id="formLogoEdit">                  
                     <p:commandButton styleClass="edit"  id="Logo"                
                     onstart=" PF('statusDialog').show()"
@@ -91,7 +102,7 @@
                 </c:if>              
               
                 <h:form id="formLogoShow" styleClass="formLogoShow">                
-                <c:forEach items="#{themeView.seccionPlantillaActivo}" var="item"  varStatus="logoShow" > 
+                <c:forEach items="#{themeView.plantillausuarioActivo}" var="item"  varStatus="logoShow" > 
                  <c:if test="#{item.tipoSeccion.iTipoSeccionId==1}">  
                    <a href="index.html" style="background-color:##{item.vColorFondo}"> 
                    <img src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/#{item.vFoto}" alt="#{item.vNombre}"/>             
@@ -114,23 +125,37 @@
              
             </h1>
             <nav id="menu" class="editConexion"> 
-                 <c:if test="#{sessionScope['Usuario']!=null}">
+               <c:if test="#{themeView.vPermisoTheme=='SI'}">
                   <h:form id="formmMenuEdit">                  
                     <p:commandButton styleClass="edit"  id="Menu"                
-                    onstart=" PF('statusDialog').show()"   oncomplete="PF('statusDialog').hide(); PF('statusDialogLogo').show();">                      
+                    onstart=" PF('statusDialog').show()"   oncomplete="PF('statusDialog').hide(); PF('statusDialogMenu').show();">                      
                     </p:commandButton>
-                    <p:remoteCommand name="refreshSectionsLogo"  actionListener="#{themeView.listaThemeActivo()}" update=":formLogoShow" onstart="PF('statusDialogLogo').hide();" />
+                    <p:remoteCommand name="refreshSectionsMenu"  actionListener="#{themeView.listaThemeActivo()}" update=":formLogoShow" onstart="PF('statusDialogMenu').hide();" />
                   </h:form>  
-                </c:if>                    
-               <ul class="sf-menu">
-                <li class="current"><a href="index.html">#{msg['btnInicio']}</a>
-                <!--  div class="up">&nbsp;&nbsp;&nbsp; </div-->
-                </li>          
-                <li><a href="index-2.html">#{msg['btnServicios']}</a></li>
-                <li><a href="index-3.html">#{msg['btnOfertas']}</a></li>                
-                <li><a href="index-5.html">#{msg['btnSocios']}</a></li>
-                <li><a href="index-5.html">#{msg['btnPreguntas']}</a></li>
-              </ul>
+                </c:if> 
+               <h:form id="formMeneShow" styleClass="formMeneShow">                
+                <ul class="sf-menu">
+	                <c:forEach items="#{themeView.plantillausuarioActivo}" var="item"  varStatus="menuShow"  > 
+	                  <c:if test="#{item.tipoSeccion.iTipoSeccionId==2}">
+	                      <c:if test="#{menuShow.index==1}">
+	                         <li class="current"><a href="#{item.vDescripcion}.xhtml">#{item.vNombre}</a></li>
+	                      </c:if>
+	                       <c:if test="#{menuShow.index!=1}">
+	                         <li><a href="#{item.vDescripcion}.xhtml">#{item.vNombre}</a></li>
+	                       </c:if>
+	                  </c:if>
+	                </c:forEach>
+                </ul>
+                </h:form>                  
+<!--                <ul class="sf-menu"> -->
+<!--                 <li class="current"><a href="index.html">#{msg['btnInicio']}</a> -->
+             
+<!--                 </li>           -->
+<!--                 <li><a href="index-2.html">#{msg['btnServicios']}</a></li> -->
+<!--                 <li><a href="index-3.html">#{msg['btnOfertas']}</a></li>                 -->
+<!--                 <li><a href="index-5.html">#{msg['btnSocios']}</a></li> -->
+<!--                 <li><a href="index-5.html">#{msg['btnPreguntas']}</a></li> -->
+<!--                </ul> -->
              
             </nav>
             <div class="clearfix"></div>
@@ -181,7 +206,7 @@
       </div>
     </div>
     <div class="clearfix"></div>
-    <c:if test="#{sessionScope['Usuario']!=null}">
+   <c:if test="#{themeView.vPermisoTheme=='SI'}">
                   <h:form id="formmCamaraEdit">                  
                     <p:commandButton styleClass="edit"  id="Camara" style="border-radius: 6px 0 6px 8px;right: 0; top: 126px;"                
                     onstart=" PF('statusDialog').show()"   oncomplete="PF('statusDialog').hide(); PF('statusDialogLogo').show();">                      

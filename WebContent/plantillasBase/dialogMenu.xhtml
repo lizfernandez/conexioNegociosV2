@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    template="templateDialog.xhtml">
+  <f:metadata>
+<!--         <f:viewParam name="mode" value="#{themeView.mode}"/> -->
+    </f:metadata>     
+ <ui:define name="title"> #{msg['spTituloLogo']}  </ui:define>      
+
+
+<ui:define name="body">
+ <h:body>
+    
+       
+      
+         <h:form id="formDialogMenu" >          
+
+            <p:remoteCommand name="refreshSections" update="dataGridMenu"    actionListener="#{themeView.listaMenu()}" />
+
+			 <p:dataScroller value="#{themeView.listaSeccionPlantilla}" var="menu" chunkSize="9" id="dataGridMenu">
+			
+<!--             <div class="box10"> -->
+         #{menu.vNombre}
+
+<!-- 	         </div> -->
+           </p:dataScroller>
+		</h:form>
+       
+    </h:body>
+    
+</ui:define>
+</ui:composition>

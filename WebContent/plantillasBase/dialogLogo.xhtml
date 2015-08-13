@@ -39,33 +39,33 @@
       
          <h:form id="formDialogLogo" >
           
-<!--          #{sessionScope['listaSeccionPlantilla']} -->
+
             <p:remoteCommand name="refreshSections" update="dataGridLogo"    actionListener="#{themeView.listaLogos()}" />
-<!-- <p:poll interval="1" listener="#{themeView.listaLogos()}"   update="dataGridLogo" widgetVar="poll" autoStart="false" stop="true"/> -->
-			<p:dataGrid var="logo" value="#{themeView.listaSeccionPlantilla}" columns="2" 
-				layout="grid" rows="6" paginator="true" id="dataGridLogo"
-				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="6,12,18" >
+
+			 <p:dataScroller value="#{themeView.listaSeccionPlantilla}" var="logo" chunkSize="9" id="dataGridLogo">
+				   <f:facet name="loader">
+		                 <p:commandButton type="button" value="Cargar más" icon="ui-icon-circle-triangle-s" styleClass="ui-buttones"/>
+		           </f:facet>
+<!-- 			<p:dataGrid var="logo" value="#{themeView.listaSeccionPlantilla}" columns="2"  -->
+<!-- 				layout="grid" rows="6" paginator="true" id="dataGridLogo" -->
+<!-- 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" -->
+<!-- 				rowsPerPageTemplate="6,12,18" > -->
 
 <!-- 				<f:facet name="header">  #{msg['spGaleriaLogo']}    </f:facet> -->
 
 <!-- 				<p:panel header="#{logo.vNombre}" style="text-align:center;"> -->
-					<h:panelGrid columns="1" style="width:100%" styleClass="panelGrid" >
+<!-- 					<h:panelGrid columns="3" style="width:100%" styleClass="panelGrid" > -->
+ <div class="box10">
+         
+  
 						<p:graphicImage width="100%" value="../#{loginView.nombreDirectorio}/media/images/#{logo.vFoto}"/>
 
-						
-
-<!-- 						<p:commandLink update=":form:carDetail" -->
-<!-- 							oncomplete="PF('carDialog').show()" title="View Detail"> -->
-<!-- 							<h:outputText styleClass="ui-icon ui-icon-search" -->
-<!-- 								style="margin:0 auto;" /> -->
-<!-- 							<f:setPropertyActionListener value="#{logo}" -->
-<!-- 								target="#{dataGridView.selectedCar}" /> -->
-<!-- 						</p:commandLink> -->
-					</h:panelGrid>
+	</div>
+<!-- 					</h:panelGrid> -->
 <!-- 				</p:panel> -->
 
-			</p:dataGrid>
+<!-- 			</p:dataGrid> -->
+           </p:dataScroller>
 		</h:form>
        
     </h:body>

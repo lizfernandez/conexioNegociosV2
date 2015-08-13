@@ -84,6 +84,14 @@ public class UsuarioService  implements Serializable{
             listVo.add(vo); 
             
         }
+        List<Permiso> list1=genericaDao.findEndidadBDList(Permiso.class, " p.usuario.iUsuarioId="+FaceContext.getUsuario().getiUsuarioId());
+       
+        for(Permiso bean:list1) {        	
+        	PermisoVo vo= new PermisoVo(bean);           
+            listVo.add(vo); 
+            
+        }
+        
          
         return listVo;
     }

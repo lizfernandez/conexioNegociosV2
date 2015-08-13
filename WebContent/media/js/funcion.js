@@ -143,7 +143,11 @@ $(document).ready(function(){
 		  });
 	  });
 	
-
+    
 
 	
 });
+function redirect(url){
+	//alert(url);
+	 window.location.href = url;
+}

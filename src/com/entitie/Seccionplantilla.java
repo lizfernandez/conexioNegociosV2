@@ -40,9 +40,7 @@ public class Seccionplantilla implements Serializable {
 	@JoinColumn(name="iPlantillaId")
 	private Plantilla plantilla;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="iUsuarioId")
-	private Usuario usuario;
+	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="iTipoSeccionId")	
@@ -61,7 +59,9 @@ public class Seccionplantilla implements Serializable {
 	private String vColorCabeceraSup;
 
 	private String vColorFondo;
-
+  
+	private String vColorLetra;
+	
 	private String vDescripcion;
 
 	private String vFoto;
@@ -83,7 +83,7 @@ public class Seccionplantilla implements Serializable {
 		this.dFechaActualiza = seccionPlantilla.getdFechaActualiza();
 		this.dFechaInserta = seccionPlantilla.getdFechaInserta();
 		this.plantilla = seccionPlantilla.getPlantilla()!=null? new Plantilla(seccionPlantilla.getPlantilla()):null;
-		this.usuario = seccionPlantilla.getUsuario()!=null? new Usuario(seccionPlantilla.getUsuario()):null;
+		
 		this.tipoSeccion = seccionPlantilla.getTipoSeccion()!= null?   new Tiposeccion(seccionPlantilla.getTipoSeccion()) : null;
 		
 		this.iUsuarioActualiza = seccionPlantilla.getiUsuarioActualiza();
@@ -93,6 +93,7 @@ public class Seccionplantilla implements Serializable {
 		this.vColorCabeceraInf = seccionPlantilla.getvColorCabeceraInf();
 		this.vColorCabeceraSup = seccionPlantilla.getvColorCabeceraSup();
 		this.vColorFondo = seccionPlantilla.getvColorFondo();
+		this.vColorLetra = seccionPlantilla.getvColorLetra();
 		this.vDescripcion = seccionPlantilla.getvDescripcion();
 		this.vFoto = seccionPlantilla.getvFoto();
 		this.vNombre = seccionPlantilla.getvNombre();
@@ -159,18 +160,7 @@ public class Seccionplantilla implements Serializable {
 	
 	
 
-	/**
-	 * @return the usuario
-	 */
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	/**
-	 * @param usuario the usuario to set
-	 */
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+	
 	/**
 	 * @return the tipoSeccion
 	 */
@@ -375,6 +365,18 @@ public class Seccionplantilla implements Serializable {
 	 */
 	public void setPlantilla(Plantilla plantilla) {
 		this.plantilla = plantilla;
+	}
+	/**
+	 * @return the vColorLetra
+	 */
+	public String getvColorLetra() {
+		return vColorLetra;
+	}
+	/**
+	 * @param vColorLetra the vColorLetra to set
+	 */
+	public void setvColorLetra(String vColorLetra) {
+		this.vColorLetra = vColorLetra;
 	}
 
 	

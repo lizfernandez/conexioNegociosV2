@@ -308,7 +308,7 @@ background-color: #222;
     margin-top: 2px;
     width: 12px;
 }
-#navigationVertical ul.tree > li > ul > li > a > .img {
+.img {
     border: 1px solid #e9e9e9;
     font-size: 17px;   
     margin-left: -41px;
@@ -316,7 +316,7 @@ background-color: #222;
     margin-top: 2px;
    
 }
-#navigationVertical ul.tree > li > ul > li > a {
+#navigationVertical ul.tree  li  ul  li a {
    /* background: rgba(0, 0, 0, 0) url("../images/collapsed.gif") no-repeat scroll 7% 39%;*/
  /*   border-top: 1px solid #505050;*/
     color: #464646;
@@ -325,10 +325,10 @@ background-color: #222;
     font-weight: normal;
     padding: 4px 45px 6px;
 }
-#navigationVertical ul.tree > li > ul > li > a:hover {   
-    color: #fff; 
+#navigationVertical ul.tree  li  ul  li  a:hover {   
+    color: #fff !important; 
 	/*background-image: linear-gradient(#E81200, #BF0F00);   */
-	background:#5A5A5A;
+	background:#5A5A5A !important;
 	/*background: url("../img/collapsed.gif") no-repeat scroll 7% 39% rgba(0, 0, 0, 0);*/
 }
 .active{
