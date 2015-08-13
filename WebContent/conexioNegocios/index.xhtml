@@ -104,7 +104,7 @@
                 <h:form id="formLogoShow" styleClass="formLogoShow">                
                 <c:forEach items="#{themeView.plantillausuarioActivo}" var="item"  varStatus="logoShow" > 
                  <c:if test="#{item.tipoSeccion.iTipoSeccionId==1}">  
-                   <a href="index.html" style="background-color:##{item.vColorFondo}"> 
+                   <a href="index.xhtml" style="background-color:##{item.vColorFondo}"> 
                    <img src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/#{item.vFoto}" alt="#{item.vNombre}"/>             
 <!--                   <img src="media/images/logo.png" alt="#{item.vNombre}"/> -->
 <!--                    CONEXION <span class="color1">NEGOCIOS</span>                 -->
@@ -130,10 +130,10 @@
                     <p:commandButton styleClass="edit"  id="Menu"                
                     onstart=" PF('statusDialog').show()"   oncomplete="PF('statusDialog').hide(); PF('statusDialogMenu').show();">                      
                     </p:commandButton>
-                    <p:remoteCommand name="refreshSectionsMenu"  actionListener="#{themeView.listaThemeActivo()}" update=":formLogoShow" onstart="PF('statusDialogMenu').hide();" />
+                    <p:remoteCommand name="refreshSectionsMenu"  actionListener="#{themeView.listaThemeActivo()}" update=":formMenuShow" onstart="PF('statusDialogMenu').hide();" />
                   </h:form>  
                 </c:if> 
-               <h:form id="formMeneShow" styleClass="formMeneShow">                
+               <h:form id="formMenuShow" styleClass="formMenuShow">                
                 <ul class="sf-menu">
 	                <c:forEach items="#{themeView.plantillausuarioActivo}" var="item"  varStatus="menuShow"  > 
 	                  <c:if test="#{item.tipoSeccion.iTipoSeccionId==2}">
@@ -211,7 +211,7 @@
                     <p:commandButton styleClass="edit"  id="Camara" style="border-radius: 6px 0 6px 8px;right: 0; top: 126px;"                
                     onstart=" PF('statusDialog').show()"   oncomplete="PF('statusDialog').hide(); PF('statusDialogLogo').show();">                      
                     </p:commandButton>
-                    <p:remoteCommand name="refreshSectionsLogo"  actionListener="#{themeView.listaThemeActivo()}" update=":formLogoShow" onstart="PF('statusDialogLogo').hide();" />
+<!--                     <p:remoteCommand name="refreshSectionsLogo"  actionListener="#{themeView.listaThemeActivo()}" update=":formLogoShow" onstart="PF('statusDialogLogo').hide();" /> -->
                   </h:form>  
      </c:if> 
   </div>

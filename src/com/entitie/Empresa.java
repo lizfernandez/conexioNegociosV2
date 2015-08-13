@@ -19,7 +19,7 @@ public class Empresa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String iEmpresaId;
+	private int iEmpresaId;
 
 	private String cEstadoCodigo;
 
@@ -71,14 +71,14 @@ public class Empresa implements Serializable {
 	/**
 	 * @return the iEmpresaId
 	 */
-	public String getiEmpresaId() {
+	public int getiEmpresaId() {
 		return iEmpresaId;
 	}
 
 	/**
 	 * @param iEmpresaId the iEmpresaId to set
 	 */
-	public void setiEmpresaId(String iEmpresaId) {
+	public void setiEmpresaId(int iEmpresaId) {
 		this.iEmpresaId = iEmpresaId;
 	}
 

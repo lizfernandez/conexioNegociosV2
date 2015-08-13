@@ -65,7 +65,7 @@ public class ThemeView implements Serializable {
 		if(misPermisos!=null){
 		    for(PermisoVo vo:misPermisos){
 				if(vo.getvDescripcion().equals(Constantes.permisoTheme)){
-					if(vo.getvCodigoPermiso().equals(plantillausuarioActivo.get(0).getEmpresa().getiEmpresaId())){
+					if(vo.getvCodigoPermiso().equals(String.valueOf(plantillausuarioActivo.get(0).getEmpresa().getiEmpresaId()))){
 						vPermisoTheme="SI";
 						break;
 					}
@@ -75,24 +75,14 @@ public class ThemeView implements Serializable {
 				}
 			}
 		}
-		//session.setAttribute("", arg1);
+		session.setAttribute("Empresa", plantillausuarioActivo.get(0).getEmpresa());
     }
-    public String index(){
-    	Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		nombreDirectorio = params.get("nombreDirectorio");
-		plantillausuarioActivo = service.listaSeccionPlantillaActiva(nombreDirectorio);
-		 
-		HttpSession session = FaceContext.getSession();
-	    EmpresaVo empresaVo= plantillausuarioActivo.get(0).getEmpresa();
-	    session.setAttribute("Empresa",empresaVo);
-    	String url="/"+nombreDirectorio+"/index.xhtml?faces-redirect=true";
-    	return url;
-    }
+    
 	public void listaLogos(){
 		/***
 		 * tipoSeccion: Logo, id=1;
 		 */
-		 listaSeccionPlantilla = service.listaSeccionPlantilla("1");
+		 listaSeccionPlantilla = service.listaSeccionPlantilla("1", nombreDirectorio);
 		 for(PlantillausuarioVo vo:listaSeccionPlantilla){
 			 if(vo.getTipoSeccion().getiTipoSeccionId()==1){
 				 tipoSeccion=vo.getTipoSeccion();
@@ -105,7 +95,7 @@ public class ThemeView implements Serializable {
 		/***
 		 * tipoSeccion: Logo, id=1;
 		 */
-		 listaSeccionPlantilla = service.listaSeccionPlantilla("2");
+		 listaSeccionPlantilla = service.listaSeccionPlantilla("2",nombreDirectorio);
 		 for(PlantillausuarioVo vo:plantillausuarioActivo){
 			 if(vo.getTipoSeccion().getiTipoSeccionId()==2){
 				 tipoSeccion=vo.getTipoSeccion();

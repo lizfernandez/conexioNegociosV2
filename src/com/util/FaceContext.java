@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.UploadedFile;
 
+import com.entities.vo.EmpresaVo;
 import com.entities.vo.UsuarioVo;
 
 public class FaceContext {
@@ -64,11 +65,12 @@ public class FaceContext {
         else
             return (Integer) null;
     }
-    public static int getiEmpresaId() {
+    public static EmpresaVo getEmpresa() {
         HttpSession session = getSession();
-        int empresa=(Integer) session.getAttribute("iEmpresaId");
-        return empresa;
+        EmpresaVo usuario=(EmpresaVo) session.getAttribute("Empresa");
+        return usuario;
     }
+ 
     public static String getUrlDirectorioExterno(String nombreDirectorio) throws IOException{
 		  
 		//accedemos a valCampoNumerico

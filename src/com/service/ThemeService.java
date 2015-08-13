@@ -13,8 +13,10 @@ import com.entitie.Plantilla;
 import com.entitie.Plantillausuario;
 import com.entitie.Tiposeccion;
 import com.entities.vo.EmpresaVo;
+import com.entities.vo.PermisoVo;
 import com.entities.vo.PlantillausuarioVo;
 import com.entities.vo.TiposeccionVo;
+import com.entities.vo.UsuarioVo;
 import com.util.Constantes;
 import com.util.FaceContext;
 import com.util.Fechas;
@@ -30,11 +32,11 @@ public class ThemeService  implements Serializable{
 	GenericaDao genericaDao= new GenericaDao();  
 	 
 	
-    public List<PlantillausuarioVo> listaSeccionPlantilla(String tipoSeccion) {
+    public List<PlantillausuarioVo> listaSeccionPlantilla(String tipoSeccion, String nombreDirectorio) {
         List<Plantillausuario> list = new ArrayList<Plantillausuario>();
         List<PlantillausuarioVo> listVo = new ArrayList<PlantillausuarioVo>();
-        String where = " p.usuario.iUsuarioId="+FaceContext.getUserId()
-        		+" and p.tipoSeccion.iTipoSeccionId="+tipoSeccion
+        String where = " p.empresa.vNombreDirectorio='"+nombreDirectorio+"'"
+        		+ "and p.tipoSeccion.iTipoSeccionId="+tipoSeccion
         		+" order by p.dFechaInserta desc";
         list=genericaDao.findEndidadBDList(Plantillausuario.class,where);
         
@@ -77,7 +79,7 @@ public class ThemeService  implements Serializable{
     		transaction = genericaDao.entityTransaction();
     		
     		Plantillausuario obj= new Plantillausuario(vo);
-    	    obj.setEmpresa(genericaDao.findEndidad(Empresa.class, FaceContext.getiEmpresaId()));
+    	    obj.setEmpresa(new Empresa(FaceContext.getEmpresa()) );
     		obj.setcEstadoCodigo(Constantes.estadoActivo);
 			transaction.begin();
 			if(mode.equals("I")){
@@ -89,9 +91,17 @@ public class ThemeService  implements Serializable{
 						obj.setPlantilla(new Plantilla(v.getPlantilla()));
 						Plantillausuario vActivo = new Plantillausuario(v);
 						vActivo.setcEstadoCodigo(Constantes.estadoInactivo);
+						vActivo.getEmpresa().setvFoto(obj.getvFoto());
 						genericaDao.mergeEndidad(vActivo);
+						break;
 					}
 				 }
+				/***
+				 * Actualizamo la foto de la empresa
+				 */
+				Empresa em= genericaDao.findEndidad(Empresa.class,FaceContext.getEmpresa().getiEmpresaId());	
+				em.setvFoto(obj.getvFoto());
+				genericaDao.mergeEndidad(em);
 				
 				obj.setdFechaInserta(Fechas.getDate());	
 				obj.setiUsuarioInserta(FaceContext.getUserId());
@@ -101,8 +111,9 @@ public class ThemeService  implements Serializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 			genericaDao.limpiarInstancia();
-		} finally {
+		} finally {			
 			transaction = null;
+			
 		}
     }
   public List<EmpresaVo> listaEmpresa(){

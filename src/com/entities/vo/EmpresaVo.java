@@ -16,7 +16,7 @@ public class EmpresaVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
-	private String iEmpresaId;
+	private int iEmpresaId;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;
 	private Date dFechaInserta;
@@ -58,14 +58,14 @@ public class EmpresaVo implements Serializable {
 	/**
 	 * @return the iEmpresaId
 	 */
-	public String getiEmpresaId() {
+	public int getiEmpresaId() {
 		return iEmpresaId;
 	}
 
 	/**
 	 * @param iEmpresaId the iEmpresaId to set
 	 */
-	public void setiEmpresaId(String iEmpresaId) {
+	public void setiEmpresaId(int iEmpresaId) {
 		this.iEmpresaId = iEmpresaId;
 	}
 

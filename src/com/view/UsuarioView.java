@@ -1,11 +1,13 @@
 package com.view;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import com.entities.vo.EmpresaVo;
 import com.entities.vo.UsuarioVo;
 import com.service.EmailService;
 import com.service.UsuarioService;
@@ -30,6 +32,7 @@ public class UsuarioView implements Serializable {
     
     @ManagedProperty("#{emailService}")
    	private EmailService emailService;
+    
 	
 	public void iduUsuario() throws Exception{
 		
@@ -48,8 +51,11 @@ public class UsuarioView implements Serializable {
 			
           }
 		
-	    }
-
+	  }
+    public List<EmpresaVo> listaUsuarioEmpresa(){
+    	List<EmpresaVo> listaEmpresa = service.listaUsuarioEmpresa();
+    	return listaEmpresa;
+    }
    
 
 	/**
@@ -116,6 +122,7 @@ public class UsuarioView implements Serializable {
 	public void setEmailService(EmailService emailService) {
 		this.emailService = emailService;
 	}
+	
 
 
 	

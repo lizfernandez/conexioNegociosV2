@@ -10,9 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import com.dao.GenericaDao;
 import com.dao.UsuarioDao;
+import com.entitie.Empresa;
 import com.entitie.Menutitulo;
 import com.entitie.Permiso;
 import com.entitie.Usuario;
+import com.entities.vo.EmpresaVo;
 import com.entities.vo.MenutituloVo;
 import com.entities.vo.PermisoVo;
 import com.entities.vo.UsuarioVo;
@@ -95,7 +97,16 @@ public class UsuarioService  implements Serializable{
          
         return listVo;
     }
-    
+    public List<EmpresaVo> listaUsuarioEmpresa(){
+    	 List<Empresa> list=genericaDao.findEndidadBDList(Empresa.class, " p.usuario.iUsuarioId="+FaceContext.getUsuario().getiUsuarioId());
+         List<EmpresaVo> listVo= new ArrayList<EmpresaVo>();
+         for(Empresa bean:list) {        	
+        	 EmpresaVo vo= new EmpresaVo(bean);           
+             listVo.add(vo); 
+             
+         }
+		return listVo;
+    }
     public List<MenutituloVo> listaMenu(){
     	List<Menutitulo> list=genericaDao.listaEntidadGenerica(Menutitulo.class);
         List<MenutituloVo> listVo= new ArrayList<MenutituloVo>();

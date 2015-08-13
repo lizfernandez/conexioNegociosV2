@@ -50,7 +50,7 @@
                             <a   href="#{request.contextPath}/pagina.xhtml"><i class="fa fa-plus-circle"></i>Crear Página</a>
                        </li> 
                        <h:form>  
-                      <c:forEach items="#{usuario.empresa}" var="item"  varStatus="empresas" >
+                      <c:forEach items="#{usuarioView.listaUsuarioEmpresa()}" var="item"  varStatus="empresas" >
                                          
                         <li>
                           <p:commandLink ajax="true" actionListener="{themeView.listaThemeActivo()}" oncomplete="redirect('#{request.contextPath}/#{item.vNombreDirectorio}/')">

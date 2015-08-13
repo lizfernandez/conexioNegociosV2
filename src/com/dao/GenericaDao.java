@@ -55,7 +55,7 @@ public class GenericaDao  implements IGenerica, Serializable{
 		}
 		return trx;
 	}
-	
+   
 	public <E> Long totalLista(E entidad) {
 		Query q = getInstancia().createQuery("select Count(p) from "+entidad.getClass().getSimpleName()+" p " +
                    " where p.cEstadoCodigo = :EstadoCodigo");
