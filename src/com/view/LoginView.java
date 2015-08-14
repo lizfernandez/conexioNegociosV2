@@ -25,7 +25,9 @@ public class LoginView implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		
+	   /***
+	    * codigos de auth de twitter.	
+	    */
 	   private String auth; 
 	   private final String CONSUMER_KEY = "ceA17OdqVW3Lih9y4EXS03rQf";
 	   private final String CONSUMER_SECRET = "wN3nvWhcbW1kgpmCmlNTRd9nWxSnBvVGMAvN4b5WvqU6MIARGZ";
@@ -59,16 +61,15 @@ public class LoginView implements Serializable {
 	            session.setAttribute("Usuario", UsuarioBean.get(0));
 	            session.setAttribute("iUsuarioId", UsuarioBean.get(0).getiUsuarioId());
 	            
-	            /**obtenermos los permisos del listado del menu**/
+	            /**obtenermos los permisos del acceso del menu asi como tambien los de sus paginas**/
 	            session.setAttribute("MisPermisos",service.usuarioPermisos());
-	           // session.setAttribute("Menu",service.listaMenu());
+	           
 	           
 	            resultado = true;
 	    	
 	            if(UsuarioBean.get(0).getEmpresa().size()>0){
 	            	/**asignamos el directorio de su empresa**/	            	
-	            	setNombreDirectorio(UsuarioBean.get(0).getEmpresa().get(0).getvNombreDirectorio());
-	                //url="/"+getNombreDirectorio()+"/index.xhtml?faces-redirect=true";
+	            	setNombreDirectorio(UsuarioBean.get(0).getEmpresa().get(0).getvNombreDirectorio());	             
 	            	url="/home.xhtml?faces-redirect=true";
                    return url;
 	            }
@@ -80,7 +81,8 @@ public class LoginView implements Serializable {
 	          }
 	        else
 	        {
-	        	FaceContext.addMessageError("mensajes","Login Error: Credenciales incorrectas");
+	        	
+	        	FaceContext.addMessageInfo("messages",FaceContext.getMessageResource("msnErrorLogin", "", "literales"));
 	            setNombreDirectorio("conexioNegocios");
 	            resultado = false;
 	            

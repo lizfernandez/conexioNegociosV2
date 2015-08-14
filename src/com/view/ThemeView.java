@@ -18,7 +18,6 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.UploadedFile;
 
-import com.entities.vo.EmpresaVo;
 import com.entities.vo.PermisoVo;
 import com.entities.vo.PlantillausuarioVo;
 import com.entities.vo.TiposeccionVo;
@@ -59,9 +58,14 @@ public class ThemeView implements Serializable {
 			nombreDirectorio="conexioNegocios";
 			
 		}
-		
+		/****
+		 * buscamos y listamos las secciones activas de las plantillas con el nombre del directorio del usuario.
+		 */
 		plantillausuarioActivo = service.listaSeccionPlantillaActiva(nombreDirectorio);
 	    ArrayList<PermisoVo> misPermisos=(ArrayList<PermisoVo>) session.getAttribute("MisPermisos");
+	    /**
+	     * verificamos los permisos que tiene el usuario sobre la pagina.
+	     */
 		if(misPermisos!=null){
 		    for(PermisoVo vo:misPermisos){
 				if(vo.getvDescripcion().equals(Constantes.permisoTheme)){
@@ -80,6 +84,7 @@ public class ThemeView implements Serializable {
     
 	public void listaLogos(){
 		/***
+		 * listamos los logos cuyo
 		 * tipoSeccion: Logo, id=1;
 		 */
 		 listaSeccionPlantilla = service.listaSeccionPlantilla("1", nombreDirectorio);
@@ -93,7 +98,8 @@ public class ThemeView implements Serializable {
 	}
 	public void listaMenu(){
 		/***
-		 * tipoSeccion: Logo, id=1;
+		 * listamos los menus cuyo
+		 * tipoSeccion: Menu, id=2;
 		 */
 		 listaSeccionPlantilla = service.listaSeccionPlantilla("2",nombreDirectorio);
 		 for(PlantillausuarioVo vo:plantillausuarioActivo){
@@ -105,10 +111,11 @@ public class ThemeView implements Serializable {
 		
 	}
 	public void fileUploadListener(FileUploadEvent e) throws IOException{
-        // Get uploaded file from the FileUploadEvent
-        this.file= e.getFile();
-        // Print out the information of the file
-        System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
+       /***
+        * cargamos la imagen y la almacenamos el el directorio interno y extermo del proyecto.
+        */
+        this.file= e.getFile();      
+      //  System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
         FaceContext.copyFile(e.getFile(),null, FaceContext.getUrlDirectorioInterno(nombreDirectorio)+ getFile().getFileName());
         FaceContext.copyFile(e.getFile(),null, FaceContext.getUrlDirectorioExterno(nombreDirectorio)+ getFile().getFileName());
         nuevaImagen= getFile().getFileName();
@@ -128,10 +135,11 @@ public class ThemeView implements Serializable {
         	FaceContext.copyFile(null, croppedImage, FaceContext.getUrlDirectorioInterno(nombreDirectorio)+getNuevaCroppedImage());
         	FaceContext.copyFile(null, croppedImage, FaceContext.getUrlDirectorioExterno(nombreDirectorio)+getNuevaCroppedImage());
         } catch (Exception e) {
-            FaceContext.addMessageError("messages","Cropping failed.");
+        	e.printStackTrace();
+            FaceContext.addMessageError("messages",FaceContext.getMessageResource("msnError", "", "literales"));
         }
          
-        FaceContext.addMessageInfo("messages","Success, Cropping finished.");
+        FaceContext.addMessageInfo("messages",FaceContext.getMessageResource("msnExito", "", "literales"));
     }
 	public void iduTheme(){
 		System.out.println("idutheme");
@@ -155,6 +163,7 @@ public class ThemeView implements Serializable {
         	
         	
         } catch (Exception e) {
+        	e.printStackTrace();
             FaceContext.addMessageError("messages",FaceContext.getMessageResource("msnError", "", "literales"));
         }
          

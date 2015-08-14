@@ -21,7 +21,9 @@ public class AutoCompleteView  implements Serializable{
 	@ManagedProperty("#{themeService}")
     private ThemeService service;
 	private List<EmpresaVo> selectedEmpresa;
-	
+	/*
+	 * metodo que realiza la busuqeda de empresas.
+	 */
 	public List<EmpresaVo> completeEmpresas(String query) {
         List<EmpresaVo> allThemes = service.listaEmpresa();
         List<EmpresaVo> filteredThemes = new ArrayList<EmpresaVo>();

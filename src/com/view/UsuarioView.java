@@ -41,8 +41,9 @@ public class UsuarioView implements Serializable {
 		if(resultado==true){
 			FaceContext.addMessageInfo("messages",FaceContext.getMessageResource("msnExito", "", "literales"));
 			String emailContent="Esto es una prueba de envio de <b>email en html</b>";			
-		//	emailService.sendEmail(usuarioVo.getPersona().getvEmail(),emailContent);			
-			/*List<String> adjuntos = new ArrayList<String>();
+		
+			/*ejemplo de como adjuntar un archivo para enviar el email.
+			 * List<String> adjuntos = new ArrayList<String>();
 	        adjuntos.add("c:/pruebas.txt");*/
 			emailService.enviarMailHtml("seguridad@conexionegocios.com", usuarioVo.getPersona().getvEmail(), "Codigo de Seguridad", emailContent, null);
 		}

@@ -31,8 +31,11 @@ public class PromocioneView implements Serializable {
 	   
 	    @PostConstruct
 	    public void init() {
+	    	/**
+	    	 * cargamos las promociones activas
+	    	 */
 	    	promociones =  service.listaPromociones();
-	    	System.out.println("promociones="+promociones.size());
+	    	
 	    }
 
 		/**
