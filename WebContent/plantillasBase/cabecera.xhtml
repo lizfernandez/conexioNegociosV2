@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="../conexioNegocios/template.xhtml">
+
+	<!--     template="plantillasBase/templateBaseCn.xhtml"> -->
+	<ui:define name="body">
+		<h:body>
+			<header id="header">
+				<c:if test="#{sessionScope['Usuario']!=null}">
+					<ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include>
+				</c:if>
+			</header>
+
+			<!--========================================================
+                          CONTENT
+=========================================================-->
+			<c:if test="#{sessionScope['Usuario']==null}">
+				<script type="text/javascript">
+					redirect('#{request.contextPath}/index.xhtml');
+				</script>
+			</c:if>
+			<c:if test="#{sessionScope['Usuario']!=null}">
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$("#content-left").show();
+					});
+				</script>
+				<section id="content">
+					<div class="wrapper4 wrapper4__inset1"></div>
+				</section>
+			</c:if>
+		</h:body>
+	</ui:define>
+</ui:composition>
