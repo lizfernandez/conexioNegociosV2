@@ -89,15 +89,27 @@ $(document).ready(function(){
 	});
 	
 	$("#pc").click(function() {
-		$("#tipoMovil").removeClass('tablet').removeClass('phone').addClass('desktop');
+		$("#tipoMovil").removeClass('tablet').removeClass('phone').addClass('desktop');		
+		$(document).find('.tipoMovil span').each(function(key,val){ 	 
+			$(this).removeClass("activeAzulClaro");
+	   });		
+		$(this).addClass("activeAzulClaro");
 		
 	});
 	$("#tablet").click(function() {
 		$("#tipoMovil").removeClass('desktop').removeClass('phone').addClass('tablet');
+		$(document).find('.tipoMovil span').each(function(key,val){ 	 
+			$(this).removeClass("activeAzulClaro");
+	   });		
+		$(this).addClass("activeAzulClaro");
 		
 	});
 	$("#phone").click(function() {
 		$("#tipoMovil").removeClass('tablet').removeClass('desktop').addClass('phone');
+		$(document).find('.tipoMovil span').each(function(key,val){ 	 
+			$(this).removeClass("activeAzulClaro");
+	   });		
+		$(this).addClass("activeAzulClaro");
 		
 	});
 	$("#barsLeft").click(function() {

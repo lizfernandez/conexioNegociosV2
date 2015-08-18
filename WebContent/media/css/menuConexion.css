@@ -124,7 +124,11 @@ background-color: #222;
   /*  background:#fff;*/
   
 }
-
+#topnav.nav #main_nav_center li a:hover{
+    color:#0099ff;
+  /*  background:#fff;*/
+  
+}
 /* #topnav.nav #main_nav li span:hover{ */
 /*      color:#0099ff; */
 /* } */
@@ -197,6 +201,9 @@ background-color: #222;
 }
 .activeGrisOscuro{
 	color:#444444 !important;
+}
+.activeAzulClaro{
+	color:#0099ff !important;
 }
 .addCart{
 	background: #0099ff !important;
