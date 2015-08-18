@@ -14,7 +14,7 @@ import com.entitie.Plantilla;
 
 public class PlantillaVo implements Serializable {
 	private static final long serialVersionUID = 1L;
-    private String iPlantillaId;
+    private int iPlantillaId;
     private CategoriaVo categoria;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;
@@ -24,7 +24,7 @@ public class PlantillaVo implements Serializable {
 	private BigInteger iUsuarioInsertaId;
 	private String vNombrePlantilla;
 	private String vFoto;
-
+    private String evento;
 	public PlantillaVo() {
 	}
 
@@ -46,14 +46,14 @@ public class PlantillaVo implements Serializable {
 	/**
 	 * @return the iPlantillaId
 	 */
-	public String getiPlantillaId() {
+	public int getiPlantillaId() {
 		return iPlantillaId;
 	}
 
 	/**
 	 * @param iPlantillaId the iPlantillaId to set
 	 */
-	public void setiPlantillaId(String iPlantillaId) {
+	public void setiPlantillaId(int iPlantillaId) {
 		this.iPlantillaId = iPlantillaId;
 	}
 
@@ -181,6 +181,20 @@ public class PlantillaVo implements Serializable {
 	 */
 	public void setvFoto(String vFoto) {
 		this.vFoto = vFoto;
+	}
+
+	/**
+	 * @return the evento
+	 */
+	public String getEvento() {
+		return evento;
+	}
+
+	/**
+	 * @param evento the evento to set
+	 */
+	public void setEvento(String evento) {
+		this.evento = evento;
 	}
 
 	

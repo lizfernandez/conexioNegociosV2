@@ -102,3 +102,7 @@
     top: 36px !important;
     width: 355.217px !important;
 }
+.ui-panelgrid .ui-panelgrid-cell{
+	padding: 0 !important;
+	border: none !important;
+}

@@ -24,7 +24,7 @@
                 
               </a>
              </li>
-            <li><span class="menuVertical fa_bars" id="home" onclick="home();"><i class="fa fa-home"></i></span></li>
+            <li><span class="menuVertical fa_bars" id="home" onclick="redirect('#{request.contextPath}/home.xhtml');"><i class="fa fa-home"></i></span></li>
             <li><span class="menuVertical fa_bars" id="comment"><i class="fa fa-comments"></i></span></li>
              <li><span class="menuVertical fa_bars" id="users"><i class="fa fa-users"></i></span></li>
               <li><span class="menuVertical fa_bars" id="news" style="border-right: 2px solid #474747;"><i class="fa fa-newspaper-o"></i></span></li>
@@ -98,10 +98,4 @@
     </div>
     </div>
 </nav>
-<script type="text/javascript">
-function home(){
-	window.location.href = '#{request.contextPath}/home.xhtml';  
-}
-	          
-</script> 
 </html>

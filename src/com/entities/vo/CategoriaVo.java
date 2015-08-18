@@ -15,7 +15,7 @@ import com.entitie.Categoria;
 public class CategoriaVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String iCategoriaId;
+	private int iCategoriaId;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;	
 	private Date dFechaInserta;
@@ -43,14 +43,14 @@ public class CategoriaVo implements Serializable {
 	/**
 	 * @return the iCategoriaId
 	 */
-	public String getiCategoriaId() {
+	public int getiCategoriaId() {
 		return iCategoriaId;
 	}
 
 	/**
 	 * @param iCategoriaId the iCategoriaId to set
 	 */
-	public void setiCategoriaId(String iCategoriaId) {
+	public void setiCategoriaId(int iCategoriaId) {
 		this.iCategoriaId = iCategoriaId;
 	}
 

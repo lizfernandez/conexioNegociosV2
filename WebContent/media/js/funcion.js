@@ -61,7 +61,45 @@ $(document).ready(function(){
 		    }
 
 	});
+	$("#up_chat").click(function() {
+		
+		 var height=$("#content-chat").css("height");
+		
+		    if(height=="37px"){
+		    	$("#"+this.id+" i").removeClass('fa fa-chevron-up').addClass("fa fa-chevron-down");	
+		        $("#content-chat").css( 'height', '500px' );
+		        
+		      }
+		    else{
+		    	
+		        $("#"+this.id+" i").removeClass('fa fa-chevron-down').addClass("fa fa-chevron-up");			      
+		        $("#content-chat").css( 'height', '37px' );
+		        
+		        
+		    }
+
+	});
+	$(".menuActive").click(function() {
+		
+		$(document).find('.tree li').each(function(key,val){ 	 
+			$(this).removeClass("active");
+	   });
+		
+		$(this).addClass("active");
+	});
 	
+	$("#pc").click(function() {
+		$("#tipoMovil").removeClass('tablet').removeClass('phone').addClass('desktop');
+		
+	});
+	$("#tablet").click(function() {
+		$("#tipoMovil").removeClass('desktop').removeClass('phone').addClass('tablet');
+		
+	});
+	$("#phone").click(function() {
+		$("#tipoMovil").removeClass('tablet').removeClass('desktop').addClass('phone');
+		
+	});
 	$("#barsLeft").click(function() {
 		var stylo=$("#content-left").css("display");
 		$("#content-left-opciones").hide();

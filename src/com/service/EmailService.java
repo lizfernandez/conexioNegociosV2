@@ -1,6 +1,7 @@
 package com.service;
 
 import java.io.File;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Properties;
@@ -23,7 +24,12 @@ import javax.mail.internet.MimeMultipart;
 
 @ManagedBean(name = "emailService")
 @ApplicationScoped
-public class EmailService {
+public class EmailService implements Serializable {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 private final Properties properties = new Properties();
 	
 	private Session session;

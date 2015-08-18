@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+<c:set var="usuario" value="#{sessionScope['Usuario']}" scope="session"/>
+<c:set var="misPermisos" value="#{sessionScope['MisPermisos']}" scope="session"/>      
+ 
+<nav class="nav isStuck" id="topnav">
+ 
+    
+
+ <div class="container"> 
+      <div class="row">
+        <div class=""><!-- grid_11 -->
+          <div class="wrapper color2">
+         <ul id="main_nav_left" style="float: left;"> 
+            <li>
+            <a href="index.xhtml">
+                <img src="/conexioNegocios/media/images/logo.png"  width="18%"></img>
+                <SPAN id="miniLogo">CONEXIO<span class="color1">NEGOCIOS</span></SPAN>
+                
+              </a>
+             </li>
+            <li><span class="menuVertical fa_bars" id="home" onclick="redirect('#{request.contextPath}/home.xhtml')"><i class="fa fa-home"></i></span></li>
+            <li><span class="menuVertical fa_bars" id="comment"><i class="fa fa-comments"></i></span></li>
+             <li><span class="menuVertical fa_bars" id="users"><i class="fa fa-users"></i></span></li>
+              <li><span class="menuVertical fa_bars" id="news" style="border-right: 2px solid #474747;"><i class="fa fa-newspaper-o"></i></span></li>
+           
+         </ul>
+         <ul id="main_nav_center">
+             <li><span class="menuVertical fa_bars" id="pc"><i class="fa fa-desktop"></i></span></li>
+	         <li><span class="menuVertical fa_bars" id="tablet"> <i class="fa fa-tablet"></i></span></li>
+	         <li><span class="menuVertical fa_bars" id="phone"><i class="fa fa-mobile"></i></span></li> 
+	          
+         </ul>
+          <ul id="main_nav"> 
+            
+            <li></li>
+            <li></li>
+<!--            <li><p:graphicImage value="media/images/#{localizacionView.vImagen}.jpg" />  </li>  -->
+                        
+            <li> 
+              <div id="nombreUsuario" style="margin-top:8px;">
+               <h:outputLabel  value=" #{msg['btnBienvenido']}:"></h:outputLabel>           
+               <a href="#{request.contextPath}/afiliados/index.xhtml">
+                 <h:outputLabel  value=" #{usuario.persona.vNombres}  #{usuario.persona.vApellidos}"></h:outputLabel>
+              </a>
+              </div>
+             </li>
+            <li>
+               <div> <span class="menuVertical fa_bars addCart" id="shop" > <i class="fa fa-shopping-cart"> </i></span></div>
+<!--                <div class="div">#{msg["spMi"]} #{msg["spCarrito"]} </div> -->
+           </li>  <!-- Carrito de compras -->
+           </ul>
+      
+          
+			
+
+			
+    </div>
+    </div>
+    </div>
+    </div>
+</nav>
+
+</html>

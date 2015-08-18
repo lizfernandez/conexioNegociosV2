@@ -1,13 +1,20 @@
 package com.entitie;
 
 import java.io.Serializable;
-import javax.persistence.*;
-
-import com.entities.vo.CategoriaVo;
-import com.entities.vo.PlantillaVo;
-
-import java.util.Date;
 import java.math.BigInteger;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.entities.vo.PlantillaVo;
 
 
 /**
@@ -20,7 +27,7 @@ public class Plantilla implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String iPlantillaId;
+	private int iPlantillaId;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="iCategoriaId")
@@ -63,14 +70,14 @@ public class Plantilla implements Serializable {
 	/**
 	 * @return the iPlantillaId
 	 */
-	public String getiPlantillaId() {
+	public int getiPlantillaId() {
 		return iPlantillaId;
 	}
 
 	/**
 	 * @param iPlantillaId the iPlantillaId to set
 	 */
-	public void setiPlantillaId(String iPlantillaId) {
+	public void setiPlantillaId(int iPlantillaId) {
 		this.iPlantillaId = iPlantillaId;
 	}
 

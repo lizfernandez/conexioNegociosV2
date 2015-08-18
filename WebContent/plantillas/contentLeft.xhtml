@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+<c:set var="usuario" value="#{sessionScope['Usuario']}" scope="session"/>
+<div  id="barsLeft" class="fa_bars_left"> 
+	<i class="fa fa-bars"></i>
+</div>
+<div id="content-left"> 
+     <div id="navigationVertical">                
+<!-- 	          <ul>                    -->
+<!--                    <li class="head1">  -->
+<!--                      <h4>  -->
+<!-- 		               <a href="index.xhtml"> -->
+<!-- 			                <img src="/conexioNegocios/media/images/logo.png"></img> -->
+<!-- 			                <SPAN id="miniLogo">CONEXIO<span class="color1">NEGOCIOS</span></SPAN>                 -->
+<!-- 	                   </a> -->
+<!-- 	                 </h4>  -->
+<!--                    </li> -->
+<!--                  </ul> -->
+               
+                <ul class="tree">
+                   
+                   <li class="head1">                     
+                     <ul>
+                       <li>
+                            <a  id="miPerfil">
+                             <c:if test="#{usuario.persona.vFoto==null}"> 
+			                     <i class="fa fa-user"></i>
+					        </c:if>
+					         <c:if test="#{usuario.persona.vFoto!=null}"> 
+			                     <img src="#{request.contextPath}/afiliados/images/#{usuario.persona.vFoto}" class="img" width="31px" height="24px"></img>
+					        </c:if>
+                           
+                            <h:outputLabel  value="#{usuario.persona.vNombres} "></h:outputLabel></a>
+                       </li>                       
+                     </ul>
+                  </li>
+                   <li class="head1">
+                     <a> #{msg['spCategoria']}</a>
+                          <div class="up"></div> 
+                     <ul>
+                     <h:form>  
+                      <c:forEach items="#{plantillaView.listaCategoria()}" var="item"  varStatus="categoria" >
+                         <c:if test="#{categoria.index==0}">
+	                         <li class="menuActive active">
+		                        <p:commandLink>
+			                             <f:param name="iCategoriaId" value="#{item.iCategoriaId}" />
+			                             #{item.vNombre}  
+			                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
+			                    </p:commandLink>
+                            </li>
+	                      </c:if>
+	                       <c:if test="#{categoria.index!=0}">
+	                        <li class="menuActive">
+	                        <p:commandLink >
+		                             <f:param name="iCategoriaId" value="#{item.iCategoriaId}" />
+		                             #{item.vNombre}           
+		                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />               
+		                    </p:commandLink>
+                            </li>
+	                       </c:if>                
+                         
+                      </c:forEach>
+                        </h:form>
+                          
+                      </ul> 
+                  </li>
+                  
+                  
+                                      
+                  </ul>
+       </div><!--END  MENU LEFT -->
+</div>
+<ui:include src="/plantillasBase/content-left-opciones.xhtml"></ui:include>
+<ui:include src="/plantillasBase/chat.xhtml"></ui:include>
+
+</html>

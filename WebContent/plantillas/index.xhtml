@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+        template="../conexioNegocios/template.xhtml"> 
+    
+<!--     template="plantillasBase/templateBaseCn.xhtml"> -->
+<ui:define name="body">
+<h:body> 
+   <header id="header">
+      <c:if test="#{sessionScope['Usuario']!=null}">
+         <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include>
+      </c:if>
+   </header> 
+   
+<!--========================================================
+                          CONTENT
+=========================================================-->
+<c:if test="#{sessionScope['Usuario']==null}">
+	<script type="text/javascript">
+	      redirect('#{request.contextPath}/');  
+	</script>
+</c:if>
+<c:if test="#{sessionScope['Usuario']!=null}">
+<script type="text/javascript">	       
+	        $(document).ready(function () {
+	        	$("#content-left").show();
+	        });
+	        
+</script>
+<section id="content">
+  <div class="wrapper4 wrapper4__inset1">
+    <div class="container grid_13">
+            <div class="row_1">            
+		       <h:form id="formPlantilla"> 
+				  <p:dataScroller value="#{plantillaView.listaPlantilla}" var="item" chunkSize="6"  id="dataPlantilla">				    
+			           <f:facet name="loader">
+			            <p:commandButton type="button" value="ver 30 ofertas más" icon="ui-icon-circle-triangle-s" styleClass="ui-buttones">
+			              <f:param name="iCategoriaId" value="#{item.categoria.iCategoriaId}" />
+			            </p:commandButton>
+			           </f:facet>
+				        
+				          <div class="grid_4_1">
+				          <div class="box7 maxheight wow #{item.evento} animated" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: #{item.evento}; height: 399px;"><div class="box_inner">
+<!-- 				           <div class="box7_descripcion">¡Todo lo que puedas comer! Almuerzo Buffet en La Dama Juana</div> -->
+				              <img src="#{request.contextPath}/plantillas/images/#{item.vFoto}" alt=""/>
+				                 
+				              <p:panelGrid >
+					               <p:row>
+	                                  <p:column>
+	                                     <div class="box7_cont_vi"><i class="fa fa-check"></i> 1000 Vistos  </div>
+	                                     <div class="box7_cont_vi" style="border-left: 1px solid #202020;"><i class="fa fa-gift"></i>200 Compras   </div>
+	                                   </p:column>
+	                               </p:row>
+	                               <p:row>
+	                                  <p:column>
+	                                    <p:rating value="#{ratingView.rating4}" readonly="true" />
+	                                  </p:column>
+	                                </p:row>
+				                </p:panelGrid>
+				                <div class="space"></div>
+				                <p:commandButton type="button" value="Ver Demo" icon="ui-icon-extlink" styleClass="ui-buttones" onclick="redirect('#{request.contextPath}/plantillas/#{item.vNombrePlantilla}')" />
+				                
+				           </div>
+				          </div>
+				          </div>
+				        
+				    </p:dataScroller>
+				   </h:form><!-- Promociones -->
+			      
+            </div>
+           
+          </div>
+          <ui:include src="/plantillas/contentLeft.xhtml"></ui:include>
+        </div>
+     
+   
+</section>
+
+
+</c:if>
+
+</h:body>
+ </ui:define>
+</ui:composition>
+   

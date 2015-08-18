@@ -22,7 +22,7 @@
 =========================================================-->
 <c:if test="#{sessionScope['Usuario']==null}">
 	<script type="text/javascript">
-	      redirect('#{request.contextPath}/index.xhtml');  
+	      redirect('#{request.contextPath}/');  
 	</script>
 </c:if>
 <c:if test="#{sessionScope['Usuario']!=null}">
