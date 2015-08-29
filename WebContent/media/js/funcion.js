@@ -67,7 +67,7 @@ $(document).ready(function(){
 		
 		    if(height=="37px"){
 		    	$("#"+this.id+" i").removeClass('fa fa-chevron-up').addClass("fa fa-chevron-down");	
-		        $("#content-chat").css( 'height', '500px' );
+		        $("#content-chat").css( 'height', '470px' );
 		        
 		      }
 		    else{
@@ -88,30 +88,28 @@ $(document).ready(function(){
 		$(this).addClass("active");
 	});
 	
-	$("#pc").click(function() {
-		$("#tipoMovil").removeClass('tablet').removeClass('phone').addClass('desktop');		
-		$(document).find('.tipoMovil span').each(function(key,val){ 	 
+	$("#topnav li span").click(function() {
+		$(document).find('#topnav li span').each(function(key,val){ 	 
 			$(this).removeClass("activeAzulClaro");
 	   });		
 		$(this).addClass("activeAzulClaro");
 		
-	});
-	$("#tablet").click(function() {
-		$("#tipoMovil").removeClass('desktop').removeClass('phone').addClass('tablet');
-		$(document).find('.tipoMovil span').each(function(key,val){ 	 
-			$(this).removeClass("activeAzulClaro");
-	   });		
-		$(this).addClass("activeAzulClaro");
+		if(this.id=='pc'){
+			$("#tipoMovil").removeClass('tablet').removeClass('phone').addClass('desktop');
+		}
+		if(this.id=='tablet'){
+			$("#tipoMovil").removeClass('desktop').removeClass('phone').addClass('tablet');
+		}
+		if(this.id=='phone'){
+			$("#tipoMovil").removeClass('tablet').removeClass('desktop').addClass('phone');
+		}
+				
+		if(this.id=='comment'){
+			$(".comment").show();
+		}
 		
 	});
-	$("#phone").click(function() {
-		$("#tipoMovil").removeClass('tablet').removeClass('desktop').addClass('phone');
-		$(document).find('.tipoMovil span').each(function(key,val){ 	 
-			$(this).removeClass("activeAzulClaro");
-	   });		
-		$(this).addClass("activeAzulClaro");
-		
-	});
+	
 	$("#barsLeft").click(function() {
 		var stylo=$("#content-left").css("display");
 		$("#content-left-opciones").hide();
@@ -200,4 +198,131 @@ $(document).ready(function(){
 function redirect(url){
 	//alert(url);
 	 window.location.href = url;
+}
+function addChat(identificador){
+	
+    var iexit = $("#content-chat-line ."+identificador).length;
+	if(iexit==0){		
+	  	$('#chatInd').clone().appendTo('#content-chat-line');
+		var count = $("#content-chat-line .chatInd").length;
+		var right=parseInt(count)*parseInt(255);	
+		$('#content-chat-line .chatInd:last-child').attr("id","chatInd_"+identificador).addClass(identificador).css("right",right+"px").show();
+		$('#content-chat-line .chatInd_'+identificador+' #form').attr("id","frm_"+identificador);
+	}
+	else{
+		$("#content-chat-line ."+identificador).fadeOut().fadeIn();
+	}
+	$(".comment").hide();
+
+}
+function limpiar(form){
+	
+     $(document).find('#'+form+' .text').each(function(key,val){ 
+		$(this).val(" ");
+	   });
+	$("#"+form+" .text:first").focus();
+}
+function handleMessage(facesmessage) {
+	
+	
+   var res = facesmessage.summary.split(":");
+	 /*$(document).find('#content-chat-line #chatInd_'+res[2]+' #msnDetalle .ui-datalist-data').each(function(key,val){ 
+		
+			alert($(this).id())
+   });*/
+   limpiar("chatInd_"+res[2]+" #frmMsn");
+   var c=$('#content-chat-line #chatInd_'+res[2]+' #msnDetalle div div ul li:last-child div div').attr('class');
+  // alert("c:"+c+" res[0]:"+res[0])
+   if(c=='msnChatEnvia' && res[0]==$('#iUsuarioId').val()){	 
+	  
+	   	var cadena = '<li class="ui-datalist-item">';
+	   	cadena+='<div class="envia_15454" id="msnMu">';
+	   	cadena+=facesmessage.detail;
+	   	cadena+='</div></li>';   
+	   	$('#content-chat-line #chatInd_'+res[2]+' #msnDetalle div div ul li:last-child .msnChatEnvia').find('ul:last').append(cadena);
+   }
+   if(c=='msnChatRecibe' && res[0]==$('#iUsuarioId').val()){	
+	   
+	   var cadena ='';
+	   cadena+='<li class="ui-datalist-item">';
+	   cadena+='<div>'
+	    cadena+='<div class="msnChatEnvia">';       
+	    cadena+='<div class="msnTn">';
+	       cadena+='<div class="msnKL">';
+	          cadena+='<div class="msnPCimgR">';
+	            if( res[0]!=null){
+	            	
+	            }
+	            cadena+='</div>';
+	              cadena+='<div class="msnPD">';
+	                cadena+='<div class="msnKR msnKRir"><i class="fa fa-caret-right"></i></div>';
+	                  cadena+='<div class="msnJL">';	
+	                  cadena+=' <ul class="ui-datalist-data" >';
+	                  cadena+='<li class="ui-datalist-item"> ';
+		               	  cadena+='<div id="msnMu" >';	
+	                             cadena+=facesmessage.detail;
+	                         cadena+='</div>';
+	                         cadena+='</li> </ul>';
+	                         cadena+='</div>  </div>  </div>   </div>     </div> </div> </li>';
+	  
+	   	
+	   	  
+	   	$('#content-chat-line #chatInd_'+res[2]+' #msnDetalle .ui-datalist-data:first').append(cadena);
+  }
+   
+   if(c=='msnChatEnvia' && res[1]==$('#iUsuarioId').val()){	  
+	   var cadena ='';
+	   cadena+='<li class="ui-datalist-item">';
+	   cadena+='<div>'
+	   cadena+='<div  class="msnChatRecibe">';       
+	     cadena+='<div class="msnKL">';
+	       cadena+='<div class="msnPCimg">';
+			            
+	         cadena+='</div>';
+	           cadena+='<div class="msnPD">';
+	             cadena+='<div class="msnKR msnKRil"><i class="fa fa-caret-left"></i></div>';
+	               cadena+='<div class="msnJL">';	
+	                cadena+=' <ul class="ui-datalist-data" >';
+	                  cadena+='<li class="ui-datalist-item"> ';
+		            
+	                   cadena+='<div id="msnMu">';
+	                   cadena+=facesmessage.detail;
+                       cadena+='</div>';
+                       cadena+='</li> </ul>';				             
+	                   cadena+='</div> </div>  </div>  </div> </div> </li>';
+	   	
+	   	  
+	   	$('#content-chat-line #chatInd_'+res[2]+' #msnDetalle .ui-datalist-data:first').append(cadena);
+	   	msPlayer();
+  }
+  if(c=='msnChatRecibe' && res[1]==$('#iUsuarioId').val()){		
+	
+
+	   	var cadena = '<li class="ui-datalist-item">';
+	   	cadena+='<div  id="msnMu">';
+	   	cadena+=facesmessage.detail;
+	   	cadena+='</div></li>';   
+	   	$('#content-chat-line #chatInd_'+res[2]+' #msnDetalle div div ul li:last-child .msnChatRecibe').find('ul:last').append(cadena);
+	   	msPlayer();
+ }
+   //$('#msnDetalle').height()
+  var w=$('#content-chat-line #chatInd_'+res[2]+' #msnDetalle div div ul li').length;
+  
+   $('#frm #msnDetalle').animate({scrollTop:w*100}, 1000);
+
+ 
+  
+}
+function msPlayer(){
+	var playing = false;
+	 if (playing == false) {
+	       document.getElementById('rintonCN').play();
+	       playing = true;
+	      
+
+	   } else {
+	       document.getElementById('rintonCN').pause();
+	       playing = false;
+	      
+	   }
 }

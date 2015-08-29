@@ -67,15 +67,15 @@ public class LoginView implements Serializable {
 	           
 	            resultado = true;
 	    	
-	            if(UsuarioBean.get(0).getEmpresa().size()>0){
+	            if(UsuarioBean.get(0).getListaUsuarios().size()>0){
 	            	/**asignamos el directorio de su empresa**/	            	
-	            	setNombreDirectorio(UsuarioBean.get(0).getEmpresa().get(0).getvNombreDirectorio());	             
+	            	setNombreDirectorio(UsuarioBean.get(0).getListaUsuarios().get(0).getPersona().getvNombreDirectorio());	             
 	            	url="/home.xhtml?faces-redirect=true";
                    return url;
 	            }
 	            else{
 	            	    setNombreDirectorio("conexioNegocios");	            	
-	                    url="/suscriptores/index.xhtml?faces-redirect=true";
+	            	    url="/home.xhtml?faces-redirect=true";
 	                   return url;
 	            }
 	          }

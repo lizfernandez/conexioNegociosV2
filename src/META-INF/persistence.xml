@@ -14,7 +14,7 @@
 		<class>com.entitie.Evento</class>
 		<class>com.entitie.Grupo</class>
 		<class>com.entitie.Llamadacliente</class>
-		<class>com.entitie.Mensaje</class>
+		<class>com.entitie.Mensajes</class>
 		<class>com.entitie.Noticia</class>
 		<class>com.entitie.Notificacion</class>
 		<class>com.entitie.Perfil</class>

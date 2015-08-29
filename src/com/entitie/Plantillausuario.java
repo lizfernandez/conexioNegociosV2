@@ -43,8 +43,8 @@ public class Plantillausuario implements Serializable {
 	private Plantilla plantilla;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="iEmpresaId")
-	private Empresa empresa;
+	@JoinColumn(name="iUsuarioId")
+	private Usuario usuario;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="iTipoSeccionId")	
@@ -86,7 +86,7 @@ public class Plantillausuario implements Serializable {
 		this.dFechaActualiza = seccionPlantilla.getdFechaActualiza();
 		this.dFechaInserta = seccionPlantilla.getdFechaInserta();
 		this.plantilla = seccionPlantilla.getPlantilla()!=null? new Plantilla(seccionPlantilla.getPlantilla()):null;
-		this.empresa = seccionPlantilla.getEmpresa()!=null? new Empresa(seccionPlantilla.getEmpresa()):null;
+		this.usuario = seccionPlantilla.getUsuario()!=null? new Usuario(seccionPlantilla.getUsuario()):null;
 		this.tipoSeccion = seccionPlantilla.getTipoSeccion()!= null?   new Tiposeccion(seccionPlantilla.getTipoSeccion()) : null;		
 		this.iUsuarioActualiza = seccionPlantilla.getiUsuarioActualiza();
 		this.iUsuarioInserta = seccionPlantilla.getiUsuarioInserta();
@@ -161,17 +161,18 @@ public class Plantillausuario implements Serializable {
 	
 	
 
+	
 	/**
-	 * @return the empresa
+	 * @return the usuario
 	 */
-	public Empresa getEmpresa() {
-		return empresa;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 	/**
-	 * @param empresa the empresa to set
+	 * @param usuario the usuario to set
 	 */
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	/**
 	 * @return the tipoSeccion

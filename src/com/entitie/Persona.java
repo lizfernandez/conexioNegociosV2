@@ -52,6 +52,16 @@ public class Persona implements Serializable {
 	
     private String vFoto;
     
+    private String vRazonSocial;
+    
+    private String vRuc;
+    
+    private String vNombreDirectorio;
+    
+    private String vUbigeo;
+    
+    private String vDescripcion;
+    
 	public Persona() {
 	}
 	public Persona(PersonaVo persona) {
@@ -71,6 +81,11 @@ public class Persona implements Serializable {
 		this.vNombres = persona.getvNombres();
 		this.vUbicacion = persona.getvUbicacion();
 		this.vFoto = persona.getvFoto();
+		this.vRazonSocial= persona.getvRazonSocial();
+		this.vRuc=persona.getvRuc();
+		this.vNombreDirectorio= persona.getvNombreDirectorio();
+		this.vUbigeo = persona.getvUbigeo();
+		this.vDescripcion=persona.getvDescripcion();
 	}
 
 	/**
@@ -277,6 +292,66 @@ public class Persona implements Serializable {
 	 */
 	public void setvFoto(String vFoto) {
 		this.vFoto = vFoto;
+	}
+	/**
+	 * @return the vRazonSocial
+	 */
+	public String getvRazonSocial() {
+		return vRazonSocial;
+	}
+	/**
+	 * @param vRazonSocial the vRazonSocial to set
+	 */
+	public void setvRazonSocial(String vRazonSocial) {
+		this.vRazonSocial = vRazonSocial;
+	}
+	/**
+	 * @return the vRuc
+	 */
+	public String getvRuc() {
+		return vRuc;
+	}
+	/**
+	 * @param vRuc the vRuc to set
+	 */
+	public void setvRuc(String vRuc) {
+		this.vRuc = vRuc;
+	}
+	/**
+	 * @return the vNombreDirectorio
+	 */
+	public String getvNombreDirectorio() {
+		return vNombreDirectorio;
+	}
+	/**
+	 * @param vNombreDirectorio the vNombreDirectorio to set
+	 */
+	public void setvNombreDirectorio(String vNombreDirectorio) {
+		this.vNombreDirectorio = vNombreDirectorio;
+	}
+	/**
+	 * @return the vUbigeo
+	 */
+	public String getvUbigeo() {
+		return vUbigeo;
+	}
+	/**
+	 * @param vUbigeo the vUbigeo to set
+	 */
+	public void setvUbigeo(String vUbigeo) {
+		this.vUbigeo = vUbigeo;
+	}
+	/**
+	 * @return the vDescripcion
+	 */
+	public String getvDescripcion() {
+		return vDescripcion;
+	}
+	/**
+	 * @param vDescripcion the vDescripcion to set
+	 */
+	public void setvDescripcion(String vDescripcion) {
+		this.vDescripcion = vDescripcion;
 	}
 
 	

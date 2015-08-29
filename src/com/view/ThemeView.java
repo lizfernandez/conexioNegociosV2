@@ -69,7 +69,7 @@ public class ThemeView implements Serializable {
 		if(misPermisos!=null){
 		    for(PermisoVo vo:misPermisos){
 				if(vo.getvDescripcion().equals(Constantes.permisoTheme)){
-					if(vo.getvCodigoPermiso().equals(String.valueOf(plantillausuarioActivo.get(0).getEmpresa().getiEmpresaId()))){
+					if(vo.getvCodigoPermiso().equals(String.valueOf(plantillausuarioActivo.get(0).getUsuario().getiUsuarioId()))){
 						vPermisoTheme="SI";
 						break;
 					}
@@ -79,7 +79,7 @@ public class ThemeView implements Serializable {
 				}
 			}
 		}
-		session.setAttribute("Empresa", plantillausuarioActivo.get(0).getEmpresa());
+		session.setAttribute("Empresa", plantillausuarioActivo.get(0).getUsuario());
     }
     
 	public void listaLogos(){

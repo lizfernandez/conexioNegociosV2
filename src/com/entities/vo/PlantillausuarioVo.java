@@ -20,7 +20,7 @@ public class PlantillausuarioVo implements Serializable {
 	private Date dFechaActualiza;
 	private Date dFechaInserta;	
 	private PlantillaVo plantilla;
-	private EmpresaVo empresa;		
+	private UsuarioVo usuario;		
 	private TiposeccionVo tipoSeccion ;
 	private int iUsuarioActualiza;
 
@@ -58,7 +58,7 @@ public class PlantillausuarioVo implements Serializable {
 		this.dFechaActualiza = seccionPlantilla.getdFechaActualiza();
 		this.dFechaInserta = seccionPlantilla.getdFechaInserta();
 		this.plantilla = seccionPlantilla.getPlantilla()!=null? new PlantillaVo(seccionPlantilla.getPlantilla()):null;
-		this.empresa = seccionPlantilla.getEmpresa()!=null? new EmpresaVo(seccionPlantilla.getEmpresa()):null;
+		this.usuario = seccionPlantilla.getUsuario()!=null? new UsuarioVo(seccionPlantilla.getUsuario()):null;
 		this.tipoSeccion = seccionPlantilla.getTipoSeccion()!= null?   new TiposeccionVo(seccionPlantilla.getTipoSeccion()) : null;		
 		this.iUsuarioActualiza = seccionPlantilla.getiUsuarioActualiza();
 		this.iUsuarioInserta = seccionPlantilla.getiUsuarioInserta();
@@ -144,17 +144,18 @@ public class PlantillausuarioVo implements Serializable {
 	public TiposeccionVo getTipoSeccion() {
 		return tipoSeccion;
 	}
+	
 	/**
-	 * @return the empresa
+	 * @return the usuario
 	 */
-	public EmpresaVo getEmpresa() {
-		return empresa;
+	public UsuarioVo getUsuario() {
+		return usuario;
 	}
 	/**
-	 * @param empresa the empresa to set
+	 * @param usuario the usuario to set
 	 */
-	public void setEmpresa(EmpresaVo empresa) {
-		this.empresa = empresa;
+	public void setUsuario(UsuarioVo usuario) {
+		this.usuario = usuario;
 	}
 	/**
 	 * @param tipoSeccion the tipoSeccion to set

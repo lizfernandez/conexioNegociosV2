@@ -6,15 +6,14 @@ import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityTransaction;
-
 import com.dao.GenericaDao;
-import com.entitie.Empresa;
 import com.entitie.Plantilla;
 import com.entitie.Plantillausuario;
 import com.entitie.Tiposeccion;
-import com.entities.vo.EmpresaVo;
+import com.entitie.Usuario;
 import com.entities.vo.PlantillausuarioVo;
 import com.entities.vo.TiposeccionVo;
+import com.entities.vo.UsuarioVo;
 import com.util.Constantes;
 import com.util.FaceContext;
 import com.util.Fechas;
@@ -49,13 +48,13 @@ public class ThemeService  implements Serializable{
     public List<PlantillausuarioVo> listaSeccionPlantillaActiva(String nombreDirectorio) {
         List<Plantillausuario> list = new ArrayList<Plantillausuario>();
         List<PlantillausuarioVo> listVo = new ArrayList<PlantillausuarioVo>();
-        String whereEmpresa = " p.vNombreDirectorio='"+nombreDirectorio+"'";        		
-        List<Empresa>  empresa = genericaDao.findEndidadBDList(Empresa.class, whereEmpresa);
+        String whereEmpresa = " p.persona.vNombreDirectorio='"+nombreDirectorio+"'";        		
+        List<Usuario>  empresa = genericaDao.findEndidadBDList(Usuario.class, whereEmpresa);
         
        
       
          
-        String where = " p.empresa.iEmpresaId="+empresa.get(0).getiEmpresaId()
+        String where = " p.usuario.iUsuarioId="+empresa.get(0).getiUsuarioId()
         		+" and p.cEstadoCodigo='"+Constantes.estadoActivo+"'"
         		+" order by p.tipoSeccion.iTipoSeccionId";
         list=genericaDao.findEndidadBDList(Plantillausuario.class,where);
@@ -77,7 +76,7 @@ public class ThemeService  implements Serializable{
     		transaction = genericaDao.entityTransaction();
     		
     		Plantillausuario obj= new Plantillausuario(vo);
-    	    obj.setEmpresa(new Empresa(FaceContext.getEmpresa()) );
+    	    obj.setUsuario(new Usuario(FaceContext.getUsuario()) );
     		obj.setcEstadoCodigo(Constantes.estadoActivo);
 			transaction.begin();
 			if(mode.equals("I")){
@@ -89,7 +88,7 @@ public class ThemeService  implements Serializable{
 						obj.setPlantilla(new Plantilla(v.getPlantilla()));
 						Plantillausuario vActivo = new Plantillausuario(v);
 						vActivo.setcEstadoCodigo(Constantes.estadoInactivo);
-						vActivo.getEmpresa().setvFoto(obj.getvFoto());
+						vActivo.getUsuario().getPersona().setvFoto(obj.getvFoto());
 						genericaDao.mergeEndidad(vActivo);
 						break;
 					}
@@ -97,13 +96,14 @@ public class ThemeService  implements Serializable{
 				/***
 				 * Actualizamo la foto de la empresa
 				 */
-				Empresa em= genericaDao.findEndidad(Empresa.class,FaceContext.getEmpresa().getiEmpresaId());	
-				em.setvFoto(obj.getvFoto());
+				Usuario em= genericaDao.findEndidad(Usuario.class,FaceContext.getUsuario().getiUsuarioId());	
+				em.getPersona().setvFoto(obj.getvFoto());
 				genericaDao.mergeEndidad(em);
 				
 				obj.setdFechaInserta(Fechas.getDate());	
 				obj.setiUsuarioInserta(FaceContext.getUserId());
-				genericaDao.persistEndidad(obj);	
+				genericaDao.persistEndidad(obj);
+				genericaDao.commitEndidad(transaction);
 			}
 			
 		} catch (Exception e) {
@@ -114,12 +114,13 @@ public class ThemeService  implements Serializable{
 			
 		}
     }
-  public List<EmpresaVo> listaEmpresa(){
-	  List<EmpresaVo> listVo = new ArrayList<EmpresaVo>();	
-      List<Empresa>  list = genericaDao.listaEntidadGenerica(Empresa.class);
+  public List<UsuarioVo> listaEmpresa(){
+	  List<UsuarioVo> listVo = new ArrayList<UsuarioVo>();	
+	  String where=" p.persona.vRazonSocial IS NOT NULL";
+      List<Usuario>  list = genericaDao.findEndidadBDList(Usuario.class,where);
       
-      for(Empresa bean:list) {        	
-      	EmpresaVo vo= new EmpresaVo(bean);           
+      for(Usuario bean:list) {        	
+    	  UsuarioVo vo= new UsuarioVo(bean);           
           listVo.add(vo);
           
       }

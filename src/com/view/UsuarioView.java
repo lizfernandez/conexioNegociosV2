@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
-import com.entities.vo.EmpresaVo;
+
 import com.entities.vo.UsuarioVo;
 import com.service.EmailService;
 import com.service.UsuarioService;
@@ -53,8 +53,8 @@ public class UsuarioView implements Serializable {
           }
 		
 	  }
-    public List<EmpresaVo> listaUsuarioEmpresa(){
-    	List<EmpresaVo> listaEmpresa = service.listaUsuarioEmpresa();
+    public List<UsuarioVo> listaUsuarioEmpresa(){
+    	List<UsuarioVo> listaEmpresa = service.listaUsuarioEmpresa();
     	return listaEmpresa;
     }
    

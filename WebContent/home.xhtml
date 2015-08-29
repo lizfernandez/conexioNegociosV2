@@ -30,6 +30,7 @@
 	       
 	        $(document).ready(function () {
 	        	$("#content-left").show();
+	        	$("#home").addClass('activeAzulClaro');
 	        });
 	        
 </script>
@@ -37,7 +38,8 @@
   <div class="wrapper4 wrapper4__inset1">
     <div class="container grid_13">
             <div class="row_1">            
-		       <h:form> 
+		       <h:form id="formHomePro"> 
+		       <p:messages  closable="true" autoUpdate="true" id="mensajes"></p:messages>
 				  <p:dataScroller value="#{promocioneView.promociones}" var="pro" chunkSize="6" >				    
 			           <f:facet name="loader">
 			            <p:commandButton type="button" value="ver 30 ofertas más" icon="ui-icon-circle-triangle-s" styleClass="ui-buttones"/>

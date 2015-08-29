@@ -1,62 +1,41 @@
-package com.entitie;
+package com.entities.vo;
 
 import java.io.Serializable;
-import javax.persistence.*;
-
-import com.entities.vo.SeguidoreVo;
-import com.entities.vo.UsuarioVo;
-
 import java.util.Date;
-import java.math.BigInteger;
+
+import com.entitie.Seguidore;
 
 
 /**
  * The persistent class for the seguidores database table.
  * 
  */
-@Entity
-@Table(name="seguidores")
-public class Seguidore implements Serializable {
+
+public class SeguidoreVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int iSeguidorId;
-
 	private String cEstadoCodigo;
-
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dFechaActualiza;
-
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dFechaInserta;
-
 	private int iUsuarioActualiza;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="iUsuarioEnviaId")
-	private Usuario usuarioEnvia;
-
+	private UsuarioVo usuarioEnvia;
 	private int iUsuarioInserta;
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="iUsuarioRecibeId")
-	private Usuario usuarioRecibe;
+	private UsuarioVo usuarioRecibe;
 
-	
-
-	public Seguidore() {
+	public SeguidoreVo() {
 	}
 	
 
-	public Seguidore(SeguidoreVo seguidores) {
+	public SeguidoreVo(Seguidore seguidores) {
 		this.iSeguidorId = seguidores.getiSeguidorId();
 		this.cEstadoCodigo = seguidores.getcEstadoCodigo();
 		this.dFechaActualiza = seguidores.getdFechaActualiza();
 		this.dFechaInserta = seguidores.getdFechaInserta();
 		this.iUsuarioActualiza = seguidores.getiUsuarioActualiza();
-		this.usuarioEnvia = seguidores.getUsuarioEnvia()!=null? new Usuario(seguidores.getUsuarioEnvia()): null;
+		this.usuarioEnvia = seguidores.getUsuarioEnvia()!=null? new UsuarioVo(seguidores.getUsuarioEnvia()): null;
 		this.iUsuarioInserta = seguidores.getiUsuarioInserta();
-		this.usuarioRecibe = seguidores.getUsuarioRecibe()!=null? new Usuario(seguidores.getUsuarioRecibe()):null;
+		this.usuarioRecibe = seguidores.getUsuarioRecibe()!=null? new UsuarioVo(seguidores.getUsuarioRecibe()):null;
 	}
 
 
@@ -67,12 +46,14 @@ public class Seguidore implements Serializable {
 		return iSeguidorId;
 	}
 
+
 	/**
 	 * @param iSeguidorId the iSeguidorId to set
 	 */
 	public void setiSeguidorId(int iSeguidorId) {
 		this.iSeguidorId = iSeguidorId;
 	}
+
 
 	/**
 	 * @return the cEstadoCodigo
@@ -81,12 +62,14 @@ public class Seguidore implements Serializable {
 		return cEstadoCodigo;
 	}
 
+
 	/**
 	 * @param cEstadoCodigo the cEstadoCodigo to set
 	 */
 	public void setcEstadoCodigo(String cEstadoCodigo) {
 		this.cEstadoCodigo = cEstadoCodigo;
 	}
+
 
 	/**
 	 * @return the dFechaActualiza
@@ -95,12 +78,14 @@ public class Seguidore implements Serializable {
 		return dFechaActualiza;
 	}
 
+
 	/**
 	 * @param dFechaActualiza the dFechaActualiza to set
 	 */
 	public void setdFechaActualiza(Date dFechaActualiza) {
 		this.dFechaActualiza = dFechaActualiza;
 	}
+
 
 	/**
 	 * @return the dFechaInserta
@@ -109,12 +94,14 @@ public class Seguidore implements Serializable {
 		return dFechaInserta;
 	}
 
+
 	/**
 	 * @param dFechaInserta the dFechaInserta to set
 	 */
 	public void setdFechaInserta(Date dFechaInserta) {
 		this.dFechaInserta = dFechaInserta;
 	}
+
 
 	/**
 	 * @return the iUsuarioActualiza
@@ -123,6 +110,7 @@ public class Seguidore implements Serializable {
 		return iUsuarioActualiza;
 	}
 
+
 	/**
 	 * @param iUsuarioActualiza the iUsuarioActualiza to set
 	 */
@@ -130,12 +118,16 @@ public class Seguidore implements Serializable {
 		this.iUsuarioActualiza = iUsuarioActualiza;
 	}
 
+
+	
+
 	/**
 	 * @return the iUsuarioInserta
 	 */
 	public int getiUsuarioInserta() {
 		return iUsuarioInserta;
 	}
+
 
 	/**
 	 * @param iUsuarioInserta the iUsuarioInserta to set
@@ -148,7 +140,7 @@ public class Seguidore implements Serializable {
 	/**
 	 * @return the usuarioEnvia
 	 */
-	public Usuario getUsuarioEnvia() {
+	public UsuarioVo getUsuarioEnvia() {
 		return usuarioEnvia;
 	}
 
@@ -156,7 +148,7 @@ public class Seguidore implements Serializable {
 	/**
 	 * @param usuarioEnvia the usuarioEnvia to set
 	 */
-	public void setUsuarioEnvia(Usuario usuarioEnvia) {
+	public void setUsuarioEnvia(UsuarioVo usuarioEnvia) {
 		this.usuarioEnvia = usuarioEnvia;
 	}
 
@@ -164,7 +156,7 @@ public class Seguidore implements Serializable {
 	/**
 	 * @return the usuarioRecibe
 	 */
-	public Usuario getUsuarioRecibe() {
+	public UsuarioVo getUsuarioRecibe() {
 		return usuarioRecibe;
 	}
 
@@ -172,11 +164,13 @@ public class Seguidore implements Serializable {
 	/**
 	 * @param usuarioRecibe the usuarioRecibe to set
 	 */
-	public void setUsuarioRecibe(Usuario usuarioRecibe) {
+	public void setUsuarioRecibe(UsuarioVo usuarioRecibe) {
 		this.usuarioRecibe = usuarioRecibe;
 	}
 
 
+	
+	
 	
 
 }

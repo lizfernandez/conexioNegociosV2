@@ -32,7 +32,7 @@
 			                     <i class="fa fa-user"></i>
 					        </c:if>
 					         <c:if test="#{usuario.persona.vFoto!=null}"> 
-			                     <img src="#{request.contextPath}/afiliados/images/#{usuario.persona.vFoto}" class="img" width="31px" height="24px"></img>
+			                     <img src="#{request.contextPath}/afiliados/images/#{usuario.persona.vFoto}" class="img" width="33px" height="28px" ></img>
 					        </c:if>
                            
                             <h:outputLabel  value="#{usuario.persona.vNombres} "></h:outputLabel></a>
@@ -53,9 +53,9 @@
                       <c:forEach items="#{usuarioView.listaUsuarioEmpresa()}" var="item"  varStatus="empresas" >
                                          
                         <li>
-                          <p:commandLink ajax="true" actionListener="{themeView.listaThemeActivo()}" oncomplete="redirect('#{request.contextPath}/#{item.vNombreDirectorio}/')">
-	                           <img class="img" width="65px" height="24px" src="#{request.contextPath}/#{item.vNombreDirectorio}/media/images/#{item.vFoto}"  /> #{item.vRazonSocial}
-	                           <f:param name="nombreDirectorio" value="#{item.vNombreDirectorio}" />
+                          <p:commandLink ajax="true" actionListener="{themeView.listaThemeActivo()}" oncomplete="redirect('#{request.contextPath}/#{item.persona.vNombreDirectorio}/')">
+	                           <img class="img" width="65px" height="24px" src="#{request.contextPath}/#{item.persona.vNombreDirectorio}/media/images/#{item.persona.vFoto}"  /> #{item.persona.vRazonSocial}
+	                           <f:param name="nombreDirectorio" value="#{item.persona.vNombreDirectorio}" />
 	                        
 	                        
 	                        </p:commandLink>

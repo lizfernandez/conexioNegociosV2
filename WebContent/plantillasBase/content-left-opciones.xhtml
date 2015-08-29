@@ -5,12 +5,12 @@
     xmlns:ui="http://java.sun.com/jsf/facelets" 
     xmlns:p="http://primefaces.org/ui"
     xmlns:c="http://java.sun.com/jsp/jstl/core">
-<c:set var="usuario" value="#{sessionScope['Usuario']}" scope="session"/>
+
 
 <div id="content-left-opciones"> 
 	<div class="miPerfil menuVertical_dropdown" style="display:none"> 
 	   <ul class="tree">                   
-		              <h:form>                      
+		              <h:form id="formPermisosUs">                      
 				         <c:forEach items="#{misPermisos}" var="item"  varStatus="menuVertical" > 	
 			                 <c:if test="#{item.vCodigoPermiso==110}"> 
 			                 <li><a href="empresaSucursal.do?metodo=listaEmpresa"> #{item.vDescripcion}</a>

@@ -6,8 +6,8 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:c="http://java.sun.com/jsp/jstl/core"> 
 <c:set var="usuario" value="#{sessionScope['Usuario']}" scope="session"/>
-<c:set var="misPermisos" value="#{sessionScope['MisPermisos']}" scope="session"/>      
- 
+<c:set var="misPermisos" value="#{sessionScope['MisPermisos']}" scope="session"/>     
+
 <nav class="nav isStuck" id="topnav">
  
     
@@ -18,14 +18,68 @@
           <div class="wrapper color2">
          <ul id="main_nav_left" style="float: left;"> 
             <li>
-            <a href="index.xhtml">
+             <div id="nombreUsuario" style="margin-top:8px;">
+              <a href="index.xhtml">
                 <img src="/conexioNegocios/media/images/logo.png"  width="18%"></img>
                 <SPAN id="miniLogo">CONEXIO<span class="color1">NEGOCIOS</span></SPAN>
                 
               </a>
+              </div>
              </li>
             <li><span class="menuVertical fa_bars" id="home" onclick="redirect('#{request.contextPath}/home.xhtml');"><i class="fa fa-home"></i></span></li>
-            <li><span class="menuVertical fa_bars" id="comment"><i class="fa fa-comments"></i></span></li>
+            <li>
+            <h:form id="formMensajes"> 
+	             <span class="menuVertical fa_bars" id="comment" >
+<!-- 	             onclick="rc()" -->
+	              <i class="fa fa-comments"></i>
+<!-- 			        <p:remoteCommand name="rc" update=":formMensajes:mensajes" actionListener="#{mensajesView.listaMensajes()}" /> -->
+		          </span>	          
+            
+            
+	            <div class="comment menuVertical_opcion" id="navigationVertical"> 
+	           
+		            <ul class="tree">
+		               <li>  
+		               <input type="hidden" id="iUsuarioId" value="#{usuario.iUsuarioId}"/>                    
+			           <p:dataScroller value="#{mensajesView.listaMensajesUsuario()}" var="item"  id="mensajes" chunkSize="6" >				    
+			           <f:facet name="loader">
+			            <p:commandButton type="button" value="ver 30 ofertas más" icon="ui-icon-circle-triangle-s" />
+			           </f:facet>
+			                  <li style="border-top: 1px solid #ccc;">
+
+								<p:commandLink style="width: 222px">
+								<div style="margin-top:-2px" >								
+								<p:row  rendered="#{item.usuarioEnvia.iUsuarioId ne usuario.iUsuarioId}">
+								    <img src="#{request.contextPath}/afiliados/images/#{item.usuarioEnvia.persona.vFoto}" class="img" width="33px" height="28px" ></img>
+								    <strong>#{item.usuarioEnvia.persona.vNombres}  #{item.usuarioEnvia.persona.vApellidos}   </strong>
+								</p:row>
+								<p:row  rendered="#{item.usuarioEnvia.iUsuarioId eq usuario.iUsuarioId}"> 
+								    <img src="#{request.contextPath}/afiliados/images/#{item.usuarioRecibe.persona.vFoto}" class="img" width="33px" height="28px" ></img>
+								    <strong>#{item.usuarioRecibe.persona.vNombres}  #{item.usuarioRecibe.persona.vApellidos}</strong>
+								</p:row>
+								 </div>
+								  <div style="margin-top:-19px" class="color3">#{item.vMensaje}</div>
+								  <div style="float: right; font-size: 9px; margin-top: -25px;" class="color3">#{item.dFechaInserta}</div>
+  
+  
+<!-- 			                             <f:param name="usuarioEnvia" value="#{item.usuarioEnvia.iUsuarioId}" />  -->
+<!-- 						                <f:param name="usuarioRecibe" value="#{item.usuarioRecibe.iUsuarioId}" /> -->
+                                        <f:param name="vIdentidicador" value="#{item.vIdentidicador}" />
+			                            
+			                             <p:ajax  listener="#{mensajesView.listaMensajesDetalle()}" oncomplete="addChat('#{item.vIdentidicador}')"
+			                             update=":frm:dtPersonasCabecera, :frm:dtPersonas,  :frmMsn:hUsuRecibe, :frmMsn:hVidentiticador" />
+			                             
+		                         
+			                    </p:commandLink>
+						       
+                             </li>
+						 </p:dataScroller>
+						
+				      </li>	
+				     </ul>
+				 </div>
+			 </h:form>
+            </li>
              <li><span class="menuVertical fa_bars" id="users"><i class="fa fa-users"></i></span></li>
               <li><span class="menuVertical fa_bars" id="news" style="border-right: 2px solid #474747;"><i class="fa fa-newspaper-o"></i></span></li>
            
@@ -34,20 +88,20 @@
          <li>
                 <h:form id="formbusqueda" >
 			         <p:autoComplete id="busquedaEmpresas" multiple="true" value="#{autoCompleteView.selectedEmpresa}" completeMethod="#{autoCompleteView.completeEmpresas}"
-			                        var="empresa" itemLabel="#{empresa.vRazonSocial}" itemValue="#{empresa}" converter="themeConverter" forceSelection="true" >
+			                        var="empresa" itemLabel="#{empresa.persona.vRazonSocial}" itemValue="#{empresa}" converter="themeConverter" forceSelection="true" >
 			                       
 			            <p:column style="width:45%">
-			            <a href="#{request.contextPath}/#{empresa.vNombreDirectorio}/index.xhtml">
-			                 <img src="#{request.contextPath}/#{empresa.vNombreDirectorio}/media/images/#{empresa.vFoto}" class="imgBorder" />
+			            <a href="#{request.contextPath}/#{empresa.persona.vNombreDirectorio}/index.xhtml">
+			                 <img src="#{request.contextPath}/#{empresa.persona.vNombreDirectorio}/media/images/#{empresa.persona.vFoto}" class="imgBorder" />
 			             </a>   
 			            </p:column>
 			 
 			            <p:column>
-			              <a href="#{request.contextPath}/#{empresa.vNombreDirectorio}/index.xhtml">
+			              <a href="#{request.contextPath}/#{empresa.persona.vNombreDirectorio}/index.xhtml">
 				                <div style="padding:8px;">
-				                <h:outputText value="#{empresa.vRazonSocial}" style="color:#0064d1;font-size:12px"  />
+				                <h:outputText value="#{empresa.persona.vRazonSocial}" style="color:#0064d1;font-size:12px"  />
 				                <div></div>
-				                <h:outputText value="#{empresa.vDescripcion}" style="color:#000;font-size:10px"  />
+				                <h:outputText value="#{empresa.persona.vDescripcion}" style="color:#000;font-size:10px"  />
 				                </div>
 			               </a>  
 			            </p:column>
@@ -78,7 +132,7 @@
             <li> 
               <div id="nombreUsuario" style="margin-top:8px;">
                <h:outputLabel  value=" #{msg['btnBienvenido']}:"></h:outputLabel>           
-               <a href="#{request.contextPath}/afiliados/index.xhtml">
+               <a href="#{request.contextPath}/#{usuario.persona.vNombreDirectorio}/index.xhtml">
                  <h:outputLabel  value=" #{usuario.persona.vNombres}  #{usuario.persona.vApellidos}"></h:outputLabel>
               </a>
               </div>

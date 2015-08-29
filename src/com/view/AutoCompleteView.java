@@ -8,7 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
-import com.entities.vo.EmpresaVo;
+
+import com.entities.vo.UsuarioVo;
 import com.service.ThemeService;
 @ManagedBean(name="autoCompleteView")
 @ViewScoped
@@ -20,17 +21,17 @@ public class AutoCompleteView  implements Serializable{
 	
 	@ManagedProperty("#{themeService}")
     private ThemeService service;
-	private List<EmpresaVo> selectedEmpresa;
+	private List<UsuarioVo> selectedEmpresa;
 	/*
 	 * metodo que realiza la busuqeda de empresas.
 	 */
-	public List<EmpresaVo> completeEmpresas(String query) {
-        List<EmpresaVo> allThemes = service.listaEmpresa();
-        List<EmpresaVo> filteredThemes = new ArrayList<EmpresaVo>();
+	public List<UsuarioVo> completeEmpresas(String query) {
+        List<UsuarioVo> allThemes = service.listaEmpresa();
+        List<UsuarioVo> filteredThemes = new ArrayList<UsuarioVo>();
          
         for (int i = 0; i < allThemes.size(); i++) {
-        	EmpresaVo vo = allThemes.get(i);
-            if(vo.getvRazonSocial().toLowerCase().startsWith(query)) {
+        	UsuarioVo vo = allThemes.get(i);
+            if(vo.getPersona().getvRazonSocial().toLowerCase().startsWith(query)) {
                 filteredThemes.add(vo);
             }
         }
@@ -58,7 +59,7 @@ public class AutoCompleteView  implements Serializable{
 	/**
 	 * @return the selectedEmpresa
 	 */
-	public List<EmpresaVo> getSelectedEmpresa() {
+	public List<UsuarioVo> getSelectedEmpresa() {
 		return selectedEmpresa;
 	}
 
@@ -66,7 +67,7 @@ public class AutoCompleteView  implements Serializable{
 	/**
 	 * @param selectedEmpresa the selectedEmpresa to set
 	 */
-	public void setSelectedEmpresa(List<EmpresaVo> selectedEmpresa) {
+	public void setSelectedEmpresa(List<UsuarioVo> selectedEmpresa) {
 		this.selectedEmpresa = selectedEmpresa;
 	}
 	

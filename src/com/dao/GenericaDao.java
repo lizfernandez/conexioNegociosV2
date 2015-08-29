@@ -3,6 +3,8 @@ package com.dao;
 
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,8 +19,10 @@ import javax.persistence.Query;
 import org.eclipse.persistence.config.HintValues;
 import org.eclipse.persistence.config.QueryHints;
 
+
 import com.interfaces.dao.IGenerica;
 import com.util.Constantes;
+import com.util.FormatosNumeros;
 
 public class GenericaDao  implements IGenerica, Serializable{
 	/**
@@ -135,7 +139,48 @@ public class GenericaDao  implements IGenerica, Serializable{
 		List<E> objeto = (List<E>)q.getResultList();
 		return objeto;
 	}
-	
+	public <E> List<E> createNativeQuery(Class<E> entidad, Object o, String siEntidadId){
+		List<E> objetoDestino = new ArrayList<E>();
+		
+		Query q = getInstancia().createNativeQuery("select * from " + entidad.getSimpleName() + "  p" + " where "+siEntidadId);		
+		@SuppressWarnings("unchecked")
+		List<E> objeto = (List<E>)q.getResultList();
+		
+		for (int i = 0; i < objeto.size(); i++) {
+			Object[] objOrigen = (Object[]) objeto.get(i);
+			E  objDestino =  (E) o;
+			Field[] fields = objDestino.getClass().getDeclaredFields();
+			int j=0;
+			for (Field f : fields) {
+				try {
+					String fieldOrigen = f.getName();
+					f.setAccessible(true);
+					if(!Constantes.CAMPO_SERAILIZABLE.equals(fieldOrigen)){
+									
+					
+					//Object fieldValue = f.get(objDestino);
+					
+					if (objOrigen[j] != null) {
+						if (!objOrigen[j].toString().equals("0")) {
+							System.out.println(f.getType());
+							//if(f.getType().equals(obj))
+							f.set(objDestino, objOrigen[j]);
+							System.out.println("fDestino +"+f.get(objDestino));
+							
+							}
+					}
+					j++;
+				 }
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				
+			}
+			objetoDestino.add((E) objDestino);
+		}
+		return objetoDestino;
+		
+	}
 	@SuppressWarnings("unchecked")
 	@Override
 	public <G> List<G> listaEntidadPaginada(String sentencia, int pagInicio, int pagFin) {

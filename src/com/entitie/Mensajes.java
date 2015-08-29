@@ -3,25 +3,27 @@ package com.entitie;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.entities.vo.SeguidoreVo;
+import com.entities.vo.MensajesVo;
 import com.entities.vo.UsuarioVo;
+import com.util.Fechas;
 
 import java.util.Date;
 import java.math.BigInteger;
+import java.text.ParseException;
 
 
 /**
- * The persistent class for the seguidores database table.
+ * The persistent class for the mensajes database table.
  * 
  */
 @Entity
-@Table(name="seguidores")
-public class Seguidore implements Serializable {
+@Table(name="mensajes")
+public class Mensajes implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int iSeguidorId;
+	private int iMensajesId;
 
 	private String cEstadoCodigo;
 
@@ -32,7 +34,6 @@ public class Seguidore implements Serializable {
 	private Date dFechaInserta;
 
 	private int iUsuarioActualiza;
-	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="iUsuarioEnviaId")
 	private Usuario usuarioEnvia;
@@ -42,36 +43,45 @@ public class Seguidore implements Serializable {
 	@JoinColumn(name="iUsuarioRecibeId")
 	private Usuario usuarioRecibe;
 
-	
+	private String vEmotion;
 
-	public Seguidore() {
+	private String vIdentidicador;
+
+	private String vMensaje;
+	
+	private String cEstadoMensaje;
+
+	public Mensajes() {
 	}
-	
-
-	public Seguidore(SeguidoreVo seguidores) {
-		this.iSeguidorId = seguidores.getiSeguidorId();
-		this.cEstadoCodigo = seguidores.getcEstadoCodigo();
-		this.dFechaActualiza = seguidores.getdFechaActualiza();
-		this.dFechaInserta = seguidores.getdFechaInserta();
-		this.iUsuarioActualiza = seguidores.getiUsuarioActualiza();
-		this.usuarioEnvia = seguidores.getUsuarioEnvia()!=null? new Usuario(seguidores.getUsuarioEnvia()): null;
-		this.iUsuarioInserta = seguidores.getiUsuarioInserta();
-		this.usuarioRecibe = seguidores.getUsuarioRecibe()!=null? new Usuario(seguidores.getUsuarioRecibe()):null;
+public Mensajes(MensajesVo mensaje) throws ParseException {
+		
+		this.iMensajesId = mensaje.getiMensajesId();
+		this.cEstadoCodigo = mensaje.getcEstadoCodigo();
+		this.dFechaActualiza = mensaje.getdFechaActualiza();
+		this.dFechaInserta =mensaje.getdFechaInserta()!=null? Fechas.fechaDate(mensaje.getdFechaInserta()):null;		
+		this.iUsuarioActualiza = mensaje.getiUsuarioActualiza();
+		this.usuarioEnvia = mensaje.getUsuarioEnvia()!=null? new Usuario(mensaje.getUsuarioEnvia()):null;
+		this.iUsuarioInserta = mensaje.getiUsuarioInserta();
+		this.usuarioRecibe = mensaje.getUsuarioRecibe()!=null? new Usuario(mensaje.getUsuarioRecibe()):null;
+		this.vEmotion = mensaje.getvEmotion();
+		this.vIdentidicador = mensaje.getvIdentidicador();
+		this.vMensaje = mensaje.getvMensaje();
+		this.cEstadoMensaje = mensaje.getcEstadoMensaje();
 	}
 
 
 	/**
-	 * @return the iSeguidorId
+	 * @return the iMensajesId
 	 */
-	public int getiSeguidorId() {
-		return iSeguidorId;
+	public int getiMensajesId() {
+		return iMensajesId;
 	}
 
 	/**
-	 * @param iSeguidorId the iSeguidorId to set
+	 * @param iMensajesId the iMensajesId to set
 	 */
-	public void setiSeguidorId(int iSeguidorId) {
-		this.iSeguidorId = iSeguidorId;
+	public void setiMensajesId(int iMensajesId) {
+		this.iMensajesId = iMensajesId;
 	}
 
 	/**
@@ -130,6 +140,8 @@ public class Seguidore implements Serializable {
 		this.iUsuarioActualiza = iUsuarioActualiza;
 	}
 
+	
+
 	/**
 	 * @return the iUsuarioInserta
 	 */
@@ -144,39 +156,87 @@ public class Seguidore implements Serializable {
 		this.iUsuarioInserta = iUsuarioInserta;
 	}
 
+	
 
+	/**
+	 * @return the vEmotion
+	 */
+	public String getvEmotion() {
+		return vEmotion;
+	}
+
+	/**
+	 * @param vEmotion the vEmotion to set
+	 */
+	public void setvEmotion(String vEmotion) {
+		this.vEmotion = vEmotion;
+	}
+
+	/**
+	 * @return the vIdentidicador
+	 */
+	public String getvIdentidicador() {
+		return vIdentidicador;
+	}
+
+	/**
+	 * @param vIdentidicador the vIdentidicador to set
+	 */
+	public void setvIdentidicador(String vIdentidicador) {
+		this.vIdentidicador = vIdentidicador;
+	}
+
+	/**
+	 * @return the vMensaje
+	 */
+	public String getvMensaje() {
+		return vMensaje;
+	}
+
+	/**
+	 * @param vMensaje the vMensaje to set
+	 */
+	public void setvMensaje(String vMensaje) {
+		this.vMensaje = vMensaje;
+	}
 	/**
 	 * @return the usuarioEnvia
 	 */
 	public Usuario getUsuarioEnvia() {
 		return usuarioEnvia;
 	}
-
-
 	/**
 	 * @param usuarioEnvia the usuarioEnvia to set
 	 */
 	public void setUsuarioEnvia(Usuario usuarioEnvia) {
 		this.usuarioEnvia = usuarioEnvia;
 	}
-
-
 	/**
 	 * @return the usuarioRecibe
 	 */
 	public Usuario getUsuarioRecibe() {
 		return usuarioRecibe;
 	}
-
-
 	/**
 	 * @param usuarioRecibe the usuarioRecibe to set
 	 */
 	public void setUsuarioRecibe(Usuario usuarioRecibe) {
 		this.usuarioRecibe = usuarioRecibe;
 	}
-
+	/**
+	 * @return the cEstadoMensaje
+	 */
+	public String getcEstadoMensaje() {
+		return cEstadoMensaje;
+	}
+	/**
+	 * @param cEstadoMensaje the cEstadoMensaje to set
+	 */
+	public void setcEstadoMensaje(String cEstadoMensaje) {
+		this.cEstadoMensaje = cEstadoMensaje;
+	}
 
 	
-
+	
+	
 }

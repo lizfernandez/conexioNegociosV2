@@ -5,8 +5,133 @@
     xmlns:ui="http://java.sun.com/jsf/facelets" 
     xmlns:p="http://primefaces.org/ui"
     xmlns:c="http://java.sun.com/jsp/jstl/core">
-<c:set var="usuario" value="#{sessionScope['Usuario']}" scope="session"/>
 
+<audio id="rintonCN" src="#{request.contextPath}/media/sound/CNSound.mp3"> </audio>
+<div class="chatInd" id="chatInd">
+                   
+ 
+        <h:form id="frm">                    
+<!--          <p:remoteCommand name="mensajeDetalle" update=":frm:dtPersonasCabecera , :frm:dtPersonas"  actionListener="#{mensajesView.listaMensajesDetalle()}" > -->
+						     
+<!--          </p:remoteCommand>  -->
+              <div id="chatDetalle" > 
+               <ul>                   
+                   <li class="head1"> 
+                     <h4>                       
+	                     <span id="span_comment_head" class="span">
+	                     <a href="">
+	                       <p:outputLabel value=" #{mensajesView.detalleCabecera.usuarioRecibe.persona.vNombres} #{mensajesView.detalleCabecera.usuarioRecibe.persona.vApellidos} "  id="dtPersonasCabecera"   />
+	                      </a> 
+	                       </span>
+		               
+		                 <span>                         
+ 						 <i class="fa fa-times"></i>
+ 						 <i class="fa fa-minus"></i> 						 
+                       </span>
+	                 </h4> 
+                   </li>
+                 </ul>
+                </div>
+<!--               </p:row> -->
+<!--               </p:dataList> -->
+           
+             <div id="msnDetalle">
+              <p:dataList id="dtPersonas" value="#{mensajesView.listaMensajeDetalle}" var="item" varStatus="men">  
+               <div>
+                <p:row  rendered="#{item.usuarioRecibe ne null}">
+                <div class="msnChatRecibe" id="msnChatRecibe_id_#{items.usuarioRecibe.iUsuarioId}_#{items.vIdentidicador}"> 
+                             
+                   <div class="msnKL">
+                      <div class="msnPCimg"  id="imgRecibe_id_#{items.usuarioRecibe.iUsuarioId}_#{items.vIdentidicador}">
+                        <p:row rendered="#{item.usuarioRecibe.persona.vFoto eq null}"> 
+	                      <div class="fotoUser">                       
+				                     <i class="fa fa-user"></i>
+				          </div> 
+						</p:row>
+						<p:row rendered="#{item.usuarioRecibe.persona.vFoto ne null}">
+		                   <img src="#{request.contextPath}/afiliados/images/#{item.usuarioRecibe.persona.vFoto}"  width="33px" height="28px" ></img>
+			             </p:row>
+                      </div>
+                       <div class="msnPD">
+                          <div class="msnKR msnKRil"><i class="fa fa-caret-left"></i></div>
+                             <div class="msnJL">
+                              <p:dataList  value="#{item.listaMensajes}" var="items" varStatus="men">  
+				                <div id="msnMu" class="envia_#{items.vIdentidicador}">
+				                     <p:outputLabel value="#{items.vMensaje}" />
+				                </div>
+				              </p:dataList>
+				             </div>
+		                </div>
+	                </div>	             
+                </div>
+                </p:row>
+                
+                <p:row rendered="#{item.usuarioEnvia ne null}">                
+                <div class="msnChatEnvia">
+                
+                 <div class="msnTn">
+                   <div class="msnKL">
+                      <div class="msnPCimgR"  id="imgEnvia_id_#{items.usuarioRecibe.iUsuarioId}_#{items.vIdentidicador}">
+                        <p:row rendered="#{item.usuarioEnvia.persona.vFoto eq null}"> 
+	                      <div class="fotoUser">                       
+				              <i class="fa fa-user"></i>
+				          </div> 
+						</p:row>
+						<p:row rendered="#{item.usuarioEnvia.persona.vFoto ne null}">
+		                   <img src="#{request.contextPath}/afiliados/images/#{item.usuarioEnvia.persona.vFoto}"  width="33px" height="28px" ></img>
+			             </p:row>
+                      </div>
+                       <div class="msnPD">
+                          <div class="msnKR msnKRir"><i class="fa fa-caret-right"></i></div>
+                             <div class="msnJL">
+                             <p:dataList  value="#{item.listaMensajes}" var="items" varStatus="men"> 
+				                <div id="msnMu" class="envia_#{items.vIdentidicador}">				                    
+				                     <p:outputLabel value="#{items.vMensaje}" />
+				                </div>
+				             </p:dataList>
+				             </div>
+		                </div>
+	                </div>
+	              </div>
+                </div>
+               </p:row>
+              </div>
+           </p:dataList>
+           </div>
+          </h:form>
+          <h:form id="frmMsn">
+           <div id="enviaMensaje">  
+<!--             <p:dataList id="dtPersonasEnvia" value="#{mensajesView.listaMensajeDetalleCabecera}" var="item" varStatus="menEnvia">  -->
+                  
+                  <h:inputHidden id="hUsuRecibe"  value="#{mensajesView.detalleCabecera.usuarioRecibe.iUsuarioId}" />   
+                  <h:inputHidden id="hVidentiticador"  value="#{mensajesView.detalleCabecera.vIdentidicador}" />       
+		          <h:inputText id="so" value="#{mensajesView.mensaje.vMensaje}" onkeypress="if(event.keyCode == 13){  return false;}"
+		                onkeyup="if (event.keyCode != 13) return false;" styleClass="text">
+		                
+		               <f:ajax event="keyup" execute="@form"
+		                listener="#{mensajesView.enviarMensaje('I')}" />
+		               
+		          </h:inputText> 
+<!-- 	         </p:dataList> -->
+	         
+          </div>
+        </h:form>   
+ 
+<p:growl id="msj" widgetVar="wmsj" showDetail="true" />
+
+        <p:socket onMessage="handleMessage" channel="/notify" >
+<!--             <p:ajax event="message" update=":frm:dtPersonas"  /> -->
+        </p:socket>
+
+      
+        
+
+</div>
+
+<div id="content-chat-line">
+ 
+
+</div>
 <div id="content-chat"> 
 
  <div id="navigationVertical">                
@@ -28,7 +153,42 @@
                    
                    <li class="head1">                     
                      <ul>
-                       <li></li>
+                      <li>
+                     
+	                    
+                    </li>
+                      <h:form id="formSeguidoreslist">  
+                      <c:forEach items="#{mensajesView.listaSeguidores()}" var="item"  varStatus="seguidores" >
+                                         
+                        <li>
+                          <h:outputLink id="content_#{item.iSeguidorId}" value="#">
+                                <img src="#{request.contextPath}/afiliados/images/#{item.usuarioEnvia.persona.vFoto}" class="img" width="33px" height="28px" ></img>
+	                           
+	                               <h:outputText value=" #{item.usuarioEnvia.persona.vNombres} #{item.usuarioEnvia.persona.vApellidos} " />
+	                         
+							 
+	                             <c:if test="#{item.usuarioEnvia.cConectado=='SI'}">
+	                                <div class="sConectado">
+	                                 <i class="fa fa-check-circle"></i>
+	                                 </div>
+	                             </c:if>   
+	                             <c:if test="#{item.usuarioEnvia.cConectado=='NO'}"> 
+	                             <div class="nConectado">
+	                                 <i class="fa fa-circle"></i>
+	                                 </div>
+	                                 
+	                             </c:if> 
+	                           <f:param name="iUsuarioId" value="#{item.usuarioRecibe.iUsuarioId}" />
+	                        
+	                        
+	                         </h:outputLink>
+                             <p:tooltip id="toolTipContent_#{item.iSeguidorId}" for="content_#{item.iSeguidorId}">
+							               <img src="#{request.contextPath}/afiliados/images/#{item.usuarioEnvia.persona.vFoto}" ></img>
+							 </p:tooltip>
+
+                         </li>
+                      </c:forEach>
+                        </h:form>
                      </ul>
                    </li>
                  </ul>

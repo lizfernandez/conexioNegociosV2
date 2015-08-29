@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.entitie.Empresa;
+
 import com.entitie.Usuario;
 
 
@@ -23,7 +23,8 @@ public class UsuarioVo implements Serializable{
 	private String vContrasena;
 	private String vIdentificador;
 	private String vUsuario;
-	private List<EmpresaVo> empresa;
+	private List<UsuarioVo> listaUsuarios;
+	private String cConectado;
 
 	public UsuarioVo() {
 		super();
@@ -41,11 +42,12 @@ public class UsuarioVo implements Serializable{
 		this.vContrasena = usuario.getvContrasena();
 		this.vIdentificador = usuario.getvIdentificador();
 		this.vUsuario = usuario.getvUsuario();
-		if(usuario.getEmpresas()!=null){	
-			this.empresa = new ArrayList<EmpresaVo>();
-			for(Empresa em:usuario.getEmpresas()){
-				EmpresaVo e= new EmpresaVo(em);
-				this.empresa.add(e)		;	
+		this.cConectado= usuario.getcConectado();
+		if(usuario.getListaUsuarios()!=null){	
+			this.listaUsuarios = new ArrayList<UsuarioVo>();
+			for(Usuario em:usuario.getListaUsuarios()){
+				UsuarioVo e= new UsuarioVo(em);
+				this.listaUsuarios.add(e)		;	
 			}
 		}
 		     
@@ -207,18 +209,34 @@ public class UsuarioVo implements Serializable{
 		this.vUsuario = vUsuario;
 	}
 
+	
+
 	/**
-	 * @return the empresa
+	 * @return the listaUsuarios
 	 */
-	public List<EmpresaVo> getEmpresa() {
-		return empresa;
+	public List<UsuarioVo> getListaUsuarios() {
+		return listaUsuarios;
 	}
 
 	/**
-	 * @param empresa the empresa to set
+	 * @param listaUsuarios the listaUsuarios to set
 	 */
-	public void setEmpresa(List<EmpresaVo> empresa) {
-		this.empresa = empresa;
+	public void setListaUsuarios(List<UsuarioVo> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+
+	/**
+	 * @return the cConectado
+	 */
+	public String getcConectado() {
+		return cConectado;
+	}
+
+	/**
+	 * @param cConectado the cConectado to set
+	 */
+	public void setcConectado(String cConectado) {
+		this.cConectado = cConectado;
 	}
 
 	

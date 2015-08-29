@@ -55,9 +55,14 @@ public class Usuario implements Serializable {
 	private String vIdentificador;
 
 	private String vUsuario;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iUsuarioPadreId")
+	private Usuario usuario;
 	
 	@OneToMany(mappedBy="usuario")
-	private List<Empresa> empresas;
+	private List<Usuario> listaUsuarios;
+	
+    private String cConectado;
 
 	public Usuario() {
 	}
@@ -74,6 +79,7 @@ public class Usuario implements Serializable {
 		this.vContrasena = usuario.getvContrasena();
 		this.vIdentificador = usuario.getvIdentificador();
 		this.vUsuario = usuario.getvUsuario();
+		this.cConectado= usuario.getcConectado();
 	}
 	/**
 	 * @return the iUsuarioId
@@ -231,18 +237,34 @@ public class Usuario implements Serializable {
 		this.persona = persona;
 	}
 
+	
+
 	/**
-	 * @return the empresas
+	 * @return the listaUsuarios
 	 */
-	public List<Empresa> getEmpresas() {
-		return empresas;
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
 	}
 
 	/**
-	 * @param empresas the empresas to set
+	 * @param listaUsuarios the listaUsuarios to set
 	 */
-	public void setEmpresas(List<Empresa> empresas) {
-		this.empresas = empresas;
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+
+	/**
+	 * @return the cConectado
+	 */
+	public String getcConectado() {
+		return cConectado;
+	}
+
+	/**
+	 * @param cConectado the cConectado to set
+	 */
+	public void setcConectado(String cConectado) {
+		this.cConectado = cConectado;
 	}
 
 	
