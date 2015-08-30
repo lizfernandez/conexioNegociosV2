@@ -14,6 +14,7 @@ import com.entitie.Menutitulo;
 import com.entitie.Permiso;
 import com.entitie.Usuario;
 import com.entities.vo.MenutituloVo;
+import com.entities.vo.PerfilVo;
 import com.entities.vo.PermisoVo;
 import com.entities.vo.UsuarioVo;
 import com.util.Constantes;
@@ -52,7 +53,15 @@ public class UsuarioService  implements Serializable{
 		try {
 			transaccion = genericaDao.entityTransaction();
 			transaccion.begin();
+			
+			HttpSession session = FaceContext.getSession();
+			session.setAttribute("Usuario", vo);
+            session.setAttribute("iUsuarioId", vo.getiUsuarioId());
+            
 			if(mode.equals("I")){
+				PerfilVo perfil = new PerfilVo();
+				perfil.setiPerfilId("1");
+				vo.setPerfil(perfil);
 				/** se crea un nuevo usuario **/
 				Usuario usuario= new Usuario(vo);
 				usuario.setvUsuario(vo.getPersona().getvEmail());				
@@ -63,8 +72,8 @@ public class UsuarioService  implements Serializable{
 				genericaDao.persistEndidad(usuario);	
 			}
 			
-		resultado=	genericaDao.commitEndidad(transaccion);
-			
+			resultado=	genericaDao.commitEndidad(transaccion);
+			session.setAttribute("MisPermisos",this.usuarioPermisos());
 			
 		  
 		    
