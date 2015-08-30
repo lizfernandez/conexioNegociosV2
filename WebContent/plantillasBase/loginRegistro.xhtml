@@ -12,7 +12,7 @@
             
               <p>#{msg['spConectar']}:</p>
 <!--               <h:form> -->
-              <a href="#" class="facebook">
+              <a href="#" class="facebook" id="login">
                  <i class="fa fa-facebook"></i>
               </a>
 
@@ -58,20 +58,20 @@
 	   <div id="dlg_register" class="login_dropdown">
 			<p>#{msg['spCrearCuenta']}:</p>
              
-          <h:form class="contact-form-r">
+          <h:form class="contact-form-r" id="frmRegister">
           
              <p:messages  closable="true" autoUpdate="true"></p:messages> 
               <label class="name wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:inputText  name="#{msg['msnNombresCompletos']}"  feedback="true" placeholder="#{msg['msnNombresCompletos']}:" required="true" value="#{usuarioView.usuarioVo.persona.vNombres}" requiredMessage="#{msg['msnRequiere']} #{msg['msnNombresCompletos']}"/>
+               <p:inputText id="vNombres" name="#{msg['msnNombresCompletos']}"  feedback="true" placeholder="#{msg['msnNombresCompletos']}:" required="true" value="#{usuarioView.usuarioVo.persona.vNombres}" requiredMessage="#{msg['msnRequiere']} #{msg['msnNombresCompletos']}"/>
              </label>
               <label class="email wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:inputText  name="#{msg['msnEmail']}"  feedback="true" placeholder="#{msg['msnEmail']}:" required="true" value="#{usuarioView.usuarioVo.persona.vEmail}" requiredMessage="#{msg['msnRequiere']} #{msg['msnEmail']}" />
+               <p:inputText id="vEmail" name="#{msg['msnEmail']}"  feedback="true" placeholder="#{msg['msnEmail']}:" required="true" value="#{usuarioView.usuarioVo.persona.vEmail}" requiredMessage="#{msg['msnRequiere']} #{msg['msnEmail']}" />
              </label>
              <label class="phone wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:inputText  name="#{msg['msnTelefono']}" feedback="true" placeholder="#{msg['msnTelefono']}:" required="true" value="#{usuarioView.usuarioVo.persona.vTelefono}" requiredMessage="#{msg['msnRequiere']} #{msg['msnTelefono']}" />
+               <p:inputText id="vTelefono" name="#{msg['msnTelefono']}" feedback="true" placeholder="#{msg['msnTelefono']}:" required="true" value="#{usuarioView.usuarioVo.persona.vTelefono}" requiredMessage="#{msg['msnRequiere']} #{msg['msnTelefono']}" />
              </label>
              <label class="seguridad wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-               <p:password name="#{msg['msnPass']}" feedback="true" placeholder="#{msg['msnPass']}:" required="true" value="#{usuarioView.usuarioVo.vContrasena}" requiredMessage="#{msg['msnRequiere']} #{msg['msnPass']}"/>
+               <p:password id="vPass" name="#{msg['msnPass']}" feedback="true" placeholder="#{msg['msnPass']}:" required="true" value="#{usuarioView.usuarioVo.vContrasena}" requiredMessage="#{msg['msnRequiere']} #{msg['msnPass']}"/>
              </label> 
              <div class="space"></div>   
              <div class="space"></div>   
@@ -89,7 +89,7 @@
              <div class="space"></div>   
              <div class="space"></div>                
             
-           <p:commandButton value="#{msg['btnRegistro']}" action="#{usuarioView.iduUsuario}" styleClass="ui-buttones">
+           <p:commandButton value="#{msg['btnRegistro']}" action="#{usuarioView.iduUsuario}" styleClass="ui-buttones" id="btnRegister">
              <f:setPropertyActionListener target="#{usuarioView.mode}" value="I" />
              <f:ajax execute="@form" />
 

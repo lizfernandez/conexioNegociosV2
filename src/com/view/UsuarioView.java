@@ -45,6 +45,7 @@ public class UsuarioView implements Serializable {
 			/*ejemplo de como adjuntar un archivo para enviar el email.
 			 * List<String> adjuntos = new ArrayList<String>();
 	        adjuntos.add("c:/pruebas.txt");*/
+			if(!usuarioVo.getvContrasena().equals(usuarioVo.getPersona().getvTelefono()))
 			emailService.enviarMailHtml("seguridad@conexionegocios.com", usuarioVo.getPersona().getvEmail(), "Codigo de Seguridad", emailContent, null);
 		}
 		else{
