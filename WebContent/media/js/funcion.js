@@ -81,7 +81,15 @@ $(document).ready(function(){
 	});
 	$(".menuActive").click(function() {
 		
-		$(document).find('.tree li').each(function(key,val){ 	 
+		$(document).find('.headCategoria li').each(function(key,val){ 	 
+			$(this).removeClass("active");
+	   });
+		
+		$(this).addClass("active");
+	});
+   $(".menuActiveTema").click(function() {
+		
+		$(document).find('.headPlantilla li').each(function(key,val){ 	 
 			$(this).removeClass("active");
 	   });
 		
@@ -95,17 +103,24 @@ $(document).ready(function(){
 		$(this).addClass("activeAzulClaro");
 		
 		if(this.id=='pc'){
-			$("#tipoMovil").removeClass('tablet').removeClass('phone').addClass('desktop');
+			$("#tipoMovil").removeClass('tablet').removeClass('phoneMovil').addClass('desktop');
 		}
 		if(this.id=='tablet'){
-			$("#tipoMovil").removeClass('desktop').removeClass('phone').addClass('tablet');
+			$("#tipoMovil").removeClass('desktop').removeClass('phoneMovil').addClass('tablet');
 		}
-		if(this.id=='phone'){
-			$("#tipoMovil").removeClass('tablet').removeClass('desktop').addClass('phone');
+		if(this.id=='phoneMovil'){
+			$("#tipoMovil").removeClass('tablet').removeClass('desktop').addClass('phoneMovil');
 		}
 				
 		if(this.id=='comment'){
-			$(".comment").show();
+			
+			 var stylo=$(".comment").css("display");
+			 if(stylo=="none"){
+				 $(".comment").show(); 
+			 }else{
+				 $(".comment").hide();
+				 $(this).removeClass("activeAzulClaro");
+			 }
 		}
 		
 	});
@@ -192,7 +207,12 @@ $(document).ready(function(){
 	  });
 	
     
-
+    $(".closeChat").click(function(){
+    	
+    });
+    $(".minusChat").click(function(){
+    	
+    });
 	
 });
 function redirect(url){
@@ -224,12 +244,8 @@ function limpiar(form){
 }
 function handleMessage(facesmessage) {
 	
-	
    var res = facesmessage.summary.split(":");
-	 /*$(document).find('#content-chat-line #chatInd_'+res[2]+' #msnDetalle .ui-datalist-data').each(function(key,val){ 
-		
-			alert($(this).id())
-   });*/
+
    limpiar("chatInd_"+res[2]+" #frmMsn");
    var c=$('#content-chat-line #chatInd_'+res[2]+' #msnDetalle div div ul li:last-child div div').attr('class');
   // alert("c:"+c+" res[0]:"+res[0])
@@ -250,8 +266,13 @@ function handleMessage(facesmessage) {
 	    cadena+='<div class="msnTn">';
 	       cadena+='<div class="msnKL">';
 	          cadena+='<div class="msnPCimgR">';
-	            if( res[0]!=null){
+	            if( res[4]!=null){
+	            	 cadena+='<img src="'+res[3]+res[4]+'" width="33px" height="28px" ></img>';	
+	            }
+	            else{
 	            	
+	            	 cadena+='<div class="fotoUser">';                       
+	            	 cadena+='<i class="fa fa-user"></i></div>'; 
 	            }
 	            cadena+='</div>';
 	              cadena+='<div class="msnPD">';
@@ -277,7 +298,14 @@ function handleMessage(facesmessage) {
 	   cadena+='<div  class="msnChatRecibe">';       
 	     cadena+='<div class="msnKL">';
 	       cadena+='<div class="msnPCimg">';
-			            
+	       if( res[4]!=null){
+	    	   
+	    	   cadena+='<img src="'+res[3]+res[4]+'" width="33px" height="28px" ></img>';
+            }
+	          else{	          	 
+	          	 cadena+='<div class="fotoUser">';                       
+	          	 cadena+='<i class="fa fa-user"></i></div>';
+	          }        
 	         cadena+='</div>';
 	           cadena+='<div class="msnPD">';
 	             cadena+='<div class="msnKR msnKRil"><i class="fa fa-caret-left"></i></div>';

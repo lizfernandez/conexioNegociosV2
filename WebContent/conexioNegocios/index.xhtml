@@ -52,14 +52,15 @@
     <c:if test="#{sessionScope['Usuario']==null}">
       <ui:include src="/plantillasBase/menu.xhtml"></ui:include>  
     </c:if>
+    
     <c:if test="#{sessionScope['Usuario']!=null}">
       <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include> 
       <ui:include src="/plantillasBase/contentLeft.xhtml"></ui:include>  
       <span class="trigger icon-arrow-small-up" id="trigger"> <i class="fa fa-chevron-up"></i></span> 
      </c:if>
+     
     <c:if test="#{themeView.vPermisoTheme=='SI'}">
-  
-      
+   
        <!-- Dialog de editar-->  
 	 
 	  <p:dialog widgetVar="statusDialog"  modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
@@ -602,6 +603,15 @@
           
         }
     }
+    
+ // Load the SDK asynchronously
+	  (function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/en_US/sdk.js";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
 </script>
     
 </h:body>

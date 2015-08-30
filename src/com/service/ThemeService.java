@@ -32,7 +32,7 @@ public class ThemeService  implements Serializable{
     public List<PlantillausuarioVo> listaSeccionPlantilla(String tipoSeccion, String nombreDirectorio) {
         List<Plantillausuario> list = new ArrayList<Plantillausuario>();
         List<PlantillausuarioVo> listVo = new ArrayList<PlantillausuarioVo>();
-        String where = " p.empresa.vNombreDirectorio='"+nombreDirectorio+"'"
+        String where = " p.usuario.persona.vNombreDirectorio='"+nombreDirectorio+"'"
         		+ "and p.tipoSeccion.iTipoSeccionId="+tipoSeccion
         		+" order by p.dFechaInserta desc";
         list=genericaDao.findEndidadBDList(Plantillausuario.class,where);

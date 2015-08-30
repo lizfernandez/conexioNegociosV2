@@ -54,7 +54,7 @@
                                          
                         <li>
                           <p:commandLink ajax="true" actionListener="{themeView.listaThemeActivo()}" oncomplete="redirect('#{request.contextPath}/#{item.persona.vNombreDirectorio}/')">
-	                           <img class="img" width="65px" height="24px" src="#{request.contextPath}/#{item.persona.vNombreDirectorio}/media/images/#{item.persona.vFoto}"  /> #{item.persona.vRazonSocial}
+	                           <img class="img imgRectangulo" width="65px" height="24px" src="#{request.contextPath}/#{item.persona.vNombreDirectorio}/media/images/#{item.persona.vFoto}"  /> #{item.persona.vRazonSocial}
 	                           <f:param name="nombreDirectorio" value="#{item.persona.vNombreDirectorio}" />
 	                        
 	                        

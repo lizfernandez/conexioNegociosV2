@@ -11,6 +11,7 @@ import com.entitie.Categoria;
 import com.entitie.Plantilla;
 import com.entities.vo.CategoriaVo;
 import com.entities.vo.PlantillaVo;
+import com.util.Constantes;
 
 @ManagedBean(name = "plantillaService")
 @ApplicationScoped
@@ -28,10 +29,21 @@ public class PlantillaService {
 	      return listVo;
 		  
 	  }
-	public List<PlantillaVo> listaPlantillaCategoria(int iCategoriaId){
+	public List<PlantillaVo> listaPlantillaCategoria(String  iCategoriaId){
 		  List<PlantillaVo> listVo = new ArrayList<PlantillaVo>();	
-		  String where=" p.categoria.iCategoriaId="+iCategoriaId;
-		     
+		  String where="";
+		  if(iCategoriaId.equals("t")){
+			  where=" p.cEstadoCodigo='"+Constantes.estadoActivo+"'";
+		  }
+		  else if(iCategoriaId.equals("g")){
+			  where=" p.fPrecio IS NULL and p.cEstadoCodigo='"+Constantes.estadoActivo+"'";
+		  }
+		  else if(iCategoriaId.equals("p")){
+			  where=" p.fPrecio IS NOT NULL and p.cEstadoCodigo='"+Constantes.estadoActivo+"'";
+		  }
+		  else{
+		  where=" p.categoria.iCategoriaId="+Integer.parseInt(iCategoriaId);
+		  }  
 	      List<Plantilla>  list = genericaDao.findEndidadBDList(Plantilla.class, where);
 	      int i=1;
 	      for(Plantilla bean:list) {        	

@@ -14,23 +14,24 @@
 <!--          <p:remoteCommand name="mensajeDetalle" update=":frm:dtPersonasCabecera , :frm:dtPersonas"  actionListener="#{mensajesView.listaMensajesDetalle()}" > -->
 						     
 <!--          </p:remoteCommand>  -->
-              <div id="chatDetalle" > 
-               <ul>                   
-                   <li class="head1"> 
-                     <h4>                       
-	                     <span id="span_comment_head" class="span">
-	                     <a href="">
-	                       <p:outputLabel value=" #{mensajesView.detalleCabecera.usuarioRecibe.persona.vNombres} #{mensajesView.detalleCabecera.usuarioRecibe.persona.vApellidos} "  id="dtPersonasCabecera"   />
-	                      </a> 
-	                       </span>
+              <div id="chatDetalle" >
+               <div class="msnEf" > 
+                 <div class="msnIk" > 
+                   <div class="msnJN" > 
+                     <div class="msnGN" > 
+		                 
+		               <a href="">
+			                       <p:outputLabel value=" #{mensajesView.detalleCabecera.usuarioRecibe.persona.vNombres} #{mensajesView.detalleCabecera.usuarioRecibe.persona.vApellidos} "  id="dtPersonasCabecera"   />
+			           </a>			           
+		                </div>
 		               
-		                 <span>                         
- 						 <i class="fa fa-times"></i>
- 						 <i class="fa fa-minus"></i> 						 
-                       </span>
-	                 </h4> 
-                   </li>
-                 </ul>
+		            </div>
+		             <div class="msnvV" >	
+		              	<span class="minusChat"> <i class="fa fa-minus"></i></span>
+		              	<span class="closeChat"> <i class="fa fa-times"></i></span>   
+			         </div>
+                   </div>
+                 </div>
                 </div>
 <!--               </p:row> -->
 <!--               </p:dataList> -->
@@ -39,17 +40,17 @@
               <p:dataList id="dtPersonas" value="#{mensajesView.listaMensajeDetalle}" var="item" varStatus="men">  
                <div>
                 <p:row  rendered="#{item.usuarioRecibe ne null}">
-                <div class="msnChatRecibe" id="msnChatRecibe_id_#{items.usuarioRecibe.iUsuarioId}_#{items.vIdentidicador}"> 
+                <div class="msnChatRecibe" id="msnChatRecibe_id_#{item.usuarioRecibe.iUsuarioId}_#{item.vIdentidicador}"> 
                              
                    <div class="msnKL">
-                      <div class="msnPCimg"  id="imgRecibe_id_#{items.usuarioRecibe.iUsuarioId}_#{items.vIdentidicador}">
+                      <div class="msnPCimg"  id="imgRecibe_id_#{item.usuarioRecibe.iUsuarioId}_#{item.vIdentidicador}">
                         <p:row rendered="#{item.usuarioRecibe.persona.vFoto eq null}"> 
 	                      <div class="fotoUser">                       
 				                     <i class="fa fa-user"></i>
 				          </div> 
 						</p:row>
 						<p:row rendered="#{item.usuarioRecibe.persona.vFoto ne null}">
-		                   <img src="#{request.contextPath}/afiliados/images/#{item.usuarioRecibe.persona.vFoto}"  width="33px" height="28px" ></img>
+		                   <img src="#{request.contextPath}/#{item.usuarioRecibe.persona.vNombreDirectorio}/images/#{item.usuarioRecibe.persona.vFoto}"  width="33px" height="28px" ></img>
 			             </p:row>
                       </div>
                        <div class="msnPD">
@@ -71,14 +72,14 @@
                 
                  <div class="msnTn">
                    <div class="msnKL">
-                      <div class="msnPCimgR"  id="imgEnvia_id_#{items.usuarioRecibe.iUsuarioId}_#{items.vIdentidicador}">
+                      <div class="msnPCimgR"  id="imgEnvia_id_#{item.usuarioRecibe.iUsuarioId}_#{item.vIdentidicador}">
                         <p:row rendered="#{item.usuarioEnvia.persona.vFoto eq null}"> 
 	                      <div class="fotoUser">                       
 				              <i class="fa fa-user"></i>
 				          </div> 
 						</p:row>
 						<p:row rendered="#{item.usuarioEnvia.persona.vFoto ne null}">
-		                   <img src="#{request.contextPath}/afiliados/images/#{item.usuarioEnvia.persona.vFoto}"  width="33px" height="28px" ></img>
+		                   <img src="#{request.contextPath}/#{item.usuarioEnvia.persona.vNombreDirectorio}/images/#{item.usuarioEnvia.persona.vFoto}"  width="33px" height="28px" ></img>
 			             </p:row>
                       </div>
                        <div class="msnPD">

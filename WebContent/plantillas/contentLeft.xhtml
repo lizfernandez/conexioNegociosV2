@@ -23,9 +23,8 @@
 <!--                  </ul> -->
                
                 <ul class="tree">
-                   
-                   <li class="head1">                     
-                     <ul>
+                 <li class="head1">     
+                   <ul>
                        <li>
                             <a  id="miPerfil">
                              <c:if test="#{usuario.persona.vFoto==null}"> 
@@ -39,30 +38,57 @@
                        </li>                       
                      </ul>
                   </li>
-                   <li class="head1">
+                   <li class="headPlantilla">     
+                     <a> #{msg['spPlantilla']}</a>
+                          <div class="up"></div>                
+                     <ul>
+                     <h:form>
+                       <li class="menuActiveTema active">
+                          <p:commandLink>
+                             <f:param name="iCategoriaId" value="t" />
+                             #{msg['spTodos']}  
+                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
+			              </p:commandLink>
+                       </li>
+                       <li class="menuActiveTema">
+                          <p:commandLink>
+                             <f:param name="iCategoriaId" value="g" />
+                            #{msg['spGratis']} 
+                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
+			              </p:commandLink>
+                       </li>
+                       <li class="menuActiveTema ">
+                          <p:commandLink>
+                             <f:param name="iCategoriaId" value="p" />
+                             #{msg['spPremium']} 
+                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
+			              </p:commandLink>
+                       </li>
+                       </h:form>                       
+                     </ul>
+                  </li>
+                   <li class="headCategoria">
                      <a> #{msg['spCategoria']}</a>
                           <div class="up"></div> 
                      <ul>
                      <h:form>  
+                     <li class="menuActive active">
+                          <p:commandLink>
+                             <f:param name="iCategoriaId" value="t" />
+                             #{msg['spTodos']}  
+                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
+			              </p:commandLink>
+                       </li>
                       <c:forEach items="#{plantillaView.listaCategoria()}" var="item"  varStatus="categoria" >
-                         <c:if test="#{categoria.index==0}">
-	                         <li class="menuActive active">
-		                        <p:commandLink>
-			                             <f:param name="iCategoriaId" value="#{item.iCategoriaId}" />
-			                             #{item.vNombre}  
-			                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
-			                    </p:commandLink>
-                            </li>
-	                      </c:if>
-	                       <c:if test="#{categoria.index!=0}">
-	                        <li class="menuActive">
+						  <li class="menuActive">
+						  
 	                        <p:commandLink >
 		                             <f:param name="iCategoriaId" value="#{item.iCategoriaId}" />
 		                             #{item.vNombre}           
 		                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />               
 		                    </p:commandLink>
                             </li>
-	                       </c:if>                
+	                                      
                          
                       </c:forEach>
                         </h:form>

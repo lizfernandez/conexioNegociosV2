@@ -107,6 +107,7 @@ public class MensajesView implements Serializable {
         String summary =mensaje.getUsuarioEnvia().getiUsuarioId()
         		        +":"+mensaje.getUsuarioRecibe().getiUsuarioId()
         		        +":"+mensaje.getvIdentidicador()
+        		        +":"+FaceContext.getRequestContentPath()+"/"+mensaje.getUsuarioEnvia().getPersona().getvNombreDirectorio()+"/images/"
         		        +":"+mensaje.getUsuarioEnvia().getPersona().getvFoto()
         		        +":"+mensaje.getUsuarioRecibe().getPersona().getvFoto();
         String detail =  mensaje.getvMensaje();

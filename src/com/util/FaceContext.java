@@ -40,6 +40,11 @@ public class FaceContext {
         return (HttpServletResponse) FacesContext.getCurrentInstance()
                 .getExternalContext().getResponse();
     }
+    public static String getRequestContentPath() {
+        String url= FacesContext.getCurrentInstance()
+                .getExternalContext().getRequestContextPath();
+		return url;
+    }
     public static void addMessageInfo(String idAtribute,String summary) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
         FacesContext.getCurrentInstance().addMessage(idAtribute, message);

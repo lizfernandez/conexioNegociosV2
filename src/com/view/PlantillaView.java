@@ -29,12 +29,15 @@ public class PlantillaView implements Serializable {
 		
 		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String CategoriaId =  params.get("iCategoriaId");
-		int iCategoriaId;
+		String iCategoriaId;
 		if(CategoriaId==null){
-			iCategoriaId = (listaCategoria().get(0).getiCategoriaId());
+			/*
+			 * t: todos
+			 **/			
+			iCategoriaId = "t";
 		}
 		else{
-			iCategoriaId = Integer.parseInt(CategoriaId);
+			iCategoriaId = CategoriaId;
 		}
 		
 		listaPlantilla = service.listaPlantillaCategoria(iCategoriaId);

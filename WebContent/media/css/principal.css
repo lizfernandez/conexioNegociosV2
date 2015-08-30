@@ -231,14 +231,14 @@ button.btnFoto.ui-button .ui-icon-plusthick{
     margin-top: 105px;
     width: 815px !important;
 }
-.phone{
+.phoneMovil{
 	width: 373px;
 	height: 636px;
 	background: url("../images/phone-v.png");
 	margin: 20px auto;
     overflow: auto;
 }
-.phone iframe{
+.phoneMovil iframe{
 	height: 531px !important;
     margin-left: 20px;
     margin-top: 105px;
