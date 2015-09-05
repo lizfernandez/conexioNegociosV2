@@ -22,6 +22,7 @@ public class SeguidoreVo implements Serializable {
 	private UsuarioVo usuarioEnvia;
 	private int iUsuarioInserta;
 	private UsuarioVo usuarioRecibe;
+	private String vIdentidicador;
 
 	public SeguidoreVo() {
 	}
@@ -36,6 +37,7 @@ public class SeguidoreVo implements Serializable {
 		this.usuarioEnvia = seguidores.getUsuarioEnvia()!=null? new UsuarioVo(seguidores.getUsuarioEnvia()): null;
 		this.iUsuarioInserta = seguidores.getiUsuarioInserta();
 		this.usuarioRecibe = seguidores.getUsuarioRecibe()!=null? new UsuarioVo(seguidores.getUsuarioRecibe()):null;
+		this.vIdentidicador=seguidores.getvIdentidicador();
 	}
 
 
@@ -166,6 +168,22 @@ public class SeguidoreVo implements Serializable {
 	 */
 	public void setUsuarioRecibe(UsuarioVo usuarioRecibe) {
 		this.usuarioRecibe = usuarioRecibe;
+	}
+
+
+	/**
+	 * @return the vIdentidicador
+	 */
+	public String getvIdentidicador() {
+		return vIdentidicador;
+	}
+
+
+	/**
+	 * @param vIdentidicador the vIdentidicador to set
+	 */
+	public void setvIdentidicador(String vIdentidicador) {
+		this.vIdentidicador = vIdentidicador;
 	}
 
 

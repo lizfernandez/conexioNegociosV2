@@ -162,7 +162,12 @@ $(document).ready(function(){
 		 }
 		
 	});
-	
+	$(".tabPago").click(function() {
+		 $("#panel .tabPanel").slideUp(300,"easeInOutQuint");
+		 $(this).parent().find('.tabPanel').slideDown(300,"easeInOutQuint");
+		 
+		
+	});
 	$(window).resize(function() {
 		 var windowWidth = $(window).width();
 	     //alert(windowWidth);
@@ -205,6 +210,18 @@ $(document).ready(function(){
 			  document.getElementById("iframe"+idEdit[1]).contentWindow.refreshSections();
 		  });
 	  });
+	/*$('.boxOver').mouseenter(function(e) {
+		$(this).find('.imgOver').animate({ height: '80%', left: '0', top: '0', width: '310'}, 100);
+		
+		}).mouseleave(function(e) {
+		$(this).find('.imgOver').animate({ height: '100%', left: '-20', top: '-20', width: '350'}, 100);
+	
+		});
+	
+	$('.viewport').click(function(e){
+		$.lightbox("img/p11.jpg");
+		});
+*/
 	
     
     $(".closeChat").click(function(){
@@ -215,6 +232,9 @@ $(document).ready(function(){
     });
 	
 });
+function addCar(){
+	
+}
 function redirect(url){
 	//alert(url);
 	 window.location.href = url;

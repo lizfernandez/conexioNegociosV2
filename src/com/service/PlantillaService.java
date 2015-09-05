@@ -63,5 +63,14 @@ public class PlantillaService {
 	      return listVo;
 		  
 	  }
+    
+	public PlantillaVo findPlantilla(int iPlantillaId){
+			
+	      Plantilla  list = (Plantilla) genericaDao.findEndidad(Plantilla.class, iPlantillaId);	            	
+	      PlantillaVo vo= new PlantillaVo(list);  
+	      return vo;
+		  
+		
+	}
 	
 }

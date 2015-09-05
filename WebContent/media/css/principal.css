@@ -259,3 +259,127 @@ button.btnFoto.ui-button .ui-icon-plusthick{
 .color3{
 	color:#7d7d7d;
 }
+.chkRigth{
+	margin-left: -24px;
+}
+.chkLeft{
+	float: left;
+	padding: 5px;
+}
+#pasos{
+	
+    float: right;
+    font-size: 25px;
+    height: 40px;
+    margin-top: 44px;
+    position: relative;
+    width: 320px;
+    
+}
+
+.pasos{
+	background: #c4c4c4 none repeat scroll 0 0;
+    border-radius: 50px;
+    color: #707070;
+    height: 43px;
+    width: 43px;
+	
+}
+
+.pasos i{
+	padding: 9px 6px 6px;
+}
+.pasosLetra{
+	font-size: 14px;
+    margin-left: 2px;
+    margin-top: -6px;
+}
+.pasoActivo{
+	background: #0099ff;
+	color: #fff;
+}
+.secuencia{
+	float: left;
+	margin-right: 40px;
+	
+}
+.pasoCompra {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+    float: left;
+    margin: 10px 10px 20px;
+    min-height: 500px;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    width: 377px;
+}
+.pasoCompra h2 {
+    background: #464646 none repeat scroll 0 0;
+    color: #fff;
+    font: 300 15px/30px "Open Sans",sans-serif;
+    margin: 0;
+    padding: 4px 23px;
+    text-transform: uppercase;
+}
+.pasoCompra h2 span{
+	background-color: #0099ff;
+    border-radius: 50%;
+    color: #fff;
+    overflow: auto;
+    padding: 4px 12px;
+    margin-right: 7px;
+}
+.pagoVisa{
+	background-image: url("../images/visa.jpg");
+    background-repeat: no-repeat;
+    float: left;
+    height: 49px;
+    width:84px;
+	
+}
+.pagoMaster{
+	background-image: url("../images/mastercard.jpg");
+    background-repeat: no-repeat;
+    float: left;
+    height: 49px;
+    width:84px;
+	
+}
+.pagoBcp{
+	background-image: url("../images/bcp.jpg");
+    background-repeat: no-repeat;
+    float: left;
+    height: 49px;
+    width:84px;
+	
+}
+.pagoBbva{
+	background-image: url("../images/bbva.jpg");
+    background-repeat: no-repeat;
+    float: left;
+    height: 49px;
+    width:84px;
+	
+}
+.tabPanel{
+	display: none;
+}
+.tabPago{
+	background: #f9f9fc none repeat scroll 0 0;
+    border: 1px solid #d3d3d3;
+    color: #555555;
+   position: relative;
+   padding: 5px;
+	
+}
+.tabPago:hover{
+	 color:#363636;
+	 border: 1px solid #a6a6a6;
+	 background: #ececec;
+}
+.tabPago h3 {
+    color: #555555;
+    font: 400 15px/48px "Open Sans",sans-serif
+}

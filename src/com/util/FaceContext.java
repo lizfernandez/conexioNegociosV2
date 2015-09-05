@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.UploadedFile;
 
-
+import com.entities.vo.PlantillaVo;
 import com.entities.vo.UsuarioVo;
 
 public class FaceContext {
@@ -69,6 +69,11 @@ public class FaceContext {
             return Integer.parseInt(session.getAttribute("iUsuarioId").toString());
         else
             return (Integer) null;
+    }
+    public static PlantillaVo getPlantillaUsuario(){
+    	  HttpSession session = getSession();
+    	  PlantillaVo plantilla=(PlantillaVo) session.getAttribute("PlantillaUsuario");
+          return plantilla;
     }
    
     public static String getUrlDirectorioExterno(String nombreDirectorio) throws IOException{

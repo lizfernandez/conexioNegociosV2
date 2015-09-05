@@ -53,6 +53,7 @@
 #contact-form label.email:before {
   background-image: url(../images/page1_img19.png);
 }
+
 #contact-form label.message {
   width: 100%;
   height: 118px;
@@ -358,12 +359,27 @@ button.close {
 .contact-form-r label.seguridad:before {
   background-image: url(../images/page1_img_se.png);
 }
+.contact-form-r label.ruc:before {
+  background-image: url(../images/identificador.png);
+}
+.contact-form-r label.direccion:before {
+  background-image: url(../images/direccion.png);
+}
+.contact-form-r label.departamento:before {
+  background-image: url(../images/ubicacion.png);
+}
+.contact-form-r label.provincia:before {
+  background-image: url(../images/ubicacion.png);
+}
+.contact-form-r label.distrito:before {
+  background-image: url(../images/ubicacion.png);
+}
 .contact-form-r label.message {
-  width: 100%;
-  height: 118px;
+  height: 53px;
+    width: 100%;
 }
 .contact-form-r label.message:before {
-  background-image: url(../images/page1_img20.png);
+  background-image: url(../images/descripcion.png);
 }
 .contact-form-r label.message textarea:active {
   background: #7c7c7c;
@@ -445,16 +461,33 @@ button.close {
     padding: 10px 7px 10px 57px;
     width: 100%;
 }
+/*  Contact Form Select
+========================================================*/
+.contact-form-r Select {
+    background: #575757 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: "Open Sans",sans-serif;
+    font-size: 13px;
+    height: 70%;
+    margin: 0;
+    outline: medium none;
+    padding: 8px 16px 9px 52px;
+    width: 100%;
+}
 /* Contact Form Textarea 
 ========================================================*/
 .contact-form-r textarea {
   width: 100%;
   line-height: 24px;
-  font-size: 14px;
+  font-size: 13px;
   font-family: "Open Sans", sans-serif;
   color: #ffffff;
   background: #575757;
-  padding: 12px 5px 8px 64px;
+  padding: 9px 5px 8px 55px;
   outline: none;
   border: none;
   border-radius: 0;
@@ -490,4 +523,226 @@ button.close {
 .contact-form-r .empty .empty-message {
   height: 20px;
 }
-/* Contact Form Buttons
+/* Contact Form Buttons*/
+/*
+========================================================*/
+/* Contact Form Basic Styles  Pago
+========================================================*/
+.contact-form-r-pago {
+  position: relative;
+  margin: 0 0 0 0;
+}
+.contact-form-r-pago label {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 48px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: none;
+  overflow: hidden;
+  margin-bottom: -9px;
+}
+.contact-form-r-pago label:before {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  content: '';
+  width: 44px;
+  height: 70%;
+  overflow: hidden;
+  background-position: center 0;
+  background-repeat: none;
+}
+.contact-form-r-pago label:hover:before {
+  background-position: center -48px;
+}
+.contact-form-r-pago label:active {
+  background: #0064d1;
+}
+.contact-form-r-pago label input:active {
+  background: #7c7c7c;
+}
+.contact-form-r-pago label input:focus {
+  background: #7c7c7c;
+}
+.contact-form-r-pago label.name:before {
+  background-image: url(../images/page1_img17.png);
+}
+.contact-form-r-pago label.phone:before {
+  background-image: url(../images/page1_img18.png);
+}
+.contact-form-r-pago label.email:before {
+  background-image: url(../images/page1_img.png);
+}
+.contact-form-r-pago label.seguridad:before {
+  background-image: url(../images/page1_img_se.png);
+}
+.contact-form-r-pago label.ruc:before {
+  background-image: url(../images/identificador.png);
+}
+.contact-form-r-pago label.direccion:before {
+  background-image: url(../images/direccion.png);
+}
+.contact-form-r-pago label.departamento:before {
+  background-image: url(../images/ubicacion.png);
+}
+.contact-form-r-pago label.provincia:before {
+  background-image: url(../images/ubicacion.png);
+}
+.contact-form-r-pago label.distrito:before {
+  background-image: url(../images/ubicacion.png);
+}
+.contact-form-r-pago label.message {
+  height: 53px;
+    width: 100%;
+}
+.contact-form-r-pago label.message:before {
+  background-image: url(../images/descripcion.png);
+}
+.contact-form-r-pago label.message textarea:active {
+  background: #7c7c7c;
+}
+.contact-form-r-pago label.message textarea:focus {
+  background: #7c7c7c;
+}
+@media (max-width: 979px) {
+  .contact-form-r-pago label {
+    width: 100%;
+  }
+}
+.contact-form-r-pago fieldset {
+  border: none;
+}
+/* Contact Form Placeholder Styles 
+========================================================*/
+.contact-form-r-pago ._placeholder {
+  width: 100% !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  line-height: 24px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  padding: 12px 5px 8px 64px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 0;
+  cursor: text;
+}
+.contact-form-r-pago ._placeholder.focused {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+.contact-form-r-pago ._placeholder.hidden {
+  display: none;
+}
+.contact-form-r-pago .file ._placeholder {
+  display: none;
+}
+
+/* Contact Form Input 
+========================================================*/
+.contact-form-r-pago input[type='text'] {
+    background: #dfdfdf none repeat scroll 0 0;
+    border:1px solid #c9c9c9;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #171717;
+    font-family: "Open Sans",sans-serif;
+    font-size: 13px;
+    height: 70%;
+    margin: 0;
+    outline: medium none;
+    padding: 10px 7px 10px 55px;
+    width: 99%;
+}
+/* Contact Form Input password
+========================================================*/
+.contact-form-r-pago input[type='password'] {
+   background: #575757 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: "Open Sans",sans-serif;
+    font-size: 13px;
+    height: 70%;
+    line-height: -16px;
+    margin: 0;
+    outline: medium none;
+    padding: 10px 7px 10px 57px;
+    width: 100%;
+}
+/*  Contact Form Select
+========================================================*/
+.contact-form-r-pago Select {
+    background: #dfdfdf none repeat scroll 0 0;
+    border:1px solid #c9c9c9;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #171717;
+    font-family: "Open Sans",sans-serif;
+    font-size: 13px;
+    height: 70%;
+    margin: 0;
+    outline: medium none;
+    padding: 8px 16px 9px 52px;
+    width: 99%;
+}
+/* Contact Form Textarea 
+========================================================*/
+.contact-form-r-pago textarea {
+  width: 100%;
+  line-height: 24px;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  background: #575757;
+  padding: 9px 5px 8px 55px;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: none;
+  resize: none;
+  height: 99%;
+  -webkit-appearance: none;
+}
+.contact-form-r-pago .message .empty-message,
+.contact-form-r-pago .message .error-message {
+  right: 20px;
+}
+/* Contact Form Error messages
+========================================================*/
+.contact-form-r-pago .empty-message,
+.contact-form-r-pago .error-message {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  color: red;
+  height: 0;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 12px;
+  -webkit-transition: 0.3s ease-in height;
+  transition: 0.3s ease-in height;
+  z-index: 99;
+}
+.contact-form-r-pago .invalid .error-message,
+.contact-form-r-pago .empty .empty-message {
+  height: 20px;
+}
+

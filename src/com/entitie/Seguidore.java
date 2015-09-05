@@ -43,7 +43,8 @@ public class Seguidore implements Serializable {
 	private Usuario usuarioRecibe;
 
 	
-
+    private String vIdentidicador;
+    
 	public Seguidore() {
 	}
 	
@@ -57,6 +58,7 @@ public class Seguidore implements Serializable {
 		this.usuarioEnvia = seguidores.getUsuarioEnvia()!=null? new Usuario(seguidores.getUsuarioEnvia()): null;
 		this.iUsuarioInserta = seguidores.getiUsuarioInserta();
 		this.usuarioRecibe = seguidores.getUsuarioRecibe()!=null? new Usuario(seguidores.getUsuarioRecibe()):null;
+		this.vIdentidicador=seguidores.getvIdentidicador();
 	}
 
 
@@ -174,6 +176,22 @@ public class Seguidore implements Serializable {
 	 */
 	public void setUsuarioRecibe(Usuario usuarioRecibe) {
 		this.usuarioRecibe = usuarioRecibe;
+	}
+
+
+	/**
+	 * @return the vIdentidicador
+	 */
+	public String getvIdentidicador() {
+		return vIdentidicador;
+	}
+
+
+	/**
+	 * @param vIdentidicador the vIdentidicador to set
+	 */
+	public void setvIdentidicador(String vIdentidicador) {
+		this.vIdentidicador = vIdentidicador;
 	}
 
 

@@ -33,7 +33,30 @@
 	        
 </script>
 <section id="content">
-  <div class="wrapper4 wrapper4__inset1">
+
+  
+<div id="pasos">
+<div id="pasos1" class="secuencia">
+  <div class="pasos pasoActivo" >
+    <i class="fa fa-file-text-o" style="padding-left: 11px"></i>    
+  </div>
+  <div class="pasosLetra">Paso 1</div>
+ </div>
+ <div id="pasos2" class="secuencia">
+  <div class="pasos">
+    <i class="fa fa-cc-visa"></i> 
+  </div>
+  <div class="pasosLetra">Paso 2</div>
+ </div>
+ <div id="pasos3" class="secuencia">
+  <div class="pasos">
+   <i class="fa fa-cogs"></i>    
+  </div>
+  <div class="pasosLetra">Paso 3</div>
+ </div>
+</div>
+   
+  <div class="wrapper4 wrapper4__inset1" style="width: 100%">
     <div class="container grid_13">
             <div class="row_1">            
 		       <h:form id="formPlantilla"> 
@@ -45,9 +68,10 @@
 			           </f:facet>
 				        
 				          <div class="grid_4_1">
-				          <div class="box7 maxheight wow #{item.evento} animated" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: #{item.evento}; height: 399px;"><div class="box_inner">
-<!-- 				           <div class="box7_descripcion">¡Todo lo que puedas comer! Almuerzo Buffet en La Dama Juana</div> -->
-				              <img src="#{request.contextPath}/plantillas/images/#{item.vFoto}" alt=""/>
+				          <div class="box9 boxOver maxheight wow #{item.evento} animated" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: #{item.evento}; height: 301px;">
+				          <div class="box_inner">
+				             <div class="box9_descripcion">#548955</div>
+				              <img src="#{request.contextPath}/plantillas/images/#{item.vFoto}" class="imgOver"/>
 				                 
 				              <p:panelGrid >
 					               <p:row>
@@ -63,7 +87,15 @@
 	                                </p:row>
 				                </p:panelGrid>
 				                <div class="space"></div>
+				           
+				             
 				                <p:commandButton type="button" value="Ver Demo" icon="ui-icon-extlink" styleClass="ui-buttones" onclick="redirect('#{request.contextPath}/plantillas/#{item.vNombrePlantilla}/inicio.xhtml')" />
+				                 
+				                 
+				                 <p:commandButton type="button" value="Agregar" icon="ui-icon-cart" styleClass="ui-buttones"  > 
+				                 
+                                    <p:ajax execute="@this"  listener="#{plantillaView.agregarPlantilla(item.iPlantillaId)}"  oncomplete="redirect('#{request.contextPath}/compra.xhtml')"/>
+                                 </p:commandButton>
 				                
 				           </div>
 				          </div>
@@ -76,6 +108,7 @@
            
           </div>
           <ui:include src="/plantillas/contentLeft.xhtml"></ui:include>
+          <ui:include src="/plantillasBase/chat.xhtml"></ui:include>
         </div>
      
    

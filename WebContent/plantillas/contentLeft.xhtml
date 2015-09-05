@@ -10,6 +10,7 @@
 	<i class="fa fa-bars"></i>
 </div>
 <div id="content-left"> 
+  <h:form>
      <div id="navigationVertical">                
 <!-- 	          <ul>                    -->
 <!--                    <li class="head1">  -->
@@ -42,16 +43,19 @@
                      <a> #{msg['spPlantilla']}</a>
                           <div class="up"></div>                
                      <ul>
-                     <h:form>
+                   
                        <li class="menuActiveTema active">
                           <p:commandLink>
+                             <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkRigth"  />
                              <f:param name="iCategoriaId" value="t" />
+                             
                              #{msg['spTodos']}  
                              <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
 			              </p:commandLink>
                        </li>
                        <li class="menuActiveTema">
                           <p:commandLink>
+                             <p:selectBooleanCheckbox value="#{plantillaView.gratis}" styleClass="chkRigth" />
                              <f:param name="iCategoriaId" value="g" />
                             #{msg['spGratis']} 
                              <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
@@ -59,21 +63,21 @@
                        </li>
                        <li class="menuActiveTema ">
                           <p:commandLink>
+                             <p:selectBooleanCheckbox value="#{plantillaView.premiun}" styleClass="chkRigth" />
                              <f:param name="iCategoriaId" value="p" />
                              #{msg['spPremium']} 
                              <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
 			              </p:commandLink>
-                       </li>
-                       </h:form>                       
+                       </li>                                            
                      </ul>
                   </li>
                    <li class="headCategoria">
                      <a> #{msg['spCategoria']}</a>
                           <div class="up"></div> 
-                     <ul>
-                     <h:form>  
+                     <ul>                       
                      <li class="menuActive active">
                           <p:commandLink>
+                             <p:selectBooleanCheckbox value="#{plantillaView.todosPlantilla}" styleClass="chkRigth" />
                              <f:param name="iCategoriaId" value="t" />
                              #{msg['spTodos']}  
                              <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />                  
@@ -81,17 +85,18 @@
                        </li>
                       <c:forEach items="#{plantillaView.listaCategoria()}" var="item"  varStatus="categoria" >
 						  <li class="menuActive">
-						  
+						   
 	                        <p:commandLink >
-		                             <f:param name="iCategoriaId" value="#{item.iCategoriaId}" />
-		                             #{item.vNombre}           
-		                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />               
+	                             <p:selectBooleanCheckbox value="false" styleClass="chkRigth" />
+	                             <f:param name="iCategoriaId" value="#{item.iCategoriaId}" />
+	                             #{item.vNombre}           
+	                             <p:ajax  update=":formPlantilla:dataPlantilla" listener="#{plantillaView.listaPlantillaCategoria()}" />               
 		                    </p:commandLink>
                             </li>
 	                                      
                          
                       </c:forEach>
-                        </h:form>
+                       
                           
                       </ul> 
                   </li>
@@ -100,8 +105,9 @@
                                       
                   </ul>
        </div><!--END  MENU LEFT -->
+       </h:form>
 </div>
 <ui:include src="/plantillasBase/content-left-opciones.xhtml"></ui:include>
-<ui:include src="/plantillasBase/chat.xhtml"></ui:include>
+
 
 </html>

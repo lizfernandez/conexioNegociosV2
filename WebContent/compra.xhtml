@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:h="http://java.sun.com/jsf/html"   
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+        template="conexioNegocios/template.xhtml"> 
+    
+<!--     template="plantillasBase/templateBaseCn.xhtml"> -->
+<c:set var="plantillaUsuario" value="#{sessionScope['PlantillaUsuario']}" scope="session"/>
+<ui:define name="body">
+<h:body> 
+   <header id="header">
+      <c:if test="#{sessionScope['Usuario']!=null}">
+         <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include>
+      </c:if>
+   </header> 
+   
+<!--========================================================
+                          CONTENT
+=========================================================-->
+<c:if test="#{sessionScope['Usuario']==null}">
+	<script type="text/javascript">
+	      redirect('#{request.contextPath}/');  
+	</script>
+</c:if>
+<c:if test="#{sessionScope['Usuario']!=null}">
+<script type="text/javascript">	       
+	        $(document).ready(function () {
+	        	$("#content-left").hide();
+	        });
+	        
+</script>
+
+
+<section id="content">
+
+  
+<div id="pasos">
+<div id="pasos1" class="secuencia">
+  <div class="pasos " onclick="redirect('#{request.contextPath}/plantillas/')">
+    <i class="fa fa-file-text-o" style="padding-left: 11px"></i>    
+  </div>
+  <div class="pasosLetra">Paso 1</div>
+ </div>
+ <div id="pasos2" class="secuencia">
+  <div class="pasos pasoActivo">
+    <i class="fa fa-cc-visa"></i> 
+  </div>
+  <div class="pasosLetra">Paso 2</div>
+ </div>
+ <div id="pasos3" class="secuencia">
+  <div class="pasos">
+   <i class="fa fa-cogs"></i>    
+  </div>
+  <div class="pasosLetra">Paso 3</div>
+ </div>
+</div>
+   
+  <div class="wrapper4 wrapper4__inset1" style="width: 100%">
+    <div class="container">
+            <div class="row">    
+             <h:form class="contact-form-r-pago">      
+			      <div class="pasoCompra"> 
+				      <h2>
+	                        <span>1</span> Registra tu empresa
+	                  </h2>	
+	                  <div class="space"></div>
+	                    <p:messages  closable="true" autoUpdate="true" id="mensajes"></p:messages> 
+				             <label class="name wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                                 <p:inputText id="vNombres" name="#{msg['msnEmpresa']}"  feedback="true" placeholder="#{msg['msnEmpresa']}:" required="true" value="" requiredMessage="#{msg['msnRequiere']} #{msg['msnEmpresa']}"/>
+                             </label>
+                             <label class="ruc wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+				               <p:inputText  name="#{msg['msnRuc']}"  feedback="true" placeholder="#{msg['msnRuc']}:" required="true" value="" requiredMessage="#{msg['msnRequiere']} #{msg['msnRuc']}" />
+				             </label>
+                              <label class="phone wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                                 <p:inputText id="vTelefono" name="#{msg['msnTelefono']}" feedback="true" placeholder="#{msg['msnTelefono']}:" required="true" value="" requiredMessage="#{msg['msnRequiere']} #{msg['msnTelefono']}" />
+                             </label>
+				             <label class="email wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+				               <p:inputText  name="#{msg['msnEmail']}"  feedback="true" placeholder="#{msg['msnEmail']}:" required="true" value="" requiredMessage="#{msg['msnRequiere']} #{msg['msnEmail']}" />
+				             </label>
+				             <label class="direccion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+				               <p:inputText  name="#{msg['msnDireccion']}"  feedback="true" placeholder="#{msg['msnDireccion']}:" required="true" value="" requiredMessage="#{msg['msnRequiere']} #{msg['msnDireccion']}" />
+				             </label>
+				              <label class="departamento wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+				                   <h:selectOneMenu id="txtDepartamento" value="" required="true" label="#{msg['msnDireccion']}:" requiredMessage="#{msg['msnRequiere']} #{msg['msnDireccion']}">
+						                <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+						                <f:selectItem itemLabel="Option 1" itemValue="1" />
+						                <f:selectItem itemLabel="Option 2" itemValue="2" />
+						                <f:selectItem itemLabel="Option 3" itemValue="3" />
+						            </h:selectOneMenu>
+				             
+				             </label>
+				             <label class="provincia wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+				                   <h:selectOneMenu id="txtProvicia" value="" required="true" label="#{msg['msnDireccion']}:" requiredMessage="#{msg['msnRequiere']} #{msg['msnDireccion']}">
+						                <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+						                <f:selectItem itemLabel="Option 1" itemValue="1" />
+						                <f:selectItem itemLabel="Option 2" itemValue="2" />
+						                <f:selectItem itemLabel="Option 3" itemValue="3" />
+						            </h:selectOneMenu>
+				             
+				             </label>
+				             <label class="distrito wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+				                   <h:selectOneMenu id="txtDistrito" value="" required="true" label="#{msg['msnDireccion']}:" requiredMessage="#{msg['msnRequiere']} #{msg['msnDireccion']}">
+						                <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+						                <f:selectItem itemLabel="Option 1" itemValue="1" />
+						                <f:selectItem itemLabel="Option 2" itemValue="2" />
+						                <f:selectItem itemLabel="Option 3" itemValue="3" />
+						            </h:selectOneMenu>
+				             
+				             </label>
+				              <label class="message wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                <textarea name="message" placeholder="Mensaje:"
+                          data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+                <span class="empty-message">*This field is required.</span>
+                <span class="error-message">*The message is too short.</span>
+              </label>
+				              
+				            
+<!-- 				             <p></p> -->
+<!-- 				             <div class="form_control"> -->
+<!-- 					           <p:commandButton value="#{msg['btnIngreso']}"  action="#{loginView.login()}" styleClass="ui-buttones" > -->
+					           
+<!-- 					           </p:commandButton> -->
+<!-- 				           </div>		       -->
+	               </div>
+	               <div class="pasoCompra">
+	                  <h2>
+	                        <span>2</span> Método de pago 
+	                  </h2>	 
+	                  
+	                  <div  id="panel"> 
+		                   <div class="panelPago">
+		                       <div class="tabPago">
+		                            <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />
+			                        <div class="pagoVisa"></div>
+			                        <h3>Pago con tarjeta de Crédito VISA</h3>
+		                        </div>
+		                        <div  class="tabPanel"> 
+		                        hola
+		                       </div>
+		                    </div>
+		                    <div class="panelPago">
+		                       <div class="tabPago">
+		                            <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />
+			                        <div class="pagoMaster"></div>			                        
+			                        <h3>Pago con MASTERCARD</h3>
+		                        </div>
+		                        <div  class="tabPanel"> 
+		                        como estas
+		                       </div>
+		                    </div>
+		                    <div class="panelPago">
+		                       <div class="tabPago">
+			                        <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />
+			                        <div class="pagoBcp"></div>			                        
+			                        <h3>Agencia BCP</h3>
+		                        </div>
+		                        <div  class="tabPanel"> 
+		                        bien
+		                       </div>
+		                    </div>
+		                    <div class="panelPago">
+		                       <div class="tabPago">
+			                        <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />
+			                        <div class="pagoBbva"></div>			                        
+			                        <h3>Agencia BBVA</h3>
+		                        </div>
+		                        <div  class="tabPanel"> 
+		                        bien
+		                       </div>
+		                    </div>
+	                  </div>
+	                  
+	               </div>
+	               <div class="pasoCompra"> 
+	                   <h2>
+	                        <span>3</span> Confirmación
+	                  </h2>	
+	                  #{plantillaUsuario.iUsuarioId}
+	               </div>
+			  </h:form>    
+            </div>
+           
+          </div>
+          <ui:include src="/plantillasBase/contentLeft.xhtml"></ui:include>   
+          <ui:include src="/plantillasBase/chat.xhtml"></ui:include>
+    </div>
+     
+   
+</section>
+</c:if>
+
+</h:body>
+ </ui:define>
+</ui:composition>
+   

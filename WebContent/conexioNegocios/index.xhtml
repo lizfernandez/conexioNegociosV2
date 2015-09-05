@@ -55,7 +55,8 @@
     
     <c:if test="#{sessionScope['Usuario']!=null}">
       <ui:include src="/plantillasBase/menuBienvenido.xhtml"></ui:include> 
-      <ui:include src="/plantillasBase/contentLeft.xhtml"></ui:include>  
+      <ui:include src="/plantillasBase/contentLeft.xhtml"></ui:include> 
+      <ui:include src="/plantillasBase/chat.xhtml"></ui:include> 
       <span class="trigger icon-arrow-small-up" id="trigger"> <i class="fa fa-chevron-up"></i></span> 
      </c:if>
      
@@ -174,10 +175,11 @@
     
       <div data-src="#{request.contextPath}/#{loginView.nombreDirectorio}/media/images/slider3.jpg">
         <div class="caption fadeIn">
-          <h6 class="wow fadeInDown"  data-wow-duration="1s" data-wow-delay="0.1s">Welcome</h6>
+          <h6 class="wow fadeInDown"  data-wow-duration="1s" data-wow-delay="0.1s">Bienvenidos</h6>
           <br/>
-           <p class="wow zoomIn animated">Sutem vel eum iriure dolor in
-                  hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent lupta</p>
+           <p class="wow zoomIn animated">
+           Bienvenidos a ConexioNegocios donde podrás tener tu página con un diseño profecional y atractivo, además podras publicar, vender y tener mayor contacto con tu cliente y proveedores
+           </p>
               
         </div>
       </div>

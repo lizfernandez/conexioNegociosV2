@@ -162,7 +162,7 @@
                       <c:forEach items="#{mensajesView.listaSeguidores()}" var="item"  varStatus="seguidores" >
                                          
                         <li>
-                          <h:outputLink id="content_#{item.iSeguidorId}" value="#">
+                          <p:commandLink id="content_#{item.iSeguidorId}">
                                 <img src="#{request.contextPath}/afiliados/images/#{item.usuarioEnvia.persona.vFoto}" class="img" width="33px" height="28px" ></img>
 	                           
 	                               <h:outputText value=" #{item.usuarioEnvia.persona.vNombres} #{item.usuarioEnvia.persona.vApellidos} " />
@@ -179,10 +179,15 @@
 	                                 </div>
 	                                 
 	                             </c:if> 
-	                           <f:param name="iUsuarioId" value="#{item.usuarioRecibe.iUsuarioId}" />
+<!-- 	                             <f:param name="iUsuarioId" value="#{item.usuarioRecibe.iUsuarioId}" /> -->
+	                             <f:param name="vIdentidicador" value="#{item.vIdentidicador}" />
+			                            
+			                             <p:ajax  listener="#{mensajesView.listaMensajesDetalle()}" oncomplete="addChat('#{item.vIdentidicador}')"
+			                             update=":frm:dtPersonasCabecera, :frm:dtPersonas,  :frmMsn:hUsuRecibe, :frmMsn:hVidentiticador" />
+			                     
 	                        
 	                        
-	                         </h:outputLink>
+	                         </p:commandLink>
                              <p:tooltip id="toolTipContent_#{item.iSeguidorId}" for="content_#{item.iSeguidorId}">
 							               <img src="#{request.contextPath}/afiliados/images/#{item.usuarioEnvia.persona.vFoto}" ></img>
 							 </p:tooltip>
