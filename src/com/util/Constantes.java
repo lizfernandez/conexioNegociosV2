@@ -10,6 +10,7 @@ public class Constantes {
 	public static String estadoEliminado ="EL";
 	public static String estadoUltimo="UL";
 	public static String permisoTheme ="PERMISOEMPRESAS";
+	public static String tipoProductoPromocion="PMO";
 	
 	
 }

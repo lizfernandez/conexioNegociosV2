@@ -9,7 +9,8 @@
         template="conexioNegocios/template.xhtml"> 
     
 <!--     template="plantillasBase/templateBaseCn.xhtml"> -->
-<c:set var="plantillaUsuario" value="#{sessionScope['PlantillaUsuario']}" scope="session"/>
+<c:set var="plantilla" value="#{sessionScope['PlantillaUsuario']}" scope="session"/>
+
 <ui:define name="body">
 <h:body> 
    <header id="header">
@@ -112,11 +113,8 @@
 				             
 				             </label>
 				              <label class="message wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                <textarea name="message" placeholder="Mensaje:"
-                          data-constraints='@Required @Length(min=20,max=999999)'></textarea>
-                <span class="empty-message">*This field is required.</span>
-                <span class="error-message">*The message is too short.</span>
-              </label>
+                                      <textarea name="message" placeholder="Mensaje:"></textarea>
+                            </label>
 				              
 				            
 <!-- 				             <p></p> -->
@@ -178,8 +176,74 @@
 	               <div class="pasoCompra"> 
 	                   <h2>
 	                        <span>3</span> Confirmación
-	                  </h2>	
-	                  #{plantillaUsuario.iUsuarioId}
+	                  </h2>		                   
+	                  <div class="panelTitle">
+	                     <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />
+	                     <h4>Template + Installation + 1 Year Hosting</h4>
+	                     <span class="precio colorRojo">#{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}  #{sessionScope['PlantillaUsuario'].fPrecio}</span>
+	                  </div>
+	                  <h5>Recommended Services:</h5>
+	                  
+	                  <div class="tabPago">
+	                 	 <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />	                        
+			                   concepto licencia de plantilla  
+			              <span class="precio colorRojo">
+			                   <i class="discount">#{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}350</i> 
+			                   #{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}180.0
+			             </span> 
+		              </div>
+		              <div class="tabPago">
+	                 	 <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />	                        
+			                   Diseño de identidad cooporativa (logo) 
+			              <span class="precio colorRojo">
+			                   <i class="discount">#{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}150</i> 
+			                   #{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}100.0
+			             </span> 
+		              </div>
+		              <div class="tabPago">
+	                 	 <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />	                        
+			                    Conceptos de configuración 
+			              <span class="precio colorRojo">
+			                   <i class="discount">#{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}170</i> 
+			                   #{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}100.0
+			             </span>   
+		              </div>
+		              <div class="tabPago">
+	                 	 <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />	                        
+			                   Alojamiento de pagina  
+			              <span class="precio colorRojo">
+			                   <i class="discount">#{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}100</i> 
+			                   #{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}0.0
+			             </span>       
+		              </div>
+		              <div class="tabPago">
+	                 	 <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"  />	                        
+			                   publicidad ilimitada los 365 Dias  
+			             <span class="precio colorRojo">
+			                   <i class="discount">#{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}250</i> 
+			                   #{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}0.0
+			             </span>   
+		              </div>
+		              <div class="tabPago">
+	                 	 <p:selectBooleanCheckbox value="#{plantillaView.todosTema}" styleClass="chkLeft"   />	                        
+			                   Servicio de email marketing 
+			             <span class="precio colorRojo">
+			                   <i class="discount">#{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}400</i> 
+			                   #{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}0.0
+			             </span>   
+		              </div>
+		              <div class="subtotal-precio colorRojo">
+						<div class="price-block discount"></div>						
+						<span>Precio Total:</span>
+						<span class="precio colorRojo">			                   
+			                   #{sessionScope['PlantillaUsuario'].moneda.cModenaCodigo}480.0
+			             </span>
+                     </div>
+		              <div class="center"> 
+					           <p:commandButton value="#{msg['btnIngreso']}"  action="#{loginView.login()}" styleClass="ui-buttones" >
+					           
+					           </p:commandButton>
+				     </div>		      
 	               </div>
 			  </h:form>    
             </div>

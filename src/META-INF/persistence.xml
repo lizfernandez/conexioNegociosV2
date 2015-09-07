@@ -22,8 +22,7 @@
 		<class>com.entitie.Persona</class>
 		<class>com.entitie.Plantilla</class>
 		<class>com.entitie.Plantillausuario</class>
-		<class>com.entitie.Producto</class>
-		<class>com.entitie.Promocione</class>
+		<class>com.entitie.Producto</class>		
 		<class>com.entitie.Seccionplantilla</class>
 		<class>com.entitie.Seguidore</class>
 		<class>com.entitie.Solicitud</class>
@@ -38,6 +37,7 @@
 		<class>com.entitie.Menuaccion</class>
 		<class>com.entitie.Menuopcione</class>
 		<class>com.entitie.Menutitulo</class>
+		<class>com.entitie.Moneda</class>
 		<class>com.entitie.Seguridad</class>
 		<class>com.entitie.Pais</class>
 		<properties>

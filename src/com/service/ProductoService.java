@@ -7,13 +7,14 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import com.dao.GenericaDao;
-import com.entitie.Promocione;
-import com.entities.vo.PromocioneVo;
+import com.entitie.Producto;
+import com.entities.vo.ProductoVo;
+import com.util.Constantes;
 
  
-@ManagedBean(name = "promocioneService")
+@ManagedBean(name = "productoService")
 @ApplicationScoped
-public class PromocioneService implements Serializable{
+public class ProductoService implements Serializable{
 	/**
 	 * 
 	 */
@@ -24,14 +25,15 @@ public class PromocioneService implements Serializable{
 	
 	GenericaDao genericaDao= new GenericaDao();  
      
-    public List<PromocioneVo> listaPromociones() {
-        List<Promocione> list = new ArrayList<Promocione>();
-        List<PromocioneVo> listVo = new ArrayList<PromocioneVo>();
-        list=genericaDao.listaEntidadGenerica(Promocione.class);
+    public List<ProductoVo> listaPromociones() {
+        List<Producto> list = new ArrayList<Producto>();
+        List<ProductoVo> listVo = new ArrayList<ProductoVo>();
+        String where=" p.vTipoProducto='"+Constantes.tipoProductoPromocion+"'";
+        list=genericaDao.findEndidadBDList(Producto.class, where);
         int i=1;
-        for(Promocione bean:list) {
+        for(Producto bean:list) {
         	
-            PromocioneVo vo= new PromocioneVo(bean);
+            ProductoVo vo= new ProductoVo(bean);
             if(i==1)
                vo.setEvento("fadeInUp");
             if(i==2)

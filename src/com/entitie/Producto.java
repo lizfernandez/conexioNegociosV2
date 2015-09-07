@@ -1,16 +1,30 @@
 package com.entitie;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Date;
 import java.math.BigInteger;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.entities.vo.ProductoVo;
+
 
 
 /**
- * The persistent class for the producto database table.
+ * The persistent class for the promociones database table.
  * 
  */
 @Entity
+@Table(name="producto")
 public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,21 +40,40 @@ public class Producto implements Serializable {
 	private Date dFechaActualiza;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dFechaInserta;
+	private Date dFechaCaducidad;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dFechaInserta;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iCategoriaId")
+	private Categoria categoria;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iMonedaId")
+	private Moneda moneda;
+	
+	private String vTipoProducto;
+	
 	private float fDescuento;
 
-	private float fPrecio;
+	private float fNuevoPrecio;
 
-	private BigInteger iCategoriaId;
+	private float fPrecio;
 
 	private BigInteger iTotalGustos;
 
 	private BigInteger iTotalVistos;
 
 	private BigInteger iUsuarioActualiza;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iUsuarioId")	
+	private Usuario usuario;
 
 	private BigInteger iUsuarioInserta;
+
+	private String vCondiciones;
 
 	private String vDescripcion;
 
@@ -51,124 +84,348 @@ public class Producto implements Serializable {
 	public Producto() {
 	}
 
-	public String getIProductoId() {
-		return this.iProductoId;
+	
+	
+	public Producto(ProductoVo promociones) {
+		this.iProductoId = promociones.getiProductoId();
+		this.cAplicaDescuento = promociones.getcAplicaDescuento();
+		this.cEstadoCodigo = promociones.getcEstadoCodigo();
+		this.dFechaActualiza = promociones.getdFechaActualiza();
+		this.dFechaCaducidad = promociones.getdFechaCaducidad();
+		this.dFechaInserta = promociones.getdFechaInserta();
+		this.fDescuento = promociones.getfDescuento();
+		this.fNuevoPrecio = promociones.getfNuevoPrecio();
+		this.fPrecio = promociones.getfPrecio();
+		this.iTotalGustos = promociones.getiTotalGustos();
+		this.iTotalVistos = promociones.getiTotalVistos();
+		this.iUsuarioActualiza = promociones.getiUsuarioActualiza();
+		this.usuario = new Usuario(promociones.getUsuario());
+		this.iUsuarioInserta = promociones.getiUsuarioInserta();
+		this.vCondiciones = promociones.getvCondiciones();
+		this.vDescripcion = promociones.getvDescripcion();
+		this.vFoto = promociones.getvFoto();
+		this.vNombre = promociones.getvNombre();
+		this.categoria = promociones.getCategoria()!= null? new Categoria(promociones.getCategoria()) : null; 
+		this.vTipoProducto=promociones.getvTipoProducto();
+		this.moneda=promociones.getMoneda()!=null? new Moneda(promociones.getMoneda()):null;
+		
 	}
 
-	public void setIProductoId(String iProductoId) {
+
+
+	
+
+	/**
+	 * @return the iProductoId
+	 */
+	public String getiProductoId() {
+		return iProductoId;
+	}
+
+
+
+	/**
+	 * @param iProductoId the iProductoId to set
+	 */
+	public void setiProductoId(String iProductoId) {
 		this.iProductoId = iProductoId;
 	}
 
-	public String getCAplicaDescuento() {
-		return this.cAplicaDescuento;
+
+
+	/**
+	 * @return the cAplicaDescuento
+	 */
+	public String getcAplicaDescuento() {
+		return cAplicaDescuento;
 	}
 
-	public void setCAplicaDescuento(String cAplicaDescuento) {
+	/**
+	 * @param cAplicaDescuento the cAplicaDescuento to set
+	 */
+	public void setcAplicaDescuento(String cAplicaDescuento) {
 		this.cAplicaDescuento = cAplicaDescuento;
 	}
 
-	public String getCEstadoCodigo() {
-		return this.cEstadoCodigo;
+	/**
+	 * @return the cEstadoCodigo
+	 */
+	public String getcEstadoCodigo() {
+		return cEstadoCodigo;
 	}
 
-	public void setCEstadoCodigo(String cEstadoCodigo) {
+	/**
+	 * @param cEstadoCodigo the cEstadoCodigo to set
+	 */
+	public void setcEstadoCodigo(String cEstadoCodigo) {
 		this.cEstadoCodigo = cEstadoCodigo;
 	}
 
-	public Date getDFechaActualiza() {
-		return this.dFechaActualiza;
+	/**
+	 * @return the dFechaActualiza
+	 */
+	public Date getdFechaActualiza() {
+		return dFechaActualiza;
 	}
 
-	public void setDFechaActualiza(Date dFechaActualiza) {
+	/**
+	 * @param dFechaActualiza the dFechaActualiza to set
+	 */
+	public void setdFechaActualiza(Date dFechaActualiza) {
 		this.dFechaActualiza = dFechaActualiza;
 	}
 
-	public Date getDFechaInserta() {
-		return this.dFechaInserta;
+	/**
+	 * @return the dFechaCaducidad
+	 */
+	public Date getdFechaCaducidad() {
+		return dFechaCaducidad;
 	}
 
-	public void setDFechaInserta(Date dFechaInserta) {
+	/**
+	 * @param dFechaCaducidad the dFechaCaducidad to set
+	 */
+	public void setdFechaCaducidad(Date dFechaCaducidad) {
+		this.dFechaCaducidad = dFechaCaducidad;
+	}
+
+	/**
+	 * @return the dFechaInserta
+	 */
+	public Date getdFechaInserta() {
+		return dFechaInserta;
+	}
+
+	/**
+	 * @param dFechaInserta the dFechaInserta to set
+	 */
+	public void setdFechaInserta(Date dFechaInserta) {
 		this.dFechaInserta = dFechaInserta;
 	}
 
-	public float getFDescuento() {
-		return this.fDescuento;
+	/**
+	 * @return the fDescuento
+	 */
+	public float getfDescuento() {
+		return fDescuento;
 	}
 
-	public void setFDescuento(float fDescuento) {
+	/**
+	 * @param fDescuento the fDescuento to set
+	 */
+	public void setfDescuento(float fDescuento) {
 		this.fDescuento = fDescuento;
 	}
 
-	public float getFPrecio() {
-		return this.fPrecio;
+	/**
+	 * @return the fNuevoPrecio
+	 */
+	public float getfNuevoPrecio() {
+		return fNuevoPrecio;
 	}
 
-	public void setFPrecio(float fPrecio) {
+	/**
+	 * @param fNuevoPrecio the fNuevoPrecio to set
+	 */
+	public void setfNuevoPrecio(float fNuevoPrecio) {
+		this.fNuevoPrecio = fNuevoPrecio;
+	}
+
+	/**
+	 * @return the fPrecio
+	 */
+	public float getfPrecio() {
+		return fPrecio;
+	}
+
+	/**
+	 * @param fPrecio the fPrecio to set
+	 */
+	public void setfPrecio(float fPrecio) {
 		this.fPrecio = fPrecio;
 	}
 
-	public BigInteger getICategoriaId() {
-		return this.iCategoriaId;
+	/**
+	 * @return the iTotalGustos
+	 */
+	public BigInteger getiTotalGustos() {
+		return iTotalGustos;
 	}
 
-	public void setICategoriaId(BigInteger iCategoriaId) {
-		this.iCategoriaId = iCategoriaId;
-	}
-
-	public BigInteger getITotalGustos() {
-		return this.iTotalGustos;
-	}
-
-	public void setITotalGustos(BigInteger iTotalGustos) {
+	/**
+	 * @param iTotalGustos the iTotalGustos to set
+	 */
+	public void setiTotalGustos(BigInteger iTotalGustos) {
 		this.iTotalGustos = iTotalGustos;
 	}
 
-	public BigInteger getITotalVistos() {
-		return this.iTotalVistos;
+	/**
+	 * @return the iTotalVistos
+	 */
+	public BigInteger getiTotalVistos() {
+		return iTotalVistos;
 	}
 
-	public void setITotalVistos(BigInteger iTotalVistos) {
+	/**
+	 * @param iTotalVistos the iTotalVistos to set
+	 */
+	public void setiTotalVistos(BigInteger iTotalVistos) {
 		this.iTotalVistos = iTotalVistos;
 	}
 
-	public BigInteger getIUsuarioActualiza() {
-		return this.iUsuarioActualiza;
+	/**
+	 * @return the iUsuarioActualiza
+	 */
+	public BigInteger getiUsuarioActualiza() {
+		return iUsuarioActualiza;
 	}
 
-	public void setIUsuarioActualiza(BigInteger iUsuarioActualiza) {
+	/**
+	 * @param iUsuarioActualiza the iUsuarioActualiza to set
+	 */
+	public void setiUsuarioActualiza(BigInteger iUsuarioActualiza) {
 		this.iUsuarioActualiza = iUsuarioActualiza;
 	}
 
-	public BigInteger getIUsuarioInserta() {
-		return this.iUsuarioInserta;
+	
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIUsuarioInserta(BigInteger iUsuarioInserta) {
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	/**
+	 * @return the iUsuarioInserta
+	 */
+	public BigInteger getiUsuarioInserta() {
+		return iUsuarioInserta;
+	}
+
+	/**
+	 * @param iUsuarioInserta the iUsuarioInserta to set
+	 */
+	public void setiUsuarioInserta(BigInteger iUsuarioInserta) {
 		this.iUsuarioInserta = iUsuarioInserta;
 	}
 
-	public String getVDescripcion() {
-		return this.vDescripcion;
+	/**
+	 * @return the vCondiciones
+	 */
+	public String getvCondiciones() {
+		return vCondiciones;
 	}
 
-	public void setVDescripcion(String vDescripcion) {
+	/**
+	 * @param vCondiciones the vCondiciones to set
+	 */
+	public void setvCondiciones(String vCondiciones) {
+		this.vCondiciones = vCondiciones;
+	}
+
+	/**
+	 * @return the vDescripcion
+	 */
+	public String getvDescripcion() {
+		return vDescripcion;
+	}
+
+	/**
+	 * @param vDescripcion the vDescripcion to set
+	 */
+	public void setvDescripcion(String vDescripcion) {
 		this.vDescripcion = vDescripcion;
 	}
 
-	public String getVFoto() {
-		return this.vFoto;
+	/**
+	 * @return the vFoto
+	 */
+	public String getvFoto() {
+		return vFoto;
 	}
 
-	public void setVFoto(String vFoto) {
+	/**
+	 * @param vFoto the vFoto to set
+	 */
+	public void setvFoto(String vFoto) {
 		this.vFoto = vFoto;
 	}
 
-	public String getVNombre() {
-		return this.vNombre;
+	/**
+	 * @return the vNombre
+	 */
+	public String getvNombre() {
+		return vNombre;
 	}
 
-	public void setVNombre(String vNombre) {
+	/**
+	 * @param vNombre the vNombre to set
+	 */
+	public void setvNombre(String vNombre) {
 		this.vNombre = vNombre;
 	}
+
+
+
+	/**
+	 * @return the categoria
+	 */
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+
+
+	/**
+	 * @param categoria the categoria to set
+	 */
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+
+
+	/**
+	 * @return the vTipoProducto
+	 */
+	public String getvTipoProducto() {
+		return vTipoProducto;
+	}
+
+
+
+	/**
+	 * @param vTipoProducto the vTipoProducto to set
+	 */
+	public void setvTipoProducto(String vTipoProducto) {
+		this.vTipoProducto = vTipoProducto;
+	}
+
+
+
+	/**
+	 * @return the moneda
+	 */
+	public Moneda getMoneda() {
+		return moneda;
+	}
+
+
+
+	/**
+	 * @param moneda the moneda to set
+	 */
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
+	}
+
+	
 
 }

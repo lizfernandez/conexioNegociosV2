@@ -16,6 +16,7 @@ public class PlantillaVo implements Serializable {
 	private static final long serialVersionUID = 1L;
     private int iPlantillaId;
     private CategoriaVo categoria;
+    private MonedaVo moneda;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;
 	private Date dFechaInserta;
@@ -40,6 +41,7 @@ public class PlantillaVo implements Serializable {
 		this.vNombrePlantilla = plantilla.getvNombrePlantilla();
 		this.vFoto= plantilla.getvFoto();
 		this.categoria = plantilla.getCategoria()!=null? new CategoriaVo(plantilla.getCategoria()): null;
+		this.moneda=plantilla.getMoneda()!=null? new MonedaVo(plantilla.getMoneda()):null;
 		
 	}
 
@@ -195,6 +197,20 @@ public class PlantillaVo implements Serializable {
 	 */
 	public void setEvento(String evento) {
 		this.evento = evento;
+	}
+
+	/**
+	 * @return the moneda
+	 */
+	public MonedaVo getMoneda() {
+		return moneda;
+	}
+
+	/**
+	 * @param moneda the moneda to set
+	 */
+	public void setMoneda(MonedaVo moneda) {
+		this.moneda = moneda;
 	}
 
 	

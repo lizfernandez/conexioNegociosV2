@@ -265,6 +265,7 @@ button.btnFoto.ui-button .ui-icon-plusthick{
 .chkLeft{
 	float: left;
 	padding: 5px;
+	
 }
 #pasos{
 	
@@ -272,7 +273,7 @@ button.btnFoto.ui-button .ui-icon-plusthick{
     font-size: 25px;
     height: 40px;
     margin-top: 44px;
-    position: relative;
+    
     width: 320px;
     
 }
@@ -314,6 +315,13 @@ button.btnFoto.ui-button .ui-icon-plusthick{
     padding: 0;
     position: relative;
     width: 377px;
+}
+.pasoCompra h5{
+	color: #0042af;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 11px;
+    padding: 5px;
 }
 .pasoCompra h2 {
     background: #464646 none repeat scroll 0 0;
@@ -367,11 +375,14 @@ button.btnFoto.ui-button .ui-icon-plusthick{
 	display: none;
 }
 .tabPago{
-	background: #f9f9fc none repeat scroll 0 0;
+	background: #fdfdfd none repeat scroll 0 0;
     border: 1px solid #d3d3d3;
     color: #555555;
-   position: relative;
-   padding: 5px;
+    margin-bottom: -1px;
+    padding: 5px;
+    position: relative;
+    font-family: "Open Sans",sans-serif;
+    font-size: 12px;
 	
 }
 .tabPago:hover{
@@ -382,4 +393,54 @@ button.btnFoto.ui-button .ui-icon-plusthick{
 .tabPago h3 {
     color: #555555;
     font: 400 15px/48px "Open Sans",sans-serif
+}
+.panelTitle{   
+    left: 10px;
+    position: relative;
+   
+}
+.panelTitle h4{
+    font: 400 15px/48px "Open Sans",sans-serif;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 17px;
+    margin: -32px 97px 0 33px;
+   
+}
+.tabPago .precio{
+	 font-size: 13px;
+}
+.precio{
+     font-weight: 600;
+    line-height: 17px;
+    position: absolute;
+    right: 35px;
+    top: 3px;
+    font-size: 15px;
+   
+}
+.precio .discount {
+    color: #afafaf;
+    font-size: 11px;
+    font-style: normal;
+    text-decoration: line-through;
+}
+.subtotal-precio{
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding: 5px;
+    position: relative;
+    margin-left: 157px;
+    margin-top: 9px;
+  }
+.subtotal-precio .precio{
+	color:#0042af;
+	margin-top: 4px;
+}
+.colorRojo{
+	color:#de4a4a;
+}
+.center{
+	text-align: center;
 }

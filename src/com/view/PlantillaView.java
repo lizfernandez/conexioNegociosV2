@@ -61,7 +61,7 @@ public class PlantillaView implements Serializable {
         
 		PlantillaVo plantilla = (PlantillaVo) service.findPlantilla(Integer.parseInt(iPlantillaId));
 		HttpSession session = FaceContext.getSession();
-		session.removeAttribute("PlantillaUsuario");
+		//session.removeAttribute("PlantillaUsuario");
         session.setAttribute("PlantillaUsuario",plantilla);
         
 		

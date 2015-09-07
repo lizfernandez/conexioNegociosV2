@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
+import com.entitie.Moneda;
+import com.entitie.Producto;
 
-import com.entitie.Promocione;
 
-
-public class PromocioneVo  implements Serializable{
+public class ProductoVo  implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	private String iPromocionId;
+	private String iProductoId;
 	private String cAplicaDescuento;
 	private String cEstadoCodigo;
 	private Date dFechaActualiza;
@@ -24,6 +24,9 @@ public class PromocioneVo  implements Serializable{
 	private BigInteger iTotalVistos;
 	private BigInteger iUsuarioActualiza;		
 	private UsuarioVo usuario;
+	private CategoriaVo categoria;
+	private MonedaVo moneda;
+	private String vTipoProducto;
 	private BigInteger iUsuarioInserta;
 	private String vCondiciones;
 	private String vDescripcion;
@@ -32,13 +35,13 @@ public class PromocioneVo  implements Serializable{
     private String evento;
 	
 
-	public PromocioneVo() {
+	public ProductoVo() {
 		super();
 	
 	}
 	
-	public PromocioneVo(Promocione promociones) {
-		this.iPromocionId = promociones.getiPromocionId();
+	public ProductoVo(Producto promociones) {
+		this.iProductoId = promociones.getiProductoId();
 		this.cAplicaDescuento = promociones.getcAplicaDescuento();
 		this.cEstadoCodigo = promociones.getcEstadoCodigo();
 		this.dFechaActualiza = promociones.getdFechaActualiza();
@@ -56,21 +59,24 @@ public class PromocioneVo  implements Serializable{
 		this.vDescripcion = promociones.getvDescripcion();
 		this.vFoto = promociones.getvFoto();
 		this.vNombre = promociones.getvNombre();
+		this.categoria = promociones.getCategoria()!= null? new CategoriaVo(promociones.getCategoria()) : null; 
+		this.vTipoProducto=promociones.getvTipoProducto();
+		this.moneda=promociones.getMoneda()!=null? new MonedaVo(promociones.getMoneda()):null;
 	}
 	
 
 	/**
-	 * @return the iPromocionId
+	 * @return the iProductoId
 	 */
-	public String getiPromocionId() {
-		return iPromocionId;
+	public String getiProductoId() {
+		return iProductoId;
 	}
 
 	/**
-	 * @param iPromocionId the iPromocionId to set
+	 * @param iProductoId the iProductoId to set
 	 */
-	public void setiPromocionId(String iPromocionId) {
-		this.iPromocionId = iPromocionId;
+	public void setiProductoId(String iProductoId) {
+		this.iProductoId = iProductoId;
 	}
 
 	/**
@@ -324,6 +330,48 @@ public class PromocioneVo  implements Serializable{
 	 */
 	public void setEvento(String evento) {
 		this.evento = evento;
+	}
+
+	/**
+	 * @return the categoria
+	 */
+	public CategoriaVo getCategoria() {
+		return categoria;
+	}
+
+	/**
+	 * @param categoria the categoria to set
+	 */
+	public void setCategoria(CategoriaVo categoria) {
+		this.categoria = categoria;
+	}
+
+	/**
+	 * @return the vTipoProducto
+	 */
+	public String getvTipoProducto() {
+		return vTipoProducto;
+	}
+
+	/**
+	 * @param vTipoProducto the vTipoProducto to set
+	 */
+	public void setvTipoProducto(String vTipoProducto) {
+		this.vTipoProducto = vTipoProducto;
+	}
+
+	/**
+	 * @return the moneda
+	 */
+	public MonedaVo getMoneda() {
+		return moneda;
+	}
+
+	/**
+	 * @param moneda the moneda to set
+	 */
+	public void setMoneda(MonedaVo moneda) {
+		this.moneda = moneda;
 	}
 	
 

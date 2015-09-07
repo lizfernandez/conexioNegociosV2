@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.entities.vo.MonedaVo;
 import com.entities.vo.PlantillaVo;
 
 
@@ -33,6 +34,10 @@ public class Plantilla implements Serializable {
 	@JoinColumn(name="iCategoriaId")
 	private Categoria categoria;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="iMonedaId")
+	private Moneda moneda;
+		
 	private String cEstadoCodigo;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -65,6 +70,7 @@ public class Plantilla implements Serializable {
 		this.vNombrePlantilla = plantilla.getvNombrePlantilla();
 		this.vFoto= plantilla.getvFoto(); 
 		this.categoria = plantilla.getCategoria()!=null? new Categoria(plantilla.getCategoria()): null;
+		this.moneda=plantilla.getMoneda()!=null? new Moneda(plantilla.getMoneda()):null;
 
 	}
 	/**
@@ -201,6 +207,18 @@ public class Plantilla implements Serializable {
 	 */
 	public void setvFoto(String vFoto) {
 		this.vFoto = vFoto;
+	}
+	/**
+	 * @return the moneda
+	 */
+	public Moneda getMoneda() {
+		return moneda;
+	}
+	/**
+	 * @param moneda the moneda to set
+	 */
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
 	}
 
 	
